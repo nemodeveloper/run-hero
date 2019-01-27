@@ -1,0 +1,13 @@
+
+ground.png
+size: 137,137
+format: RGBA8888
+filter: MipMapLinearLinear,MipMapLinearLinear
+repeat: xy
+ground_block
+  rotate: false
+  xy: 0, 0
+  size: 137, 137
+  orig: 137, 137
+  offset: 0, 0
+  index: -1

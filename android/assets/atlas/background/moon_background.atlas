@@ -1,0 +1,13 @@
+
+moon_background.png
+size: 496,478
+format: RGBA8888
+filter: MipMapLinearLinear,MipMapLinearLinear
+repeat: xy
+moon
+  rotate: false
+  xy: 0, 0
+  size: 496, 478
+  orig: 496, 478
+  offset: 0, 0
+  index: -1

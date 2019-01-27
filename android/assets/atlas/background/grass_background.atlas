@@ -1,0 +1,13 @@
+
+grass_background.png
+size: 2560,794
+format: RGBA8888
+filter: MipMapLinearLinear,MipMapLinearLinear
+repeat: xy
+grass
+  rotate: false
+  xy: 0, 397
+  size: 2560, 397
+  orig: 2560, 397
+  offset: 0, 0
+  index: -1

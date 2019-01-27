@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    tools:context=".AndroidLauncher">
+
+    <ru.nemodev.runhero.GdxGame
+        android:id="@+id/gdxGame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+        <!--android:layout_above="@+id/adView"-->
+    </ru.nemodev.runhero.GdxGame>
+
+    <!--<com.google.android.gms.ads.AdView-->
+        <!--xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/adView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--ads:adSize="SMART_BANNER"-->
+        <!--ads:adUnitId="@string/ads_banner_id">-->
+    <!--</com.google.android.gms.ads.AdView>-->
+
+</RelativeLayout>
