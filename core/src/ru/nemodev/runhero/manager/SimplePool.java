@@ -34,8 +34,7 @@ public final class SimplePool
         {
             return new GrassActor(
                     SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS
-                            , GameConstant.METERS_X, GameConstant.WORLD_UNIT * 2.5f)
-                    , new Vector2(0.f, 0.f));
+                            , GameConstant.METERS_X, GameConstant.WORLD_UNIT * 2.5f, new Vector2(0.f, 0.f)));
         }
     };
 
@@ -64,7 +63,7 @@ public final class SimplePool
 
     private static TreeActor buildTreeActor(String atlasName, String textureName, Vector2 size, Vector2 position)
     {
-        return new TreeActor(SpriteUtils.create(atlasName, textureName, size.x, size.y), position);
+        return new TreeActor(SpriteUtils.create(atlasName, textureName, size.x, size.y, position));
     }
 
     public static final Pool<ScoreViewActor> scoreActorPool = new Pool<ScoreViewActor>(1)

@@ -43,7 +43,7 @@ public class GameScreen extends BaseScreen
     {
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
 
-        gameBackgroundScene = new GameBackgroundScene(new ExtendViewport(METERS_X, METERS_Y, camera), batch);
+        gameBackgroundScene = new GameBackgroundScene(new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch);
         addScene(gameBackgroundScene);
     }
 

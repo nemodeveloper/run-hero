@@ -3,6 +3,7 @@ package ru.nemodev.runhero.util;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import net.dermetfan.gdx.graphics.g2d.AnimatedBox2DSprite;
@@ -31,10 +32,12 @@ public final class SpriteUtils
         return new Sprite(ResourceManager.getInstance().getTextureWithoutWait(textureName));
     }
 
-    public static Sprite create(String atlasName, String textureName, float width, float height)
+    public static Sprite create(String atlasName, String textureName, float width, float height, Vector2 position)
     {
         final Sprite sprite = create(atlasName, textureName);
         sprite.setBounds(0.f, 0.f, width, height);
+        sprite.setPosition(position.x, position.y);
+        sprite.setOriginCenter();
 
         return sprite;
     }

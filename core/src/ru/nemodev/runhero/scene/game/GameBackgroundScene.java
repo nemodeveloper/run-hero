@@ -58,15 +58,13 @@ public class GameBackgroundScene extends BaseScene
     {
         float moonSize = GameConstant.WORLD_UNIT * 3.f;
 
-        Sprite moonSprite = SpriteUtils.create(BackgroundTextureConstant.MOON_BACKGROUND_ATLAS, BackgroundTextureConstant.MOON
-                , moonSize, moonSize);
-
         float positionX = GameManager.getInstance().isRightDirection()
                 ? GameConstant.METERS_X - moonSize - 1.f
                 : 1.f;
 
-        Vector2 position = new Vector2(positionX, GameConstant.METERS_Y - moonSize);
+        Sprite moonSprite = SpriteUtils.create(BackgroundTextureConstant.MOON_BACKGROUND_ATLAS, BackgroundTextureConstant.MOON
+                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize - 1.f));
 
-        return new MoonActor(moonSprite, position);
+        return new MoonActor(moonSprite);
     }
 }

@@ -42,7 +42,7 @@ public class SimpleScoreItemSpawnStrategy extends BaseScoreItemSpawnStrategy
 
             return new ScoreItemActor<Box2DSprite>(this.world,
                     SpriteUtils.createBox2d(ScoreItemTextureConstant.SCORE_ITEM_ATLAS, ScoreItemTextureConstant.STAR_ITEM)
-                    , buildScoreItemFixture(itemPosition, MathUtils.random(1.f, 2.f)));
+                    , buildScoreItemFixture(itemPosition, 1.5f));
         }
 
         return null;

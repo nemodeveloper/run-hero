@@ -40,6 +40,7 @@ public class BaseScene extends Stage implements Scene
 
     protected void doDraw()
     {
+        getViewport().apply();
         draw();
     }
 
