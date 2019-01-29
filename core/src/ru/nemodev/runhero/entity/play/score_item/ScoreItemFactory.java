@@ -24,7 +24,7 @@ public class ScoreItemFactory
 
     private void initStrategies()
     {
-        curSpawnStrategy = new SimpleScoreItemSpawnStrategy(world, 3.f, 100);
+        curSpawnStrategy = new SimpleScoreItemSpawnStrategy(world, 3.5f, 100);
     }
 
     public ScoreItemActor spawn(float timeDelta, Vector3 playerPosition)

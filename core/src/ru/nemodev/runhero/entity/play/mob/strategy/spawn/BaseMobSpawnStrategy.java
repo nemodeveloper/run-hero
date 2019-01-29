@@ -72,6 +72,11 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
         this.spawnPos = spawnPos;
     }
 
+    public float getDestinationX()
+    {
+        return destinationX;
+    }
+
     @Override
     public BaseMobActor spawn(Vector3 cameraPos)
     {

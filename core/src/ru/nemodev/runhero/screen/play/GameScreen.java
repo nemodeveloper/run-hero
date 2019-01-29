@@ -33,8 +33,8 @@ public class GameScreen extends BaseScreen
         Batch batch = GameManager.getInstance().getSpriteBatch();
 
         initBackgroundScene(batch);
-        initScoreScene(batch);
         initGameScene(batch);
+        initScoreScene(batch);
 
         GameManager.getInstance().setGameStatus(GameStatus.RUNNING);
     }

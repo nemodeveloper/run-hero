@@ -36,14 +36,14 @@ public class GameBackgroundScene extends BaseScene
         this.backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
         addActor(backgroundActor);
 
-        grassActor = PoolManager.getInstance().get(GrassActor.class);
-        addActor(grassActor);
-
         moonActor = getMoonActor();
         addActor(moonActor);
 
         treeActor = PoolManager.getInstance().get(TreeManagerActor.class);
         addActor(treeActor);
+
+        grassActor = PoolManager.getInstance().get(GrassActor.class);
+        addActor(grassActor);
     }
 
     @Override

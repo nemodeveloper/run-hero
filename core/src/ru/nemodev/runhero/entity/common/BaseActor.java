@@ -12,7 +12,10 @@ public abstract class BaseActor extends Group
             doAct(delta);
         }
 
-        super.act(delta);
+        if (hasChildren())
+        {
+            super.act(delta);
+        }
     }
 
     protected boolean isNeedUpdate()

@@ -149,7 +149,7 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
         // TODO тонкий момент по сдвигу камеру - зависит от начального положения героя
         Camera camera = getStage().getCamera();
 
-        float shift = 8 * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
+        float shift = 7 * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
         camera.position.x = heroFixture.getBody().getPosition().x + shift;
     }
 

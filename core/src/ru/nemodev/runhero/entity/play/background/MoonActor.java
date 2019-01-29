@@ -17,7 +17,7 @@ public class MoonActor extends BaseActor
     @Override
     protected void doAct(float delta)
     {
-        moonSprite.rotate(0.1f);
+        moonSprite.rotate(0.2f);
     }
 
     @Override

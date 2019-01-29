@@ -19,11 +19,14 @@ public class MobFactory
     private final Array<BaseMobSpawnStrategy> mobSpawnStrategies;
     private BaseMobSpawnStrategy curSpawnStrategy;
 
+    private int playerScore;
+
     public MobFactory(World world, Vector2 spawnPos)
     {
         this.world = world;
         this.spawnPos = spawnPos;
         this.mobSpawnStrategies = new Array<BaseMobSpawnStrategy>(6);
+        this.playerScore = 0;
 
         initMobStrategy();
     }
@@ -32,20 +35,22 @@ public class MobFactory
     {
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
 
-        mobSpawnStrategies.add(new EasyMobSpawnStrategy(world, 10, 1.5f, 4.f, 18.f * direction, spawnPos, false));
-        mobSpawnStrategies.add(new EasyMobSpawnStrategy(world, 20, 1.5f, 5.f, 17.f * direction, spawnPos, true));
+        mobSpawnStrategies.add(new EasyMobSpawnStrategy(world, 15, 2.f, 4.f, 22.f * direction, spawnPos, false));
+        mobSpawnStrategies.add(new EasyMobSpawnStrategy(world, 30, 2.5f, 5.f, 20.f * direction, spawnPos, true));
 
-        mobSpawnStrategies.add(new NormalMobSpawnStrategy(world, 30, 2.0f, 6.5f, 16.f * direction, spawnPos, false));
-        mobSpawnStrategies.add(new NormalMobSpawnStrategy(world, 40, 2.0f, 6.5f, 16.f * direction, spawnPos, true));
+        mobSpawnStrategies.add(new NormalMobSpawnStrategy(world, 45, 2.0f, 6.5f, 20.f * direction, spawnPos, false));
+        mobSpawnStrategies.add(new NormalMobSpawnStrategy(world, 60, 2.0f, 6.5f, 18.f * direction, spawnPos, true));
 
-        mobSpawnStrategies.add(new HardMobSpawnStrategy(world, 50, 2.5f, 7.f, 16.5f * direction, spawnPos, false));
-        mobSpawnStrategies.add(new HardMobSpawnStrategy(world, 60, 2.5f, 7.f, 17.5f * direction, spawnPos, true));
+        mobSpawnStrategies.add(new HardMobSpawnStrategy(world, 75, 2.5f, 7.f, 18.f * direction, spawnPos, false));
+        mobSpawnStrategies.add(new HardMobSpawnStrategy(world, 100, 2.5f, 7.f, 17.f * direction, spawnPos, true));
 
         curSpawnStrategy = mobSpawnStrategies.get(0);
     }
 
     public void setPlayerScore(int score)
     {
+        playerScore = score;
+
         if (curSpawnStrategy.isCanSpawn(score))
             return;
         else
@@ -69,6 +74,12 @@ public class MobFactory
 
     public BaseMobActor getMob(Vector3 cameraPos)
     {
+        if (playerScore < 3)
+        {
+            curSpawnStrategy.getSpawnPos().x = cameraPos.x + curSpawnStrategy.getDestinationX();
+            return null;
+        }
+
         return curSpawnStrategy.spawn(cameraPos);
     }
 
