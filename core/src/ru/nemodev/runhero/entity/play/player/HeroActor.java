@@ -33,9 +33,9 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
     private Fixture groundSensorFixture;
 
     private volatile boolean onGround;
-    private volatile long pressTouchDownTime;
 
     private volatile boolean isTouchDown;
+    private volatile float startPressY;
 
     private int gameScore;
 
@@ -65,7 +65,7 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
 
                 if (onGround)
                 {
-                    pressTouchDownTime = System.currentTimeMillis();
+                    startPressY = y;
                     isTouchDown = true;
                 }
                 return true;
@@ -76,10 +76,13 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
             {
                 if (onGround && isTouchDown)
                 {
+                    if (y > startPressY)
+                    {
+                        float impulseY = (y - startPressY) * 450.f;
+                        heroFixture.getBody().applyForceToCenter(0.f, impulseY, true);
+                    }
+
                     isTouchDown = false;
-                    final long timeTouch = System.currentTimeMillis() - pressTouchDownTime;
-                    float impulseY = (timeTouch * 0.1f) * 40.f;
-                    heroFixture.getBody().applyForceToCenter(0.f, impulseY, true);
                 }
             }
 
