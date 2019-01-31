@@ -5,18 +5,19 @@ import android.view.View;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
 
 public class AndroidLauncher extends AndroidApplication
 {
 	@Override
 	protected void onCreate (Bundle savedInstanceState)
 	{
+		super.onCreate(savedInstanceState);
+		initFabricIO();
 		hideSystemUI();
 
-		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
 		initGameView();
@@ -35,9 +36,9 @@ public class AndroidLauncher extends AndroidApplication
 
 	private void initAdb()
 	{
-		MobileAds.initialize(this, getResources().getString(R.string.ads_app_id));
-		AdView adView = findViewById(R.id.adView);
-		adView.loadAd(new AdRequest.Builder().build());
+//		MobileAds.initialize(this, getResources().getString(R.string.ads_app_id));
+//		AdView adView = findViewById(R.id.adView);
+//		adView.loadAd(new AdRequest.Builder().build());
 	}
 
 	private void hideSystemUI()
@@ -50,6 +51,11 @@ public class AndroidLauncher extends AndroidApplication
 				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 				| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 				| View.SYSTEM_UI_FLAG_FULLSCREEN);
+	}
+
+	private void initFabricIO()
+	{
+		Fabric.with(this, new Crashlytics());
 	}
 
 }
