@@ -10,13 +10,9 @@ import ru.nemodev.runhero.scene.collision.SimpleContactListener;
 
 public abstract class Box2dScene extends BaseScene
 {
-    private static final float TIME_STEP = 1.f / 60.f;
-    private static final float MAX_WORLD_STEP = 0.25f;
-
     private static final int VELOCITY_ITERATION = 6;
     private static final int POSITION_ITERATION = 2;
 
-    private float accumulator;
     protected final World world;
 
     private Box2DDebugRenderer debugRenderer;
@@ -25,8 +21,6 @@ public abstract class Box2dScene extends BaseScene
     public Box2dScene(World world, Viewport viewport, Batch batch)
     {
         super(viewport, batch);
-
-        this.accumulator = 0.f;
         this.world = world;
 
     }
@@ -47,14 +41,10 @@ public abstract class Box2dScene extends BaseScene
     }
 
     @Override
-    protected void doUpdate(float delta)
+    public void act(float delta)
     {
-        if (isNeedPhysicStep())
-        {
-            doPhysicsStep(delta);
-        }
-
-        super.doUpdate(delta);
+        world.step(TIME_STEP, VELOCITY_ITERATION, POSITION_ITERATION);
+        super.act(delta);
     }
 
     @Override
@@ -65,21 +55,6 @@ public abstract class Box2dScene extends BaseScene
         if (drawDebug)
         {
             debugRenderer.render(world, getCamera().combined);
-        }
-    }
-
-    protected boolean isNeedPhysicStep()
-    {
-        return true;
-    }
-
-    private void doPhysicsStep(float deltaTime)
-    {
-        accumulator += Math.min(deltaTime, MAX_WORLD_STEP);
-        while (accumulator >= TIME_STEP)
-        {
-            world.step(TIME_STEP, VELOCITY_ITERATION, POSITION_ITERATION);
-            accumulator -= TIME_STEP;
         }
     }
 

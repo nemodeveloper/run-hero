@@ -65,10 +65,10 @@ public class GameScene extends Box2dScene
     private void initBorder()
     {
         final int platformCount = 3;
-        Vector2 platformSize = new Vector2(METERS_X * 4.f, WORLD_UNIT * 2);
+        Vector2 platformSize = new Vector2(METERS_X * 4.f, WORLD_UNIT * 2.f);
         Array<Sprite> enableSprite = SpriteUtils.createBox2d(
                 BorderTextureConstant.GROUND_ATLAS,
-                WORLD_UNIT * 2, WORLD_UNIT * 2);
+                WORLD_UNIT * 2.f, WORLD_UNIT * 2.f);
 
         groundInfinityPlatformActor = buildInfinityPlatformActor(
                 platformCount,

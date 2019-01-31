@@ -2,6 +2,8 @@ package ru.nemodev.runhero.entity.common;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 
+import ru.nemodev.runhero.manager.GameManager;
+
 public abstract class BaseActor extends Group
 {
     @Override
@@ -20,7 +22,7 @@ public abstract class BaseActor extends Group
 
     protected boolean isNeedUpdate()
     {
-        return true;
+        return GameManager.getInstance().isRunning();
     }
 
     protected void doAct(float delta)

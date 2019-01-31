@@ -9,9 +9,15 @@ import ru.nemodev.runhero.util.InputUtils;
 
 public class BaseScene extends Stage implements Scene
 {
+    private static final float MAX_WORLD_STEP = 0.25f;
+    protected static final float TIME_STEP = 1.f / 60.f;
+
+    private float accumulator;
+
     public BaseScene(Viewport viewport, Batch batch)
     {
         super(viewport, batch);
+        this.accumulator = 0.f;
     }
 
     @Override
@@ -35,7 +41,20 @@ public class BaseScene extends Stage implements Scene
 
     protected void doUpdate(float delta)
     {
-        act(delta);
+        if (isNeedUpdate())
+        {
+            accumulator += Math.min(delta, MAX_WORLD_STEP);
+            while (accumulator >= TIME_STEP)
+            {
+                act(TIME_STEP);
+                accumulator -= TIME_STEP;
+            }
+        }
+    }
+
+    protected boolean isNeedUpdate()
+    {
+        return true;
     }
 
     protected void doDraw()

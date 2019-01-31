@@ -36,7 +36,7 @@ public class PlatformActor extends Box2dActor implements MobEventListener
         this.platform = platform;
         this.bodySize = bodySize;
 
-        int spriteCount = (int) (bodySize.x / spriteSize);
+        int spriteCount = MathUtils.ceil(bodySize.x / spriteSize);
         this.spritePosX = new float[spriteCount];
         this.spritePosY = platform.getBody().getPosition().y;
 

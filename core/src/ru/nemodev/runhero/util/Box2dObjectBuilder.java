@@ -58,7 +58,6 @@ public final class Box2dObjectBuilder
     public static Fixture createFixture(Body body, Shape shape, float density, float friction, float restitution)
     {
         FixtureDef fixtureDef = createFixtureDef(shape, density, friction, restitution);
-        shape.dispose();
 
         return body.createFixture(fixtureDef);
     }

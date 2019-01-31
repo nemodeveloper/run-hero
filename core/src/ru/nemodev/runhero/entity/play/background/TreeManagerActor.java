@@ -59,15 +59,8 @@ public class TreeManagerActor extends BaseActor
     }
 
     @Override
-    protected boolean isNeedUpdate()
-    {
-        return GameManager.getInstance().isRunning();
-    }
-
-    @Override
     protected void doAct(float delta)
     {
-        // TODO сделать движение которое не зависит от delta
         moveCurrentTrees(delta);
     }
 

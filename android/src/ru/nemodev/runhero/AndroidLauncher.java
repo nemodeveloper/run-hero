@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class AndroidLauncher extends AndroidApplication
 {
@@ -32,9 +35,9 @@ public class AndroidLauncher extends AndroidApplication
 
 	private void initAdb()
 	{
-//		MobileAds.initialize(this, getResources().getString(R.string.ads_app_id));
-//		AdView adView = findViewById(R.id.adView);
-//		adView.loadAd(new AdRequest.Builder().build());
+		MobileAds.initialize(this, getResources().getString(R.string.ads_app_id));
+		AdView adView = findViewById(R.id.adView);
+		adView.loadAd(new AdRequest.Builder().build());
 	}
 
 	private void hideSystemUI()

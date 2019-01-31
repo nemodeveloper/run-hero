@@ -29,7 +29,7 @@ public class InfinityPlatformActor extends Box2dActor implements MobEventListene
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         for (int i = 0; i < platformCount; ++i)
         {
-            addPlatform(PlatformActor.buildPlatformActor(world, platformStartPos, platformSize, enableSprite, WORLD_UNIT * 2));
+            addPlatform(PlatformActor.buildPlatformActor(world, platformStartPos, platformSize, enableSprite, WORLD_UNIT * 2.f));
             platformStartPos.add(platformSize.x * direction, 0.f);
         }
     }

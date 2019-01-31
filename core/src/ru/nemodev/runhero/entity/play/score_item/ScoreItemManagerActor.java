@@ -4,7 +4,6 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import ru.nemodev.runhero.entity.common.Box2dActor;
 import ru.nemodev.runhero.entity.play.ScoreChangeListener;
-import ru.nemodev.runhero.manager.GameManager;
 
 public class ScoreItemManagerActor extends Box2dActor implements ScoreChangeListener
 {
@@ -26,12 +25,6 @@ public class ScoreItemManagerActor extends Box2dActor implements ScoreChangeList
         }
 
         super.doAct(delta);
-    }
-
-    @Override
-    protected boolean isNeedUpdate()
-    {
-        return GameManager.getInstance().isRunning();
     }
 
     @Override
