@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
 import ru.nemodev.runhero.entity.main.TutorialActor;
 import ru.nemodev.runhero.scene.common.BaseScene;
+import ru.nemodev.runhero.util.ScreenUtils;
 import ru.nemodev.runhero.util.SpriteUtils;
 
 /**
@@ -29,6 +30,9 @@ public class TutorialScene extends BaseScene
 
         Sprite howPlaySprite = SpriteUtils.create(BackgroundTextureConstant.HOW_PLAY);
         tutorialActor = new TutorialActor(howPlaySprite);
+        tutorialActor.setSize(ScreenUtils.getWidth(), ScreenUtils.getHeight());
+        tutorialActor.setPosition(0.f, 0.f);
+
         addActor(tutorialActor);
     }
 

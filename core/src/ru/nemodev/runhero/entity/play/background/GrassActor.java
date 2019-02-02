@@ -3,6 +3,7 @@ package ru.nemodev.runhero.entity.play.background;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Pool;
 
 import java.util.Iterator;
 
@@ -10,7 +11,7 @@ import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.entity.common.BaseActor;
 import ru.nemodev.runhero.manager.GameManager;
 
-public class GrassActor extends BaseActor
+public class GrassActor extends BaseActor implements Pool.Poolable
 {
     private final Array<Sprite> grassSprites;
 
@@ -45,9 +46,9 @@ public class GrassActor extends BaseActor
         while (grassIterator.hasNext())
         {
             Sprite grassSprite = grassIterator.next();
-            float shift = GameManager.getInstance().isRightDirection()
+            float shift = 1.5f * (GameManager.getInstance().isRightDirection()
                     ? -delta
-                    : delta;
+                    : delta);
 
             grassSprite.setX(grassSprite.getX() + shift);
 
@@ -78,5 +79,11 @@ public class GrassActor extends BaseActor
         {
             grassSprite.draw(batch);
         }
+    }
+
+    @Override
+    public void reset()
+    {
+
     }
 }

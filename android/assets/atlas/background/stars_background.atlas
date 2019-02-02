@@ -1,13 +1,13 @@
 
-grass_ground.png
-size: 122,31
+stars_background.png
+size: 2431,853
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
 repeat: xy
-grass_ground
+stars
   rotate: false
   xy: 0, 0
-  size: 122, 31
-  orig: 122, 31
+  size: 2431, 853
+  orig: 2431, 853
   offset: 0, 0
   index: -1

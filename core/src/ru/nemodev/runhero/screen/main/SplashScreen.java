@@ -9,7 +9,7 @@ import ru.nemodev.runhero.constant.texture.HeroTextureConstant;
 import ru.nemodev.runhero.constant.texture.MobsAnimationTextureConstant;
 import ru.nemodev.runhero.constant.texture.MobsStaticTextureConstant;
 import ru.nemodev.runhero.constant.texture.ScoreItemTextureConstant;
-import ru.nemodev.runhero.entity.common.BackgroundActor;
+import ru.nemodev.runhero.entity.play.background.BackgroundActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.manager.PhysicManager;
@@ -30,9 +30,10 @@ public class SplashScreen extends BaseLoaderScreen
         BaseScene baseScene = new BaseScene(new ScreenViewport(), GameManager.getInstance().getSpriteBatch());
 
         backgroundSprite = SpriteUtils.create(BackgroundTextureConstant.SPLASH);
-        baseScene.addActor(new BackgroundActor(
-                backgroundSprite,
-                ScreenUtils.getWidth(), ScreenUtils.getHeight()));
+        backgroundSprite.setSize(ScreenUtils.getWidth(), ScreenUtils.getHeight());
+        backgroundSprite.setPosition(0, 0);
+
+        baseScene.addActor(new BackgroundActor(backgroundSprite));
 
         addScene(baseScene);
 

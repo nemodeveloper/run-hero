@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Pool;
 
 import java.util.Iterator;
 
@@ -11,7 +12,7 @@ import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.entity.common.BaseActor;
 import ru.nemodev.runhero.manager.GameManager;
 
-public class TreeManagerActor extends BaseActor
+public class TreeManagerActor extends BaseActor implements Pool.Poolable
 {
     private final Array<Sprite> enableTreeSprites;
 
@@ -119,4 +120,9 @@ public class TreeManagerActor extends BaseActor
         return new Sprite(enableTreeSprites.get(MathUtils.random(0, enableTreeSprites.size - 1)));
     }
 
+    @Override
+    public void reset()
+    {
+
+    }
 }

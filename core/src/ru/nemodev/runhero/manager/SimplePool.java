@@ -7,11 +7,11 @@ import com.badlogic.gdx.utils.Pool;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
-import ru.nemodev.runhero.entity.common.BackgroundActor;
 import ru.nemodev.runhero.entity.play.ScoreViewActor;
+import ru.nemodev.runhero.entity.play.background.BackgroundActor;
 import ru.nemodev.runhero.entity.play.background.GrassActor;
+import ru.nemodev.runhero.entity.play.background.StarManagerActor;
 import ru.nemodev.runhero.entity.play.background.TreeManagerActor;
-import ru.nemodev.runhero.util.ScreenUtils;
 import ru.nemodev.runhero.util.SpriteUtils;
 
 
@@ -23,8 +23,21 @@ public final class SimplePool
         protected BackgroundActor newObject()
         {
             return new BackgroundActor(
-                    SpriteUtils.create(BackgroundTextureConstant.BACKGROUND_ATLAS, BackgroundTextureConstant.BACKGROUND),
-                    ScreenUtils.getWidth(), ScreenUtils.getHeight());
+                    SpriteUtils.create(BackgroundTextureConstant.BACKGROUND_ATLAS, BackgroundTextureConstant.BACKGROUND,
+                            GameConstant.METERS_X, GameConstant.METERS_Y,
+                            new Vector2(0, 0)));
+        }
+    };
+
+    public static final Pool<StarManagerActor> starManagerActorPool = new Pool<StarManagerActor>(1)
+    {
+        @Override
+        protected StarManagerActor newObject()
+        {
+            return new StarManagerActor(
+                    SpriteUtils.create(BackgroundTextureConstant.STARS_BACKGROUND_ATLAS, BackgroundTextureConstant.STARS,
+                            GameConstant.METERS_X, 6.f,
+                            new Vector2(0.f, 3.f)));
         }
     };
 
@@ -34,7 +47,7 @@ public final class SimplePool
         protected GrassActor newObject()
         {
             return new GrassActor(
-                    SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS
+                    SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS_BACKGROUND
                             , GameConstant.METERS_X, GameConstant.WORLD_UNIT * 2.5f, new Vector2(0.f, 0.f)));
         }
     };

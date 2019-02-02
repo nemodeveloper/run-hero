@@ -3,9 +3,10 @@ package ru.nemodev.runhero.manager;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.Pools;
 
-import ru.nemodev.runhero.entity.common.BackgroundActor;
 import ru.nemodev.runhero.entity.play.ScoreViewActor;
+import ru.nemodev.runhero.entity.play.background.BackgroundActor;
 import ru.nemodev.runhero.entity.play.background.GrassActor;
+import ru.nemodev.runhero.entity.play.background.StarManagerActor;
 import ru.nemodev.runhero.entity.play.background.TreeManagerActor;
 
 /**
@@ -20,8 +21,9 @@ public final class PoolManager
     private void initialize()
     {
         Pools.set(BackgroundActor.class, SimplePool.backgroundActorPool);
-        Pools.set(GrassActor.class, SimplePool.grassBackgroundActorPool);
+        Pools.set(StarManagerActor.class, SimplePool.starManagerActorPool);
         Pools.set(TreeManagerActor.class, SimplePool.treeBackgroundActorPool);
+        Pools.set(GrassActor.class, SimplePool.grassBackgroundActorPool);
 
         Pools.set(ScoreViewActor.class, SimplePool.scoreActorPool);
     }

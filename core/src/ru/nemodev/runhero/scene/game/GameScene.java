@@ -57,23 +57,26 @@ public class GameScene extends Box2dScene
         super.init();
 
         initHero();
-        initBorder();
-        initMob();
         initScoreItem();
+        initMob();
+        initBorder();
     }
 
     private void initBorder()
     {
         final int platformCount = 3;
-        Vector2 platformSize = new Vector2(METERS_X * 4.f, WORLD_UNIT * 2.f);
-        Array<Sprite> enableSprite = SpriteUtils.createBox2d(
+        Vector2 platformSize = new Vector2(METERS_X * 1.5f, WORLD_UNIT * 2.f);
+
+        Array<Sprite> borderSprites = SpriteUtils.createBox2d(
                 BorderTextureConstant.GROUND_ATLAS,
                 WORLD_UNIT * 2.f, WORLD_UNIT * 2.f);
+        Sprite undoBorderSprite = SpriteUtils.createBox2d(BorderTextureConstant.GRASS_ATLAS, BorderTextureConstant.GRASS_GROUND,
+                WORLD_UNIT * 2.f, WORLD_UNIT * 0.25f);
 
         groundInfinityPlatformActor = buildInfinityPlatformActor(
                 platformCount,
                 new Vector2(METERS_X / 2.f, 0.f),
-                platformSize, enableSprite, new Contactable()
+                platformSize, borderSprites, undoBorderSprite, new Contactable()
                 {
                     @Override
                     public void beginContact(Contactable contactable)
@@ -98,8 +101,8 @@ public class GameScene extends Box2dScene
 
         skyInfinityPlatformActor = buildInfinityPlatformActor(
                 platformCount,
-                new Vector2(METERS_X  / 2.f, METERS_Y + 0.75f),
-                platformSize, enableSprite, new Contactable()
+                new Vector2(METERS_X  / 2.f, METERS_Y + 0.9f),
+                platformSize, borderSprites, undoBorderSprite, new Contactable()
                 {
                     @Override
                     public void beginContact(Contactable contactable)
@@ -170,9 +173,11 @@ public class GameScene extends Box2dScene
         GameManager.getInstance().addScoreChangeListener(scoreItemManagerActor);
     }
 
-    private InfinityPlatformActor buildInfinityPlatformActor(int platformCount, Vector2 platformStartPos, Vector2 platformSize, Array<Sprite> enableSprite, Contactable contactable)
+    private InfinityPlatformActor buildInfinityPlatformActor(int platformCount,
+                                                             Vector2 platformStartPos, Vector2 platformSize,
+                                                             Array<Sprite> borderSprites, Sprite undoBorderSprite, Contactable contactable)
     {
-        InfinityPlatformActor infinityPlatformActor = new InfinityPlatformActor(world, platformStartPos, platformSize, enableSprite, platformCount);
+        InfinityPlatformActor infinityPlatformActor = new InfinityPlatformActor(world, platformStartPos, platformSize, borderSprites, undoBorderSprite, platformCount);
         infinityPlatformActor.setContactable(contactable);
 
         return infinityPlatformActor;

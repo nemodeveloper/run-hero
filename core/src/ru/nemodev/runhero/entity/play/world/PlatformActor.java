@@ -27,9 +27,11 @@ public class PlatformActor extends Box2dActor implements MobEventListener
     private final Fixture platform;
     private final Vector2 bodySize;
     private final Array<Sprite> platformSprites;
-    private final Array<Sprite> enableSprite;
 
-    public PlatformActor(World world, Fixture platform, Array<Sprite> enableSprite, Vector2 bodySize, float spriteSize)
+    private final Array<Sprite> borderSprites;
+    private final Sprite undoBorderSprite;
+
+    public PlatformActor(World world, Fixture platform, Array<Sprite> borderSprites, Sprite undoBorderSprite, Vector2 bodySize, float spriteSize)
     {
         super(world);
 
@@ -49,7 +51,10 @@ public class PlatformActor extends Box2dActor implements MobEventListener
         }
 
         this.platformSprites = new Array<Sprite>(spriteCount);
-        this.enableSprite = enableSprite;
+
+        this.borderSprites = borderSprites;
+        this.undoBorderSprite = undoBorderSprite;
+
         fillPlatformSprites();
     }
 
@@ -91,7 +96,7 @@ public class PlatformActor extends Box2dActor implements MobEventListener
     {
         for (int i = 0; i < spritePosX.length; ++i)
         {
-            platformSprites.insert(i, enableSprite.get(MathUtils.random(0, enableSprite.size - 1)));
+            platformSprites.add(borderSprites.get(MathUtils.random(0, borderSprites.size - 1)));
         }
     }
 
@@ -104,6 +109,7 @@ public class PlatformActor extends Box2dActor implements MobEventListener
         for (int i = 0; i < spritePosX.length; ++i)
         {
             drawSprite(batch, platformSprites.get(i), spritePosX[i], spritePosY);
+            drawSprite(batch, undoBorderSprite, spritePosX[i], 1.125f);
         }
     }
 
@@ -119,13 +125,13 @@ public class PlatformActor extends Box2dActor implements MobEventListener
         return null;
     }
 
-    public static PlatformActor buildPlatformActor(World world, Vector2 bodyPosition, Vector2 bodySize, Array<Sprite> enableSprite, float spriteSize)
+    public static PlatformActor buildPlatformActor(World world, Vector2 bodyPosition, Vector2 bodySize, Array<Sprite> enableSprite, Sprite undoBorderSprite, float spriteSize)
     {
         Fixture fixture = Box2dObjectBuilder.createPolygonFixture(
                 world, ConstantBox2dBodyType.GROUND,
                 bodyPosition, bodySize.x, bodySize.y);
 
-        return new PlatformActor(world, fixture, enableSprite, bodySize, spriteSize);
+        return new PlatformActor(world, fixture, enableSprite, undoBorderSprite, bodySize, spriteSize);
     }
 
     @Override

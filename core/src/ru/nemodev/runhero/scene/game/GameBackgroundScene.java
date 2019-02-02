@@ -7,9 +7,10 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
-import ru.nemodev.runhero.entity.common.BackgroundActor;
+import ru.nemodev.runhero.entity.play.background.BackgroundActor;
 import ru.nemodev.runhero.entity.play.background.GrassActor;
 import ru.nemodev.runhero.entity.play.background.MoonActor;
+import ru.nemodev.runhero.entity.play.background.StarManagerActor;
 import ru.nemodev.runhero.entity.play.background.TreeManagerActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.PoolManager;
@@ -22,6 +23,7 @@ public class GameBackgroundScene extends BaseScene
     private GrassActor grassActor;
     private MoonActor moonActor;
     private TreeManagerActor treeActor;
+    private StarManagerActor starManagerActor;
 
     public GameBackgroundScene(Viewport viewport, Batch batch)
     {
@@ -35,6 +37,9 @@ public class GameBackgroundScene extends BaseScene
 
         this.backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
         addActor(backgroundActor);
+
+        this.starManagerActor = PoolManager.getInstance().get(StarManagerActor.class);
+        addActor(starManagerActor);
 
         moonActor = getMoonActor();
         addActor(moonActor);
@@ -52,18 +57,22 @@ public class GameBackgroundScene extends BaseScene
         super.dispose();
 
         PoolManager.getInstance().free(backgroundActor);
+        PoolManager.getInstance().free(starManagerActor);
+        PoolManager.getInstance().free(treeActor);
+        PoolManager.getInstance().free(grassActor);
     }
 
     private MoonActor getMoonActor()
     {
         float moonSize = GameConstant.WORLD_UNIT * 3.f;
+        float borderShift = 0.5f;
 
         float positionX = GameManager.getInstance().isRightDirection()
-                ? GameConstant.METERS_X - moonSize - 1.f
-                : 1.f;
+                ? GameConstant.METERS_X - moonSize - borderShift
+                : borderShift;
 
         Sprite moonSprite = SpriteUtils.create(BackgroundTextureConstant.MOON_BACKGROUND_ATLAS, BackgroundTextureConstant.MOON
-                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize - 1.f));
+                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize - borderShift));
 
         return new MoonActor(moonSprite);
     }

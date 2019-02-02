@@ -1,8 +1,10 @@
-package ru.nemodev.runhero.entity.common;
+package ru.nemodev.runhero.entity.play.background;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Pool;
+
+import ru.nemodev.runhero.entity.common.BaseStaticActor;
 
 
 /**
@@ -12,16 +14,15 @@ public class BackgroundActor extends BaseStaticActor implements Pool.Poolable
 {
     protected final Sprite background;
 
-    public BackgroundActor(Sprite background, float width, float height)
+    public BackgroundActor(Sprite background)
     {
         this.background = background;
-        setSize(width, height);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha)
     {
-        batch.draw(background, 0.f, 0.f, getWidth(), getHeight());
+        background.draw(batch);
     }
 
     @Override

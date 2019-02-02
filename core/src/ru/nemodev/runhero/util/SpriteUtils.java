@@ -89,6 +89,14 @@ public final class SpriteUtils
         return atlasSprites;
     }
 
+    public static Sprite createBox2d(String atlasName, String textureName, float width, float height)
+    {
+        Sprite sprite = ResourceManager.getInstance().getSprite(atlasName, textureName);
+        setOriginToCentre(sprite, width, height);
+
+        return sprite;
+    }
+
     public static Animation<TextureRegion> createAnimation(String atlasName, float frameDuration, Animation.PlayMode playMode)
     {
         Array<Sprite> sprites = ResourceManager.getInstance().getSprites(atlasName);

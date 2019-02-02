@@ -6,10 +6,13 @@ import java.util.Set;
 
 public class BorderTextureConstant
 {
-    public static final String GROUND_ATLAS = "atlas/border/ground/ground.atlas";
+    private static final String BASE_BORDER_PATH = "atlas/border/ground/";
+
+    public static final String GROUND_ATLAS = BASE_BORDER_PATH + "ground.atlas";
 //    public static final String SKY_ATLAS = "atlas/border/sky/sky.atlas";
 
-    public static final String GRASS_ATLAS = "atlas/border/ground/grass_ground.atlas";
+    public static final String GRASS_ATLAS = BASE_BORDER_PATH + "grass_ground.atlas";
+    public static final String GRASS_GROUND = "grass_ground";
 
 
     public static final Set<String> ATLAS_FOR_LOAD = new HashSet<String>(Arrays.asList(
