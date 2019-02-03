@@ -41,12 +41,6 @@ public abstract class Box2dActor extends BaseActor implements Contactable
         sprite.draw(batch);
     }
 
-    protected void drawSprite(Batch batch, Sprite sprite, float posX, float posY)
-    {
-        sprite.setOriginBasedPosition(posX, posY);
-        sprite.draw(batch);
-    }
-
     @Override
     public void beginContact(Contactable contactable)
     { }
@@ -58,6 +52,6 @@ public abstract class Box2dActor extends BaseActor implements Contactable
     @Override
     public ContactType getContactType()
     {
-        return ContactType.OTHER;
+        return ContactType.UNKNOWN;
     }
 }

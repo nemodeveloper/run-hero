@@ -32,21 +32,6 @@ public final class SpriteUtils
         return new Sprite(ResourceManager.getInstance().getTextureWithoutWait(textureName));
     }
 
-    public static Sprite create(String atlasName, String textureName, float width, float height, Vector2 position)
-    {
-        final Sprite sprite = create(atlasName, textureName);
-        sprite.setBounds(0.f, 0.f, width, height);
-        sprite.setPosition(position.x, position.y);
-        sprite.setOriginCenter();
-
-        return sprite;
-    }
-
-    public static Array<Sprite> createList(String atlasName)
-    {
-        return ResourceManager.getInstance().getSprites(atlasName);
-    }
-
     public static Sprite create(String atlasName, String spiteName)
     {
         Sprite sprite = ResourceManager.getInstance().getSprite(atlasName, spiteName);
@@ -54,6 +39,32 @@ public final class SpriteUtils
         sprite.setY(0.f);
 
         return sprite;
+    }
+
+    public static Sprite create(String atlasName, String textureName, float width, float height, Vector2 position)
+    {
+        final Sprite sprite = create(atlasName, textureName);
+        setBounds(sprite, width, height, position);
+
+        return sprite;
+    }
+
+    private static void setBounds(Sprite sprite, float width, float height, Vector2 position)
+    {
+        sprite.setBounds(0.f, 0.f, width, height);
+        sprite.setPosition(position.x, position.y);
+        sprite.setOriginCenter();
+    }
+
+    public static Array<Sprite> createList(String atlasName, float width, float height, Vector2 position)
+    {
+        Array<Sprite> sprites = ResourceManager.getInstance().getSprites(atlasName);
+        for (Sprite sprite : sprites)
+        {
+            setBounds(sprite, width, height, position);
+        }
+
+        return sprites;
     }
 
     public static Box2DSprite createBox2d(String atlasName, String textureName)
@@ -68,33 +79,6 @@ public final class SpriteUtils
         }
 
         return box2DSprite;
-    }
-
-    private static Sprite setOriginToCentre(Sprite sprite, float width, float height)
-    {
-        sprite.setBounds(0.f, 0.f, width, height);
-        sprite.setOrigin(width / 2.f, height / 2.f);
-
-        return sprite;
-    }
-
-    public static Array<Sprite> createBox2d(String atlasName, float width, float height)
-    {
-        Array<Sprite> atlasSprites = ResourceManager.getInstance().getSprites(atlasName);
-        for (Sprite sprite : atlasSprites)
-        {
-            setOriginToCentre(sprite, width, height);
-        }
-
-        return atlasSprites;
-    }
-
-    public static Sprite createBox2d(String atlasName, String textureName, float width, float height)
-    {
-        Sprite sprite = ResourceManager.getInstance().getSprite(atlasName, textureName);
-        setOriginToCentre(sprite, width, height);
-
-        return sprite;
     }
 
     public static Animation<TextureRegion> createAnimation(String atlasName, float frameDuration, Animation.PlayMode playMode)

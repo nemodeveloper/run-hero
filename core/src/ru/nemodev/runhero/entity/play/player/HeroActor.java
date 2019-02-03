@@ -122,7 +122,7 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
             @Override
             public ContactType getContactType()
             {
-                return ContactType.OTHER;
+                return ContactType.UNKNOWN;
             }
         });
 

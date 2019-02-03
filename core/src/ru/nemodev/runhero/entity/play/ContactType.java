@@ -7,5 +7,5 @@ public enum ContactType
     SKY,
     GROUND,
     SCORE_ITEM,
-    OTHER
+    UNKNOWN
 }

@@ -12,50 +12,48 @@ import ru.nemodev.runhero.entity.play.ContactType;
 import ru.nemodev.runhero.entity.play.mob.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
 
-import static ru.nemodev.runhero.constant.GameConstant.WORLD_UNIT;
 
-
-public class InfinityPlatformActor extends Box2dActor implements MobEventListener
+public class GroundInfinityActor extends Box2dActor implements MobEventListener
 {
-    private final Array<PlatformActor> platforms;
+    private final Array<GroundActor> platforms;
     private final float moveX;
 
-    public InfinityPlatformActor(World world, Vector2 platformStartPos, Vector2 platformSize, Array<Sprite> borderSprites, Sprite undoBorderSprite, int platformCount)
+    public GroundInfinityActor(World world, Vector2 platformStartPos, Vector2 platformSize, Array<Sprite> enableGroundSprites, Sprite undoGroundSprite, int platformCount)
     {
         super(world);
-        this.platforms = new Array<PlatformActor>(platformCount);
+        this.platforms = new Array<GroundActor>(platformCount);
         this.moveX = (platformCount - 1) * platformSize.x;
 
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         for (int i = 0; i < platformCount; ++i)
         {
-            addPlatform(PlatformActor.buildPlatformActor(world, platformStartPos, platformSize, borderSprites, undoBorderSprite, WORLD_UNIT * 2.f));
+            addGroundActor(GroundActor.buildGroundActor(world, platformStartPos, platformSize, enableGroundSprites, undoGroundSprite, 1.f));
             platformStartPos.add(platformSize.x * direction, 0.f);
         }
     }
 
     public void setContactable(Contactable contactable)
     {
-        for (PlatformActor platformActor : platforms)
+        for (GroundActor groundActor : platforms)
         {
-            platformActor.setContactable(contactable);
+            groundActor.setContactable(contactable);
         }
     }
 
-    private void addPlatform(PlatformActor platformActor)
+    private void addGroundActor(GroundActor groundActor)
     {
-        platforms.add(platformActor);
-        addActor(platformActor);
+        platforms.add(groundActor);
+        addActor(groundActor);
     }
 
     @Override
     protected void doAct(float delta)
     {
-        for (PlatformActor platformActor : platforms)
+        for (GroundActor groundActor : platforms)
         {
-            if (!platformActor.isVisibleForPlayer())
+            if (!groundActor.isVisibleForPlayer())
             {
-                platformActor.movePlatform(moveX);
+                groundActor.movePlatform(moveX);
                 return;
             }
         }
@@ -70,15 +68,13 @@ public class InfinityPlatformActor extends Box2dActor implements MobEventListene
     @Override
     public void mobKillHero()
     {
-        for (PlatformActor platformActor : platforms)
+        for (GroundActor groundActor : platforms)
         {
-            platformActor.mobKillHero();
+            groundActor.mobKillHero();
         }
     }
 
     @Override
-    public void mobChange()
-    {
+    public void mobChange() { }
 
-    }
 }

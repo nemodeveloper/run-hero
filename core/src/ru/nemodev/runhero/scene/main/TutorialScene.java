@@ -29,9 +29,10 @@ public class TutorialScene extends BaseScene
         super.init();
 
         Sprite howPlaySprite = SpriteUtils.create(BackgroundTextureConstant.HOW_PLAY);
+        howPlaySprite.setSize(ScreenUtils.getWidth(), ScreenUtils.getHeight());
+        howPlaySprite.setPosition(0.f, 0.f);
+
         tutorialActor = new TutorialActor(howPlaySprite);
-        tutorialActor.setSize(ScreenUtils.getWidth(), ScreenUtils.getHeight());
-        tutorialActor.setPosition(0.f, 0.f);
 
         addActor(tutorialActor);
     }

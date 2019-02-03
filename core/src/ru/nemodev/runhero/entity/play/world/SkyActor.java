@@ -9,10 +9,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 
+import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.entity.collision.Contactable;
 import ru.nemodev.runhero.entity.common.Box2dActor;
 import ru.nemodev.runhero.entity.play.ConstantBox2dBodyType;
-import ru.nemodev.runhero.entity.play.mob.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
@@ -20,18 +20,26 @@ import ru.nemodev.runhero.util.Box2dObjectBuilder;
 /**
  * created by NemoDev on 06.05.2018 - 20:14
  */
-public class PlatformActor extends Box2dActor implements MobEventListener
+public class SkyActor extends Box2dActor
 {
     private final float[] spritePosX;
     private final float spritePosY;
     private final Fixture platform;
     private final Vector2 bodySize;
-    private final Array<Sprite> platformSprites;
+    private final Array<Sprite> skySprites;
 
-    private final Array<Sprite> borderSprites;
-    private final Sprite undoBorderSprite;
+    private final Array<Sprite> enableSkySprites;
 
-    public PlatformActor(World world, Fixture platform, Array<Sprite> borderSprites, Sprite undoBorderSprite, Vector2 bodySize, float spriteSize)
+    public static SkyActor buildSkyActor(World world, Vector2 bodyPosition, Vector2 bodySize, Array<Sprite> enableSkySprites, float spriteSize)
+    {
+        Fixture fixture = Box2dObjectBuilder.createPolygonFixture(
+                world, ConstantBox2dBodyType.GROUND,
+                bodyPosition, bodySize.x, bodySize.y);
+
+        return new SkyActor(world, fixture, enableSkySprites, bodySize, spriteSize);
+    }
+
+    public SkyActor(World world, Fixture platform, Array<Sprite> enableSkySprites, Vector2 bodySize, float spriteSize)
     {
         super(world);
 
@@ -40,9 +48,9 @@ public class PlatformActor extends Box2dActor implements MobEventListener
 
         int spriteCount = MathUtils.ceil(bodySize.x / spriteSize);
         this.spritePosX = new float[spriteCount];
-        this.spritePosY = platform.getBody().getPosition().y;
+        this.spritePosY = GameConstant.METERS_Y - 0.1f;
 
-        float startPosXForSprite = platform.getBody().getPosition().x - bodySize.x / 2.f + spriteSize / 2.f;
+        float startPosXForSprite = platform.getBody().getPosition().x - bodySize.x / 2.f;
 
         for (int i = 0; i < spritePosX.length; ++i)
         {
@@ -50,12 +58,10 @@ public class PlatformActor extends Box2dActor implements MobEventListener
             startPosXForSprite += spriteSize;
         }
 
-        this.platformSprites = new Array<Sprite>(spriteCount);
+        this.skySprites = new Array<Sprite>(spriteCount);
+        this.enableSkySprites = enableSkySprites;
 
-        this.borderSprites = borderSprites;
-        this.undoBorderSprite = undoBorderSprite;
-
-        fillPlatformSprites();
+        generateSkySprites();
     }
 
     public void setContactable(Contactable contactable)
@@ -79,24 +85,24 @@ public class PlatformActor extends Box2dActor implements MobEventListener
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         platform.getBody().setTransform(groundPlatformPos.set(groundPlatformPos.x + moveX * direction, groundPlatformPos.y), 0.f);
 
-        updatePlatformSprites(moveX);
+        updateSkySprites(moveX);
     }
 
-    private void updatePlatformSprites(float moveX)
+    private void updateSkySprites(float moveX)
     {
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         for (int i = 0; i < spritePosX.length; ++i)
         {
             spritePosX[i] += moveX * direction;
         }
-        fillPlatformSprites();
+        generateSkySprites();
     }
 
-    private void fillPlatformSprites()
+    private void generateSkySprites()
     {
         for (int i = 0; i < spritePosX.length; ++i)
         {
-            platformSprites.add(borderSprites.get(MathUtils.random(0, borderSprites.size - 1)));
+            skySprites.add(enableSkySprites.get(MathUtils.random(0, enableSkySprites.size - 1)));
         }
     }
 
@@ -108,8 +114,7 @@ public class PlatformActor extends Box2dActor implements MobEventListener
 
         for (int i = 0; i < spritePosX.length; ++i)
         {
-            drawSprite(batch, platformSprites.get(i), spritePosX[i], spritePosY);
-            drawSprite(batch, undoBorderSprite, spritePosX[i], 1.125f);
+            drawSprite(batch, skySprites.get(i), spritePosX[i], spritePosY);
         }
     }
 
@@ -125,24 +130,4 @@ public class PlatformActor extends Box2dActor implements MobEventListener
         return null;
     }
 
-    public static PlatformActor buildPlatformActor(World world, Vector2 bodyPosition, Vector2 bodySize, Array<Sprite> enableSprite, Sprite undoBorderSprite, float spriteSize)
-    {
-        Fixture fixture = Box2dObjectBuilder.createPolygonFixture(
-                world, ConstantBox2dBodyType.GROUND,
-                bodyPosition, bodySize.x, bodySize.y);
-
-        return new PlatformActor(world, fixture, enableSprite, undoBorderSprite, bodySize, spriteSize);
-    }
-
-    @Override
-    public void mobKillHero()
-    {
-        platform.setFriction(100.f);
-    }
-
-    @Override
-    public void mobChange()
-    {
-
-    }
 }
