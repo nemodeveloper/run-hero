@@ -3,7 +3,7 @@ background.png
 size: 2560,1440
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
-repeat: xy
+repeat: none
 background
   rotate: false
   xy: 0, 0

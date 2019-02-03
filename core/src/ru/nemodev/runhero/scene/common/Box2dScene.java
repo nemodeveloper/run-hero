@@ -43,7 +43,7 @@ public abstract class Box2dScene extends BaseScene
     @Override
     public void act(float delta)
     {
-        world.step(TIME_STEP, VELOCITY_ITERATION, POSITION_ITERATION);
+        world.step(delta, VELOCITY_ITERATION, POSITION_ITERATION);
         super.act(delta);
     }
 

@@ -3,7 +3,7 @@ score_items.png
 size: 900,900
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
-repeat: xy
+repeat: none
 star_item
   rotate: false
   xy: 0, 0

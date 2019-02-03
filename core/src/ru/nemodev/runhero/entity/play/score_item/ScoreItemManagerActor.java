@@ -23,8 +23,6 @@ public class ScoreItemManagerActor extends Box2dActor implements ScoreChangeList
         {
             addActor(scoreItemActor);
         }
-
-        super.doAct(delta);
     }
 
     @Override

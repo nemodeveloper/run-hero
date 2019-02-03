@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.FloatArray;
 
@@ -20,6 +22,7 @@ import ru.nemodev.runhero.entity.play.mob.AnimationMobActor;
 import ru.nemodev.runhero.entity.play.mob.BaseMobActor;
 import ru.nemodev.runhero.entity.play.mob.StaticMobActor;
 import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.manager.PhysicManager;
 import ru.nemodev.runhero.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.util.SpriteUtils;
 
@@ -83,6 +86,8 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
         if (isNeedSpawn(cameraPos))
         {
             lastMob = doSpawn();
+            spawnPos.add(destinationX, 0.f);
+
             return lastMob;
         }
         else
@@ -93,7 +98,7 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
 
     private boolean isNeedSpawn(Vector3 cameraPos)
     {
-        // TODO тонкий момент от зависимости METERS_X нужно уходить внтури логики
+        // TODO тонкий момент от зависимости METERS_X нужно уходить внутри логики
         return GameManager.getInstance().isRunning()
                 && GameManager.getInstance().isRightDirection()
                     ? spawnPos.x + destinationX < cameraPos.x + METERS_X * 2f
@@ -101,15 +106,6 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
     }
 
     protected abstract BaseMobActor doSpawn();
-
-    protected Fixture getCircleFixture(Box2dBodyType bodyType, float radius)
-    {
-        Fixture circleFixture = Box2dObjectBuilder.createCircleFixture(world, bodyType, spawnPos, radius);
-        circleFixture.getBody().setFixedRotation(true);
-        spawnPos.add(destinationX, 0.f);
-
-        return circleFixture;
-    }
 
     protected Fixture getPolygonFixture(Box2dBodyType bodyType, float width, float height)
     {
@@ -124,41 +120,6 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
 
         return polygonFixture;
     }
-
-    protected Box2DSprite getSprite(String atlas, String name)
-    {
-        return SpriteUtils.createBox2d(atlas, name);
-    }
-
-    protected StaticMobActor getCircleMob(String atlas, String name, Box2dBodyType bodyType)
-    {
-        final float size = getRandomMobSize();
-        Fixture circleFixture = getCircleFixture(bodyType, size);
-
-        return new StaticMobActor(world, circleFixture, getSprite(atlas, name));
-    }
-
-    protected StaticMobActor getStaticPolygonMob(String atlas, String name, Box2dBodyType bodyType)
-    {
-        final float width = getRandomMobSize();
-        final float height = getRandomMobSize();
-
-        return getStaticPolygonMob(atlas, name, bodyType, width, height);
-    }
-
-    protected StaticMobActor getStaticPolygonMob(String atlas, String name, Box2dBodyType bodyType, float width, float height)
-    {
-        Fixture polygonFixture = getPolygonFixture(bodyType, width, height);
-        return new StaticMobActor(world, polygonFixture, getSprite(atlas, name));
-    }
-
-//    protected FlyMobActor getFlyMob(String atlas, String name, float width, float height)
-//    {
-//        float posY = MathUtils.random(1.5f, 5.f);
-//
-//        Fixture polygonFixture = getPolygonFixture(width, height, new Vector2(spawnPos.x, posY));
-//        return new FlyMobActor(world, polygonFixture.getBody(), getSprite(atlas, name));
-//    }
 
     protected AnimationMobActor getAnimationPolygonMob(String atlasName, Box2dBodyType bodyType, float width, float height)
     {
@@ -208,18 +169,7 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
         };
     }
 
-    protected StaticMobActor getStaticPolygonMob(String atlas, String[] nameKeys)
-    {
-        float width = getRandomMobSize();
-        return getStaticPolygonMob(
-                atlas,
-                nameKeys[random.nextInt(nameKeys.length)],
-                enableDynamicMob && random.nextBoolean()
-                        ? getJumpBox2BodyType()
-                        : ConstantBox2dBodyType.STATIC_MOB,
-                width, width
-        );
-    }
+
 
     protected AnimationMobActor getAnimationPolygonMob(String[] atlasKeys)
     {
@@ -236,5 +186,42 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
     public boolean isCanSpawn(int condition)
     {
         return maxScore >= condition;
+    }
+
+    protected BodyDef getBodyDef(BodyDef.BodyType bodyType, Vector2 position)
+    {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = bodyType;
+        bodyDef.position.set(position);
+
+        return bodyDef;
+    }
+
+    protected FixtureDef getFixtureDef(float density, float friction, float restitution)
+    {
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.density = density;
+        fixtureDef.friction = friction;
+        fixtureDef.restitution = restitution;
+
+        return fixtureDef;
+    }
+
+    protected Fixture getFixture( String loaderName, String bodyName, BodyDef bodyDef, FixtureDef fixtureDef, float scale)
+    {
+        Body body = world.createBody(bodyDef);
+        PhysicManager.getInstance().loadPhysicBody(loaderName, bodyName, body, fixtureDef, scale);
+
+        return body.getFixtureList().get(0);
+    }
+
+    protected StaticMobActor getStaticMob(Fixture fixture, String atlasName, String spriteName)
+    {
+        return new StaticMobActor(world, fixture, getSprite(atlasName, spriteName));
+    }
+
+    protected Box2DSprite getSprite(String atlas, String name)
+    {
+        return SpriteUtils.createBox2d(atlas, name);
     }
 }

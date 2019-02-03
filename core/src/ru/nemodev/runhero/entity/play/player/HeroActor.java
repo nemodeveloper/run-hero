@@ -154,6 +154,9 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
 
         float shift = 7 * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
         camera.position.x = heroFixture.getBody().getPosition().x + shift;
+
+
+
     }
 
     private void updateHeroAnimation(float delta)

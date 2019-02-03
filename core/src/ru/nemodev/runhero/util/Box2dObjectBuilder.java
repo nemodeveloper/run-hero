@@ -68,7 +68,10 @@ public final class Box2dObjectBuilder
         bodyDef.type = bodyType;
         bodyDef.position.set(position.x, position.y);
 
-        return world.createBody(bodyDef);
+        Body body = world.createBody(bodyDef);
+        body.setSleepingAllowed(false);
+
+        return body;
     }
 
     public static PolygonShape createPolygon(float width, float height)

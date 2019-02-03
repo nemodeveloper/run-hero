@@ -3,7 +3,7 @@ grass_ground.png
 size: 122,31
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
-repeat: xy
+repeat: none
 grass_ground
   rotate: false
   xy: 0, 0

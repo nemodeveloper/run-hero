@@ -1,12 +1,12 @@
 
 grass_background.png
-size: 2560,902
+size: 2560,904
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
-repeat: xy
+repeat: none
 grass_background
   rotate: false
-  xy: 0, 451
+  xy: 0, 453
   size: 2560, 451
   orig: 2560, 451
   offset: 0, 0

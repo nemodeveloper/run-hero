@@ -1,27 +1,23 @@
 package ru.nemodev.runhero.entity.play.mob.strategy.spawn;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 
-import ru.nemodev.runhero.constant.texture.MobsAnimationTextureConstant;
+import ru.nemodev.runhero.constant.physic.MobPhysicConstant;
+import ru.nemodev.runhero.constant.physic.PhysicLoaderConstant;
 import ru.nemodev.runhero.constant.texture.MobsStaticTextureConstant;
 import ru.nemodev.runhero.entity.play.mob.BaseMobActor;
 
 
 public class EasyMobSpawnStrategy extends BaseMobSpawnStrategy
 {
-    private static final String[] ACCESS_STATIC_CUBE_ATLAS = {
-            MobsStaticTextureConstant.MOB_CUBE_1_ATLAS
+    private static final String[] STONE_MOB_ATLAS = {
+            MobsStaticTextureConstant.STONE_SMALL_MOB_ATLAS,
+            MobsStaticTextureConstant.STONE_MEDIUM_MOB_ATLAS,
+            MobsStaticTextureConstant.STONE_BIG_MOB_ATLAS
     };
-
-    private static final String[] ACCESS_ANIMATION_CUBE_ATLAS = {
-            MobsAnimationTextureConstant.MOB_CUBE_AROUND_1_ATLAS,
-            MobsAnimationTextureConstant.MOB_CUBE_AROUND_2_ATLAS,
-            MobsAnimationTextureConstant.MOB_CUBE_AROUND_3_ATLAS
-    };
-
-    private static final String[] STATIC_CUBE_KEYS = MobsStaticTextureConstant.MOB_CUBE_KEYS;
-
 
     public EasyMobSpawnStrategy(World world, int maxScore, float minMobSize, float maxMobSize, float destinationX, Vector2 startSpawnPos, boolean enableDynamicMob)
     {
@@ -31,11 +27,16 @@ public class EasyMobSpawnStrategy extends BaseMobSpawnStrategy
     @Override
     protected BaseMobActor doSpawn()
     {
-        if (random.nextBoolean())
-            return getAnimationPolygonMob(ACCESS_ANIMATION_CUBE_ATLAS);
+        int stoneTypeIndex = random.nextInt(MobPhysicConstant.STONE_MOBS.length);
 
-        return getStaticPolygonMob(
-                ACCESS_STATIC_CUBE_ATLAS[random.nextInt(ACCESS_STATIC_CUBE_ATLAS.length)],
-                STATIC_CUBE_KEYS);
+        String bodyName = MobPhysicConstant.STONE_MOBS[stoneTypeIndex];
+        String spriteName = MobsStaticTextureConstant.STONE_MOB_NAMES[random.nextInt(MobsStaticTextureConstant.STONE_MOB_NAMES.length)];
+
+        return getStaticMob(
+                getFixture(PhysicLoaderConstant.STONE_MOBS, bodyName,
+                        getBodyDef(BodyDef.BodyType.DynamicBody, spawnPos),
+                        getFixtureDef(10.f, 10.f, 0.f),
+                        MathUtils.random(1.5f, 3.5f)),
+                STONE_MOB_ATLAS[stoneTypeIndex], spriteName );
     }
 }

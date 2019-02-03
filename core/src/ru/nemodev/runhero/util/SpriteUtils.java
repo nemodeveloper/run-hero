@@ -73,10 +73,10 @@ public final class SpriteUtils
         box2DSprite.setX(0.f);
         box2DSprite.setY(0.f);
 
-        if (!GameManager.getInstance().isRightDirection())
-        {
-            box2DSprite.flip(true, false);
-        }
+//        if (!GameManager.getInstance().isRightDirection())
+//        {
+//            box2DSprite.flip(true, false);
+//        }
 
         return box2DSprite;
     }

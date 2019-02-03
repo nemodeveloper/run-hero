@@ -52,6 +52,8 @@ public class ScoreItemActor<T extends Box2DSprite> extends Box2dActor
         {
             remove();
         }
+
+        itemSprite.rotate(1.f);
     }
 
     @Override
