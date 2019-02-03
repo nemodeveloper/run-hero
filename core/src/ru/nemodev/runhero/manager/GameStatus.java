@@ -6,5 +6,6 @@ public enum GameStatus
     READY,
     RUNNING,
     PAUSE,
-    GAME_OVER
+    GAME_OVER,
+    UNKNOWN
 }

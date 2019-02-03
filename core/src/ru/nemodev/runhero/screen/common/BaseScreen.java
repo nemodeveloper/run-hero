@@ -3,6 +3,8 @@ package ru.nemodev.runhero.screen.common;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Array;
 
+import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.scene.common.Scene;
 import ru.nemodev.runhero.util.ScreenUtils;
 
@@ -12,15 +14,13 @@ import ru.nemodev.runhero.util.ScreenUtils;
 public abstract class BaseScreen implements Screen
 {
     private final Array<Scene> scenes;
-
-    public BaseScreen()
-    {
-        this.scenes = new Array<Scene>();
-    }
+    private GameStatus gameStatus;
 
     public BaseScreen(Array<Scene> scenes)
     {
         this.scenes = scenes;
+        this.gameStatus = GameStatus.UNKNOWN;
+
         for (Scene scene : scenes)
         {
             scene.init();
@@ -33,6 +33,8 @@ public abstract class BaseScreen implements Screen
         scenes.add(scene);
     }
 
+    protected abstract GameStatus getGameStatus();
+
     @Override
     public void show()
     {
@@ -40,6 +42,9 @@ public abstract class BaseScreen implements Screen
         {
             scene.show();
         }
+
+        GameManager.getInstance().setGameStatus(getGameStatus());
+        gameStatus = GameManager.getInstance().getGameStatus();
     }
 
     @Override
@@ -64,19 +69,32 @@ public abstract class BaseScreen implements Screen
     @Override
     public void pause()
     {
+        gameStatus = GameManager.getInstance().getGameStatus();
+        GameManager.getInstance().setGameStatus(GameStatus.PAUSE);
 
+        for (Scene scene : scenes)
+        {
+            scene.pause();
+        }
     }
 
     @Override
     public void resume()
     {
-
+        GameManager.getInstance().setGameStatus(gameStatus);
+        for (Scene scene : scenes)
+        {
+            scene.resume();
+        }
     }
 
     @Override
     public void hide()
     {
-
+        for (Scene scene : scenes)
+        {
+            scene.hide();
+        }
     }
 
     @Override

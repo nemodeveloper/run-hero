@@ -4,11 +4,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
+import ru.nemodev.runhero.scene.common.Scene;
 import ru.nemodev.runhero.scene.game.GameBackgroundScene;
 import ru.nemodev.runhero.scene.game.GameScene;
 import ru.nemodev.runhero.scene.game.ScoreScene;
@@ -28,15 +30,13 @@ public class GameScreen extends BaseScreen
 
     public GameScreen()
     {
-        super();
+        super(new Array<Scene>());
 
         Batch batch = GameManager.getInstance().getSpriteBatch();
 
         initBackgroundScene(batch);
         initGameScene(batch);
         initScoreScene(batch);
-
-        GameManager.getInstance().setGameStatus(GameStatus.RUNNING);
     }
 
     private void initBackgroundScene(Batch batch)
@@ -64,4 +64,11 @@ public class GameScreen extends BaseScreen
         scoreScene = new ScoreScene(new ScreenViewport(), batch);
         addScene(scoreScene);
     }
+
+    @Override
+    protected GameStatus getGameStatus()
+    {
+        return GameStatus.RUNNING;
+    }
+
 }

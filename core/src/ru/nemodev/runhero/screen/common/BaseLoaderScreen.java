@@ -2,6 +2,7 @@ package ru.nemodev.runhero.screen.common;
 
 import com.badlogic.gdx.utils.Array;
 
+import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.manager.ResourceManager;
 import ru.nemodev.runhero.scene.common.Scene;
 
@@ -41,4 +42,9 @@ public abstract class BaseLoaderScreen extends BaseScreen
         return ResourceManager.getInstance().isFinishLoad();
     }
 
+    @Override
+    protected GameStatus getGameStatus()
+    {
+        return GameStatus.LOADING;
+    }
 }

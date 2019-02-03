@@ -87,6 +87,11 @@ public final class GameManager
         return gameStatus == GameStatus.RUNNING;
     }
 
+    public GameStatus getGameStatus()
+    {
+        return gameStatus;
+    }
+
     public void setGameStatus(GameStatus gameStatus)
     {
         this.gameStatus = gameStatus;

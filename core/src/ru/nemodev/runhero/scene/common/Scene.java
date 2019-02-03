@@ -8,6 +8,12 @@ public interface Scene extends Disposable
 
     void show();
 
+    void hide();
+
+    void pause();
+
+    void resume();
+
     void render(float delta);
 
     void resize(int width, int height);
