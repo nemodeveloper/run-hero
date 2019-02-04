@@ -17,7 +17,7 @@ import ru.nemodev.runhero.util.SpriteUtils;
 
 public final class SimplePool
 {
-    public static final Pool<BackgroundActor> backgroundActorPool = new Pool<BackgroundActor>(1)
+    public static final Pool<BackgroundActor> backgroundActorPool = new Pool<BackgroundActor>(1, 1)
     {
         @Override
         protected BackgroundActor newObject()
@@ -29,7 +29,7 @@ public final class SimplePool
         }
     };
 
-    public static final Pool<StarManagerActor> starManagerActorPool = new Pool<StarManagerActor>(1)
+    public static final Pool<StarManagerActor> starManagerActorPool = new Pool<StarManagerActor>(1, 1)
     {
         @Override
         protected StarManagerActor newObject()
@@ -41,7 +41,7 @@ public final class SimplePool
         }
     };
 
-    public static final Pool<GrassActor> grassBackgroundActorPool = new Pool<GrassActor>(1)
+    public static final Pool<GrassActor> grassBackgroundActorPool = new Pool<GrassActor>(1, 1)
     {
         @Override
         protected GrassActor newObject()
@@ -52,7 +52,7 @@ public final class SimplePool
         }
     };
 
-    public static final Pool<TreeManagerActor> treeBackgroundActorPool = new Pool<TreeManagerActor>()
+    public static final Pool<TreeManagerActor> treeBackgroundActorPool = new Pool<TreeManagerActor>(1, 1)
     {
         @Override
         protected TreeManagerActor newObject()
@@ -81,7 +81,7 @@ public final class SimplePool
     }
 
 
-    public static final Pool<ScoreViewActor> scoreActorPool = new Pool<ScoreViewActor>(1)
+    public static final Pool<ScoreViewActor> scoreActorPool = new Pool<ScoreViewActor>(1, 1)
     {
         @Override
         protected ScoreViewActor newObject()

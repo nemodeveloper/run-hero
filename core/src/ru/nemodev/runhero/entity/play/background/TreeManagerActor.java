@@ -28,6 +28,8 @@ public class TreeManagerActor extends BaseActor implements Pool.Poolable
 
     private void initTreePositions()
     {
+        currentTrees.clear();
+
         boolean isRightDirection = GameManager.getInstance().isRightDirection();
 
         float startPositionX = isRightDirection ? 0.f : GameConstant.METERS_X;
@@ -78,13 +80,14 @@ public class TreeManagerActor extends BaseActor implements Pool.Poolable
     {
         boolean isNeedNewTree = false;
 
+        float shift = GameManager.getInstance().isRightDirection()
+                ? -delta
+                : delta;
+
         Iterator<Sprite> treeIterator = currentTrees.iterator();
         while (treeIterator.hasNext())
         {
             Sprite currentTree = treeIterator.next();
-            float shift = GameManager.getInstance().isRightDirection()
-                    ? -delta
-                    : delta;
 
             currentTree.setX(currentTree.getX() + shift);
 
@@ -123,6 +126,6 @@ public class TreeManagerActor extends BaseActor implements Pool.Poolable
     @Override
     public void reset()
     {
-
+        initTreePositions();
     }
 }

@@ -42,13 +42,6 @@ public abstract class BaseGame extends Game implements ScreenManager
             setScreen(null);
     }
 
-    @Override
-    public void popAndPushScreen(Screen screen)
-    {
-        popScreen();
-        pushScreen(screen);
-    }
-
     private void setGamePriority()
     {
         try

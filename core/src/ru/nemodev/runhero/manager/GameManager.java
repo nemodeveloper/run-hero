@@ -115,7 +115,8 @@ public final class GameManager
                     {
                         isStartNewGame = true;
                         reloadForNewGame();
-                        getScreenManager().popAndPushScreen(new GameScreen());
+                        getScreenManager().popScreen();
+                        getScreenManager().pushScreen(new GameScreen());
                     }
                     return true;
                 }

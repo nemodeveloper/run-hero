@@ -25,7 +25,8 @@ public class TutorialActor extends BackgroundActor implements Pool.Poolable
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
                 InputUtils.vibrate(250);
-                GameManager.getInstance().getScreenManager().popAndPushScreen(new GameScreen());
+                GameManager.getInstance().getScreenManager().popScreen();
+                GameManager.getInstance().getScreenManager().pushScreen(new GameScreen());
                 return true;
             }
         });

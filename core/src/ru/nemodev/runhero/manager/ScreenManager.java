@@ -18,9 +18,4 @@ public interface ScreenManager
      */
     void popScreen();
 
-    /**
-     * Убрать текущий экран и на его место поставить новый
-     * @param screen - новый экран
-     */
-    void popAndPushScreen(Screen screen);
 }

@@ -54,7 +54,8 @@ public class SplashScreen extends BaseLoaderScreen
     @Override
     protected void doAfterLoadResource()
     {
-        GameManager.getInstance().getScreenManager().popAndPushScreen(new MainScreen());
+        GameManager.getInstance().getScreenManager().popScreen();
+        GameManager.getInstance().getScreenManager().pushScreen(new MainScreen());
     }
 
     @Override

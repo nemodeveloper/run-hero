@@ -14,18 +14,25 @@ import ru.nemodev.runhero.manager.GameManager;
 public class GrassActor extends BaseActor implements Pool.Poolable
 {
     private final Array<Sprite> grassSprites;
+    private final Sprite grassSprite;
 
     public GrassActor(Sprite grassSprite)
     {
         this.grassSprites = new Array<Sprite>(3);
-        init(grassSprite);
+        this.grassSprite = grassSprite;
+
+        init();
     }
 
-    private void init(Sprite grassSprite)
+    private void init()
     {
-        float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
+        grassSprites.clear();
 
-        grassSprites.add(grassSprite);
+        float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
+        Sprite firstGrass = new Sprite(grassSprite);
+        firstGrass.setX(0.f);
+
+        grassSprites.add(firstGrass);
         for (int i = 1; i < 3; ++i)
         {
             Sprite lastGrass = grassSprites.get(grassSprites.size - 1);
@@ -84,6 +91,6 @@ public class GrassActor extends BaseActor implements Pool.Poolable
     @Override
     public void reset()
     {
-
+        init();
     }
 }
