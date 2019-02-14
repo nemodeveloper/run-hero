@@ -11,7 +11,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import net.dermetfan.gdx.graphics.g2d.Box2DSprite;
 
 import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.play.ContactType;
+import ru.nemodev.runhero.entity.game.ContactType;
 
 
 public abstract class Box2dActor extends BaseActor implements Contactable

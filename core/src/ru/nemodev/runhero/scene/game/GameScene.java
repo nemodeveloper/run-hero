@@ -1,5 +1,6 @@
 package ru.nemodev.runhero.scene.game;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -10,16 +11,17 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
 import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.play.ConstantBox2dBodyType;
-import ru.nemodev.runhero.entity.play.ContactType;
-import ru.nemodev.runhero.entity.play.mob.MobEventListener;
-import ru.nemodev.runhero.entity.play.mob.MobManagerActor;
-import ru.nemodev.runhero.entity.play.player.HeroActor;
-import ru.nemodev.runhero.entity.play.score_item.ScoreItemManagerActor;
-import ru.nemodev.runhero.entity.play.world.GroundInfinityActor;
-import ru.nemodev.runhero.entity.play.world.SkyInfinityActor;
+import ru.nemodev.runhero.entity.game.ConstantBox2dBodyType;
+import ru.nemodev.runhero.entity.game.ContactType;
+import ru.nemodev.runhero.entity.game.mob.MobEventListener;
+import ru.nemodev.runhero.entity.game.mob.MobManagerActor;
+import ru.nemodev.runhero.entity.game.player.HeroActor;
+import ru.nemodev.runhero.entity.game.score_item.ScoreItemManagerActor;
+import ru.nemodev.runhero.entity.game.world.GroundInfinityActor;
+import ru.nemodev.runhero.entity.game.world.SkyInfinityActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.scene.common.Box2dScene;
@@ -36,9 +38,14 @@ import static ru.nemodev.runhero.constant.GameConstant.WORLD_UNIT;
  */
 public class GameScene extends Box2dScene
 {
+    private static final float HERO_WIDTH = WORLD_UNIT;
+    private static final float HERO_HEIGHT = WORLD_UNIT;
+
+    private static final float CAMERA_SHIFT = GameConstant.METERS_X / 2.5f;
+
     private Vector3 cameraPosition;
 
-    private GroundInfinityActor groundGroundInfinityActor;
+    private GroundInfinityActor groundInfinityActor;
     private SkyInfinityActor skyInfinityActor;
 
     private HeroActor heroActor;
@@ -46,9 +53,6 @@ public class GameScene extends Box2dScene
     private MobManagerActor mobManagerActor;
 
     private ScoreItemManagerActor scoreItemManagerActor;
-
-    public static final float HERO_WIDTH = WORLD_UNIT;
-    public static final float HERO_HEIGHT = WORLD_UNIT;
 
     public GameScene(World world, Viewport viewport, Batch batch)
     {
@@ -66,6 +70,16 @@ public class GameScene extends Box2dScene
         initBorder();
     }
 
+    @Override
+    protected void doUpdate(float delta)
+    {
+        super.doUpdate(delta);
+
+        // TODO камера дергается потому что тело героя дергается сука!!!
+        Camera camera = getCamera();
+        camera.position.x = heroActor.getHeroPosition().x + CAMERA_SHIFT * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
+    }
+
     private void initBorder()
     {
         final int platformCount = 3;
@@ -73,12 +87,12 @@ public class GameScene extends Box2dScene
 
         Array<Sprite> borderSprites = SpriteUtils.createList(
                 BorderTextureConstant.GROUND_ATLAS,
-                1.f, 1.f, new Vector2(0.f, 0.f));
+                2.f, 1.f, new Vector2(0.f, 0.f));
 
         Sprite undoBorderSprite = SpriteUtils.create(BorderTextureConstant.GRASS_ATLAS, BorderTextureConstant.GRASS_GROUND,
-                1.f, 0.25f, new Vector2(0.f, 0.f));
+                2.f, 0.35f, new Vector2(0.f, 0.f));
 
-        groundGroundInfinityActor = buildGroundPlatformActor(
+        groundInfinityActor = buildGroundPlatformActor(
                 platformCount,
                 new Vector2(METERS_X / 2.f, 1.f),
                 platformSize, borderSprites, undoBorderSprite, new Contactable()
@@ -101,8 +115,8 @@ public class GameScene extends Box2dScene
                         return ContactType.GROUND;
                     }
                 });
-        addActor(groundGroundInfinityActor);
-        GameManager.getInstance().addMobEventListener(groundGroundInfinityActor);
+        addActor(groundInfinityActor);
+        GameManager.getInstance().addMobEventListener(groundInfinityActor);
 
         skyInfinityActor = buildSkyPlatformActor(
                 platformCount,
@@ -143,11 +157,9 @@ public class GameScene extends Box2dScene
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         final Vector2 START_POSITION = new Vector2(
                 0.f,
-                METERS_Y / 2.f);
+                METERS_Y - 1.f);
         final Vector2 START_VELOCITY = new Vector2(5.5f * direction, 0.f);
 
-        // TODO это хак квадратный кубик цепляется за места стыков платформ при движении
-        // решено пока что использовать круг
         Fixture heroFixture = Box2dObjectBuilder.createCircleFixture(world, ConstantBox2dBodyType.PLAYER, START_POSITION, HERO_WIDTH);
         Body heroBody = heroFixture.getBody();
         heroBody.setFixedRotation(true);

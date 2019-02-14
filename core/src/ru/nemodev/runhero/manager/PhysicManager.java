@@ -18,28 +18,18 @@ import ru.nemodev.runhero.util.FileUtils;
  */
 public final class PhysicManager implements Disposable
 {
-    private static volatile PhysicManager instance;
+    private static volatile PhysicManager instance = new PhysicManager();
 
     private Map<String, BodyEditorLoader> bodyEditorLoaderMap;
 
     private PhysicManager()
-    { }
+    {
+        initPhysic();
+        loadPhysic();
+    }
 
     public static PhysicManager getInstance()
     {
-        if (instance == null)
-        {
-            synchronized (PhysicManager.class)
-            {
-                if (instance == null)
-                {
-                    instance = new PhysicManager();
-                    instance.initPhysic();
-                    instance.loadPhysic();
-                }
-            }
-        }
-
         return instance;
     }
 

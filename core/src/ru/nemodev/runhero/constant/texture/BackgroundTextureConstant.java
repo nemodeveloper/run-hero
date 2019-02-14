@@ -9,7 +9,6 @@ public final class BackgroundTextureConstant
     private BackgroundTextureConstant() {}
 
     public static final String SPLASH = "splash.png";
-    public static final String HOW_PLAY = "how.png";
 
     private static final String BASE_BACKGROUND_PATH = "atlas/background/";
 

@@ -3,20 +3,23 @@ package ru.nemodev.runhero.manager;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.Pools;
 
-import ru.nemodev.runhero.entity.play.ScoreViewActor;
-import ru.nemodev.runhero.entity.play.background.BackgroundActor;
-import ru.nemodev.runhero.entity.play.background.GrassActor;
-import ru.nemodev.runhero.entity.play.background.StarManagerActor;
-import ru.nemodev.runhero.entity.play.background.TreeManagerActor;
+import ru.nemodev.runhero.entity.game.ScoreViewActor;
+import ru.nemodev.runhero.entity.game.background.BackgroundActor;
+import ru.nemodev.runhero.entity.game.background.GrassActor;
+import ru.nemodev.runhero.entity.game.background.StarManagerActor;
+import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
 
 /**
  * created by NemoDev on 08.05.2018 - 20:45
  */
 public final class PoolManager
 {
-    private static volatile PoolManager instance;
+    private static volatile PoolManager instance = new PoolManager();
 
-    private PoolManager() {}
+    private PoolManager()
+    {
+        initialize();
+    }
 
     private void initialize()
     {
@@ -30,22 +33,10 @@ public final class PoolManager
 
     public static PoolManager getInstance()
     {
-        if (instance == null)
-        {
-            synchronized (PoolManager.class)
-            {
-                if (instance == null)
-                {
-                    instance = new PoolManager();
-                    instance.initialize();
-                }
-            }
-        }
-
         return instance;
     }
 
-    public <T> T get(Class<T> type)
+    public <T extends Pool.Poolable> T get(Class<T> type)
     {
         Pool<T> pool = Pools.get(type);
         if (pool == null)

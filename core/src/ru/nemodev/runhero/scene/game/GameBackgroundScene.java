@@ -7,11 +7,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
-import ru.nemodev.runhero.entity.play.background.BackgroundActor;
-import ru.nemodev.runhero.entity.play.background.GrassActor;
-import ru.nemodev.runhero.entity.play.background.MoonActor;
-import ru.nemodev.runhero.entity.play.background.StarManagerActor;
-import ru.nemodev.runhero.entity.play.background.TreeManagerActor;
+import ru.nemodev.runhero.entity.game.background.BackgroundActor;
+import ru.nemodev.runhero.entity.game.background.GrassActor;
+import ru.nemodev.runhero.entity.game.background.MoonActor;
+import ru.nemodev.runhero.entity.game.background.StarManagerActor;
+import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.PoolManager;
 import ru.nemodev.runhero.scene.common.BaseScene;

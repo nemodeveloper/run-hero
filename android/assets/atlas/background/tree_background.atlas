@@ -1,6 +1,6 @@
 
 tree_background.png
-size: 3934,1217
+size: 3998,1134
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
 repeat: none
@@ -13,22 +13,22 @@ tree_1
   index: -1
 tree_2
   rotate: false
-  xy: 984, 0
+  xy: 1000, 0
   size: 704, 718
   orig: 704, 718
   offset: 0, 0
   index: -1
 tree_3
   rotate: false
-  xy: 1968, 0
-  size: 741, 1217
-  orig: 741, 1217
+  xy: 2000, 0
+  size: 741, 1134
+  orig: 741, 1134
   offset: 0, 0
   index: -1
 tree_4
   rotate: false
-  xy: 2952, 0
-  size: 982, 994
-  orig: 982, 994
+  xy: 3000, 0
+  size: 998, 1008
+  orig: 998, 1008
   offset: 0, 0
   index: -1

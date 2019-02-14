@@ -3,7 +3,7 @@ package ru.nemodev.runhero.scene.game;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import ru.nemodev.runhero.entity.play.ScoreViewActor;
+import ru.nemodev.runhero.entity.game.ScoreViewActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.PoolManager;
 import ru.nemodev.runhero.scene.common.BaseScene;

@@ -20,6 +20,8 @@ public class BaseScene extends Stage implements Scene
         this.accumulator = 0.f;
     }
 
+    // TODO уйти от этого метода, каждая сцена должна быть проинициализирована в своем конструкторе
+    // Screen не должен вызывать метод init
     @Override
     public void init()
     {
@@ -81,6 +83,7 @@ public class BaseScene extends Stage implements Scene
         draw();
     }
 
+    // Вынести логику установки обработчика IO в Screen
     protected boolean isInputController()
     {
         return false;

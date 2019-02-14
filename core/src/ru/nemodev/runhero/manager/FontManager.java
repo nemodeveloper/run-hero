@@ -15,7 +15,7 @@ import ru.nemodev.runhero.util.ScreenUtils;
  */
 public final class FontManager implements Disposable
 {
-    private static volatile FontManager instance;
+    private static volatile FontManager instance = new FontManager();
 
 //    private final BitmapFont box2dCommonFont;
     private BitmapFont commonFont;
@@ -24,6 +24,7 @@ public final class FontManager implements Disposable
     {
 //        box2dCommonFont = generateFont((int) ((1.f / 9.f) * ScreenUtils.getWidth()));
 //        box2dCommonFont.getData().setScale(METERS_X / ScreenUtils.getWidth(), METERS_Y / ScreenUtils.getHeight());
+        init();
     }
 
     private void init()
@@ -36,18 +37,6 @@ public final class FontManager implements Disposable
 
     public static FontManager getInstance()
     {
-        if (instance == null)
-        {
-            synchronized (FontManager.class)
-            {
-                if (instance == null)
-                {
-                    instance = new FontManager();
-                    instance.init();
-                }
-            }
-        }
-
         return instance;
     }
 

@@ -7,11 +7,11 @@ import com.badlogic.gdx.utils.Pool;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
-import ru.nemodev.runhero.entity.play.ScoreViewActor;
-import ru.nemodev.runhero.entity.play.background.BackgroundActor;
-import ru.nemodev.runhero.entity.play.background.GrassActor;
-import ru.nemodev.runhero.entity.play.background.StarManagerActor;
-import ru.nemodev.runhero.entity.play.background.TreeManagerActor;
+import ru.nemodev.runhero.entity.game.ScoreViewActor;
+import ru.nemodev.runhero.entity.game.background.BackgroundActor;
+import ru.nemodev.runhero.entity.game.background.GrassActor;
+import ru.nemodev.runhero.entity.game.background.StarManagerActor;
+import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
 import ru.nemodev.runhero.util.SpriteUtils;
 
 
@@ -24,7 +24,7 @@ public final class SimplePool
         {
             return new BackgroundActor(
                     SpriteUtils.create(BackgroundTextureConstant.BACKGROUND_ATLAS, BackgroundTextureConstant.BACKGROUND,
-                            GameConstant.METERS_X, GameConstant.METERS_Y,
+                            1.f, GameConstant.METERS_Y,
                             new Vector2(0, 0)));
         }
     };

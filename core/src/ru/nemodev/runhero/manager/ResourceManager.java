@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public final class ResourceManager implements Disposable
 {
-    private static volatile ResourceManager instance;
+    private static volatile ResourceManager instance = new ResourceManager();
 
     private final AssetManager assetManager;
 
@@ -27,17 +27,6 @@ public final class ResourceManager implements Disposable
 
     public static ResourceManager getInstance()
     {
-        if (instance == null)
-        {
-            synchronized (ResourceManager.class)
-            {
-                if (instance == null)
-                {
-                    instance = new ResourceManager();
-                }
-            }
-        }
-
         return instance;
     }
 

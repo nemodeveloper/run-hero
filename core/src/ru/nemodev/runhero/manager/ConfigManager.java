@@ -12,7 +12,7 @@ public final class ConfigManager
     private static final String GAME_PREFERENCES_KEY = "RUN_HERO_PREFERENCES";
     private static final String BEST_SCORE_KEY = "BEST_SCORE";
 
-    private static volatile ConfigManager instance;
+    private static volatile ConfigManager instance = new ConfigManager();
 
     private final Preferences gamePreferences;
 
@@ -23,17 +23,6 @@ public final class ConfigManager
 
     public static ConfigManager getInstance()
     {
-        if (instance == null)
-        {
-            synchronized (ConfigManager.class)
-            {
-                if (instance == null)
-                {
-                    instance = new ConfigManager();
-                }
-            }
-        }
-
         return instance;
     }
 

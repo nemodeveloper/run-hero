@@ -10,8 +10,8 @@ import ru.nemodev.runhero.scene.collision.SimpleContactListener;
 
 public abstract class Box2dScene extends BaseScene
 {
-    private static final int VELOCITY_ITERATION = 6;
-    private static final int POSITION_ITERATION = 2;
+    private static final int VELOCITY_ITERATION = 8;
+    private static final int POSITION_ITERATION = 3;
 
     protected final World world;
 

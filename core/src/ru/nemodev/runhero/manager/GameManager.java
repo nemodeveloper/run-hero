@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
-import ru.nemodev.runhero.entity.play.ScoreChangeListener;
-import ru.nemodev.runhero.entity.play.mob.MobEventListener;
-import ru.nemodev.runhero.screen.play.GameScreen;
+import ru.nemodev.runhero.entity.game.ScoreChangeListener;
+import ru.nemodev.runhero.entity.game.mob.MobEventListener;
+import ru.nemodev.runhero.screen.game.GameScreen;
 import ru.nemodev.runhero.util.InputUtils;
 
 /**
@@ -16,7 +16,7 @@ import ru.nemodev.runhero.util.InputUtils;
  */
 public final class GameManager
 {
-    private static volatile GameManager instance;
+    private static volatile GameManager instance = new GameManager();
 
     private GameStatus gameStatus;
 
@@ -38,17 +38,6 @@ public final class GameManager
 
     public static GameManager getInstance()
     {
-        if (instance == null)
-        {
-            synchronized (GameManager.class)
-            {
-                if (instance == null)
-                {
-                    instance = new GameManager();
-                }
-            }
-        }
-
         return instance;
     }
 

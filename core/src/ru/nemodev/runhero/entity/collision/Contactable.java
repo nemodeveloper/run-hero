@@ -1,7 +1,7 @@
 package ru.nemodev.runhero.entity.collision;
 
 
-import ru.nemodev.runhero.entity.play.ContactType;
+import ru.nemodev.runhero.entity.game.ContactType;
 
 public interface Contactable
 {
