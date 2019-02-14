@@ -57,13 +57,12 @@ public class GameScene extends Box2dScene
     public GameScene(World world, Viewport viewport, Batch batch)
     {
         super(world, viewport, batch);
+
+        init();
     }
 
-    @Override
-    public void init()
+    private void init()
     {
-        super.init();
-
         initHero();
         initScoreItem();
         initMob();
@@ -211,7 +210,7 @@ public class GameScene extends Box2dScene
     }
 
     @Override
-    protected boolean isInputController()
+    public boolean isInputController()
     {
         return true;
     }

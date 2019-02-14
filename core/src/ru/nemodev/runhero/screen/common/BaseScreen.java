@@ -1,11 +1,13 @@
 package ru.nemodev.runhero.screen.common;
 
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Array;
 
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.scene.common.Scene;
+import ru.nemodev.runhero.util.InputUtils;
 import ru.nemodev.runhero.util.ScreenUtils;
 
 /**
@@ -14,23 +16,35 @@ import ru.nemodev.runhero.util.ScreenUtils;
 public abstract class BaseScreen implements Screen
 {
     private final Array<Scene> scenes;
+    private final InputMultiplexer screenInput;
+
     private GameStatus gameStatus;
 
     public BaseScreen(Array<Scene> scenes)
     {
         this.scenes = scenes;
         this.gameStatus = GameStatus.UNKNOWN;
+        this.screenInput = new InputMultiplexer();
 
         for (Scene scene : scenes)
         {
-            scene.init();
+            if (scene.isInputController())
+            {
+                screenInput.addProcessor(scene);
+            }
         }
+
+        InputUtils.setInputProcessor(screenInput);
     }
 
     protected final void addScene(Scene scene)
     {
-        scene.init();
         scenes.add(scene);
+
+        if (scene.isInputController())
+        {
+            screenInput.addProcessor(scene);
+        }
     }
 
     protected abstract GameStatus getGameStatus();

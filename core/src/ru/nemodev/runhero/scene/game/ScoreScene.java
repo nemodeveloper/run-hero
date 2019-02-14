@@ -15,13 +15,12 @@ public class ScoreScene extends BaseScene
     public ScoreScene(Viewport viewport, Batch batch)
     {
         super(viewport, batch);
+
+        init();
     }
 
-    @Override
-    public void init()
+    private void init()
     {
-        super.init();
-
         scoreViewActor = PoolManager.getInstance().get(ScoreViewActor.class);
         addActor(scoreViewActor);
 

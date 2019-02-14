@@ -40,19 +40,19 @@ public final class ResourceManager implements Disposable
         return assetManager.update();
     }
 
-    public Texture getTextureWithoutWait(String filename)
-    {
-        return new Texture(Gdx.files.internal(filename));
-    }
-
     public void loadAtlas(Set<String> atlasNames)
     {
         loadAssets(atlasNames, TextureAtlas.class);
     }
 
-    public TextureAtlas getTextureAtlas(String atlasName)
+    private TextureAtlas getTextureAtlas(String atlasName)
     {
         return assetManager.get(atlasName, TextureAtlas.class);
+    }
+
+    public Sprite getSpriteWithoutWait(String filename)
+    {
+        return new Sprite(new Texture(Gdx.files.internal(filename)));
     }
 
     public Sprite getSprite(String atlasName, String spriteName)

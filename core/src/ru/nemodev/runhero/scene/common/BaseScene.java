@@ -1,6 +1,5 @@
 package ru.nemodev.runhero.scene.common;
 
-import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -20,18 +19,10 @@ public class BaseScene extends Stage implements Scene
         this.accumulator = 0.f;
     }
 
-    // TODO уйти от этого метода, каждая сцена должна быть проинициализирована в своем конструкторе
-    // Screen не должен вызывать метод init
-    @Override
-    public void init()
-    {
-
-    }
-
     @Override
     public void show()
     {
-        setInputProcessor();
+
     }
 
     @Override
@@ -83,22 +74,10 @@ public class BaseScene extends Stage implements Scene
         draw();
     }
 
-    // Вынести логику установки обработчика IO в Screen
-    protected boolean isInputController()
+    @Override
+    public boolean isInputController()
     {
         return false;
-    }
-
-    protected void setInputProcessor()
-    {
-        if (isInputController())
-        {
-            InputMultiplexer baseInput = new InputMultiplexer(InputUtils.backInputProcessor);
-            baseInput.addProcessor(this);
-
-            InputUtils.setInputProcessor(baseInput);
-            InputUtils.setCatchBackButton();
-        }
     }
 
     @Override

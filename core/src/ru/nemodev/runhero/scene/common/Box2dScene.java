@@ -23,13 +23,11 @@ public abstract class Box2dScene extends BaseScene
         super(viewport, batch);
         this.world = world;
 
+        init();
     }
 
-    @Override
-    public void init()
+    private void init()
     {
-        super.init();
-
         this.world.setContactListener(getContactListener());
         this.debugRenderer = new Box2DDebugRenderer();
         this.drawDebug = false;

@@ -28,13 +28,12 @@ public class GameBackgroundScene extends BaseScene
     public GameBackgroundScene(Viewport viewport, Batch batch)
     {
         super(viewport, batch);
+
+        init();
     }
 
-    @Override
-    public void init()
+    private void init()
     {
-        super.init();
-
         this.backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
         addActor(backgroundActor);
 

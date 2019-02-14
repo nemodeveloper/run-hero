@@ -29,7 +29,7 @@ public final class SpriteUtils
 
     public static Sprite create(String textureName)
     {
-        return new Sprite(ResourceManager.getInstance().getTextureWithoutWait(textureName));
+        return ResourceManager.getInstance().getSpriteWithoutWait(textureName);
     }
 
     public static Sprite create(String atlasName, String spiteName)

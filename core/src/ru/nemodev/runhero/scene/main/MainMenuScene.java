@@ -10,13 +10,12 @@ public class MainMenuScene extends BaseScene
     public MainMenuScene(Viewport viewport, Batch batch)
     {
         super(viewport, batch);
+
+        init();
     }
 
-    @Override
-    public void init()
+    private void init()
     {
-        super.init();
-
 
     }
 

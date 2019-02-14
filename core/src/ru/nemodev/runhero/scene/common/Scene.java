@@ -1,11 +1,10 @@
 package ru.nemodev.runhero.scene.common;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.utils.Disposable;
 
-public interface Scene extends Disposable
+public interface Scene extends Disposable, InputProcessor
 {
-    void init();
-
     void show();
 
     void hide();
@@ -17,4 +16,6 @@ public interface Scene extends Disposable
     void render(float delta);
 
     void resize(int width, int height);
+
+    boolean isInputController();
 }

@@ -43,13 +43,12 @@ public class MainBackgroundScene extends BaseScene
     public MainBackgroundScene(Viewport viewport, Batch batch)
     {
         super(viewport, batch);
+
+        init();
     }
 
-    @Override
     public void init()
     {
-        super.init();
-
         backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
         addActor(backgroundActor);
 
@@ -95,7 +94,7 @@ public class MainBackgroundScene extends BaseScene
     }
 
     @Override
-    protected boolean isInputController()
+    public boolean isInputController()
     {
         return true;
     }
