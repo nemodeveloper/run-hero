@@ -3,6 +3,7 @@
     package="ru.nemodev.runhero" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
@@ -28,6 +29,12 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="b084a5fe6f1774820fee9a78dd1fdef5101fff2d"/>
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
     </application>
 
 </manifest>
