@@ -13,6 +13,7 @@ import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.scene.common.Scene;
 import ru.nemodev.runhero.scene.game.GameBackgroundScene;
 import ru.nemodev.runhero.scene.game.GameScene;
+import ru.nemodev.runhero.scene.game.GameUIScene;
 import ru.nemodev.runhero.scene.game.ScoreScene;
 import ru.nemodev.runhero.screen.common.BaseScreen;
 
@@ -27,6 +28,7 @@ public class GameScreen extends BaseScreen
     private GameBackgroundScene gameBackgroundScene;
     private GameScene gameScene;
     private ScoreScene scoreScene;
+    private GameUIScene gameUIScene;
 
     public GameScreen()
     {
@@ -37,6 +39,7 @@ public class GameScreen extends BaseScreen
         initBackgroundScene(batch);
         initGameScene(batch);
         initScoreScene(batch);
+        initGameUIScene(batch);
     }
 
     private void initBackgroundScene(Batch batch)
@@ -65,6 +68,15 @@ public class GameScreen extends BaseScreen
     {
         scoreScene = new ScoreScene(new ScreenViewport(), batch);
         addScene(scoreScene);
+    }
+
+    private void initGameUIScene(Batch batch)
+    {
+        OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
+        camera.setToOrtho(false, METERS_X, METERS_Y);
+
+        gameUIScene = new GameUIScene(new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch);
+        addScene(gameUIScene);
     }
 
     @Override

@@ -11,12 +11,14 @@ import com.badlogic.gdx.utils.Array;
 
 import net.dermetfan.gdx.graphics.g2d.AnimatedBox2DSprite;
 
+import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.entity.collision.Contactable;
 import ru.nemodev.runhero.entity.common.Box2dActor;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.manager.resource.SoundManager;
 import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
 
@@ -79,6 +81,7 @@ public class HeroActor extends Box2dActor implements Contactable, MobEventListen
                     {
                         float impulseY = (y - startPressY) * 450.f;
                         heroFixture.getBody().applyForceToCenter(0.f, impulseY, true);
+                        SoundManager.getInstance().playSound(SoundConstant.HERO_JUMP_SOUND);
                     }
 
                     isTouchDown = false;

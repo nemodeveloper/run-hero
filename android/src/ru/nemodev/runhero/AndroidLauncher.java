@@ -18,11 +18,12 @@ public class AndroidLauncher extends AndroidApplication
 	protected void onCreate (Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		androidPlayService = new AndroidPlayService(this);
 		initFabricIO();
 		hideSystemUI();
 
 		setContentView(R.layout.main);
+
+		androidPlayService = new AndroidPlayService(this);
 
 		initGameView();
 		initAdb();

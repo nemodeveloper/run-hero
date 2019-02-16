@@ -12,7 +12,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import ru.nemodev.runhero.entity.game.Box2dBodyType;
-import ru.nemodev.runhero.manager.PhysicManager;
+import ru.nemodev.runhero.manager.resource.PhysicManager;
 
 public final class Box2dObjectBuilder
 {

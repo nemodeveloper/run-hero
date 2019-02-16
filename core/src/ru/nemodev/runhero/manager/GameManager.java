@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
+import ru.nemodev.runhero.manager.system.ScreenManager;
 import ru.nemodev.runhero.screen.game.GameScreen;
 import ru.nemodev.runhero.util.InputUtils;
 

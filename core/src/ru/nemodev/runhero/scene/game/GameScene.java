@@ -1,5 +1,6 @@
 package ru.nemodev.runhero.scene.game;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
+import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
 import ru.nemodev.runhero.entity.collision.Contactable;
 import ru.nemodev.runhero.entity.game.ConstantBox2dBodyType;
@@ -24,6 +26,7 @@ import ru.nemodev.runhero.entity.game.world.GroundInfinityActor;
 import ru.nemodev.runhero.entity.game.world.SkyInfinityActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
+import ru.nemodev.runhero.manager.resource.SoundManager;
 import ru.nemodev.runhero.scene.common.Box2dScene;
 import ru.nemodev.runhero.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.util.SpriteUtils;
@@ -54,6 +57,8 @@ public class GameScene extends Box2dScene
 
     private ScoreItemManagerActor scoreItemManagerActor;
 
+    private Music musicBackground;
+
     public GameScene(World world, Viewport viewport, Batch batch)
     {
         super(world, viewport, batch);
@@ -67,6 +72,8 @@ public class GameScene extends Box2dScene
         initScoreItem();
         initMob();
         initBorder();
+
+        musicBackground = SoundManager.getInstance().playMusic(SoundConstant.MAIN_THEME_MUSIC, true);
     }
 
     @Override
@@ -219,6 +226,8 @@ public class GameScene extends Box2dScene
     public void dispose()
     {
         super.dispose();
+
+        musicBackground.stop();
     }
 
     @Override

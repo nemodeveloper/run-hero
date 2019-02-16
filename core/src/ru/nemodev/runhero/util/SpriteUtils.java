@@ -12,7 +12,7 @@ import net.dermetfan.gdx.graphics.g2d.Box2DSprite;
 
 import ru.nemodev.runhero.constant.texture.HeroTextureConstant;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.ResourceManager;
+import ru.nemodev.runhero.manager.resource.ResourceLoader;
 
 public final class SpriteUtils
 {
@@ -29,12 +29,12 @@ public final class SpriteUtils
 
     public static Sprite create(String textureName)
     {
-        return ResourceManager.getInstance().getSpriteWithoutWait(textureName);
+        return ResourceLoader.getInstance().getSpriteWithoutWait(textureName);
     }
 
     public static Sprite create(String atlasName, String spiteName)
     {
-        Sprite sprite = ResourceManager.getInstance().getSprite(atlasName, spiteName);
+        Sprite sprite = ResourceLoader.getInstance().getSprite(atlasName, spiteName);
         sprite.setX(0.f);
         sprite.setY(0.f);
 
@@ -58,7 +58,7 @@ public final class SpriteUtils
 
     public static Array<Sprite> createList(String atlasName, float width, float height, Vector2 position)
     {
-        Array<Sprite> sprites = ResourceManager.getInstance().getSprites(atlasName);
+        Array<Sprite> sprites = ResourceLoader.getInstance().getSprites(atlasName);
         for (Sprite sprite : sprites)
         {
             setBounds(sprite, width, height, position);
@@ -83,7 +83,7 @@ public final class SpriteUtils
 
     public static Animation<TextureRegion> createAnimation(String atlasName, float frameDuration, Animation.PlayMode playMode)
     {
-        Array<Sprite> sprites = ResourceManager.getInstance().getSprites(atlasName);
+        Array<Sprite> sprites = ResourceLoader.getInstance().getSprites(atlasName);
         if (!GameManager.getInstance().isRightDirection())
         {
             for (Sprite sprite : sprites)

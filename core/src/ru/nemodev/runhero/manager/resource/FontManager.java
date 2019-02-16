@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.manager;
+package ru.nemodev.runhero.manager.resource;
 
 
 import com.badlogic.gdx.Gdx;
@@ -29,7 +29,7 @@ public final class FontManager implements Disposable
 
     private void init()
     {
-        FreeTypeFontGenerator freeTypeFontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/SourceSansPro-Regular.ttf"));
+        FreeTypeFontGenerator freeTypeFontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Corbel.ttf"));
         commonFont = generateFont(freeTypeFontGenerator, 32);
 
         freeTypeFontGenerator.dispose();

@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.manager;
+package ru.nemodev.runhero.manager.pool;
 
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.Pools;

@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.manager;
+package ru.nemodev.runhero.manager.system;
 
 import ru.nemodev.runhero.service.MockPlayService;
 import ru.nemodev.runhero.service.PlayService;

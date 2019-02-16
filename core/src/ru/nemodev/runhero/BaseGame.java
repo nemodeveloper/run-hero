@@ -5,7 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Array;
 
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.ScreenManager;
+import ru.nemodev.runhero.manager.system.ScreenManager;
 
 public abstract class BaseGame extends Game implements ScreenManager
 {

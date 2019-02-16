@@ -3,7 +3,7 @@ package ru.nemodev.runhero.screen.common;
 import com.badlogic.gdx.utils.Array;
 
 import ru.nemodev.runhero.manager.GameStatus;
-import ru.nemodev.runhero.manager.ResourceManager;
+import ru.nemodev.runhero.manager.resource.ResourceLoader;
 import ru.nemodev.runhero.scene.common.Scene;
 
 public abstract class BaseLoaderScreen extends BaseScreen
@@ -39,7 +39,7 @@ public abstract class BaseLoaderScreen extends BaseScreen
 
     protected boolean isFinishLoadResources()
     {
-        return ResourceManager.getInstance().isFinishLoad();
+        return ResourceLoader.getInstance().isFinishLoad();
     }
 
     @Override

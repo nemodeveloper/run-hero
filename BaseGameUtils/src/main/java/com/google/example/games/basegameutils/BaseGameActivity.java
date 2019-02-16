@@ -40,6 +40,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
  *
  * @author Bruno Oliveira (Google)
  */
+// TODO Перенести реализацию в android
 public abstract class BaseGameActivity extends FragmentActivity implements
         GameHelper.GameHelperListener {
 

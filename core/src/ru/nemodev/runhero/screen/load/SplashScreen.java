@@ -3,16 +3,15 @@ package ru.nemodev.runhero.screen.load;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import ru.nemodev.runhero.constant.SoundConstant;
+import ru.nemodev.runhero.constant.physic.PhysicLoaderConstant;
+import ru.nemodev.runhero.constant.texture.AtlasLoaderConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
-import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
-import ru.nemodev.runhero.constant.texture.HeroTextureConstant;
-import ru.nemodev.runhero.constant.texture.MobsAnimationTextureConstant;
-import ru.nemodev.runhero.constant.texture.MobsStaticTextureConstant;
-import ru.nemodev.runhero.constant.texture.ScoreItemTextureConstant;
 import ru.nemodev.runhero.entity.load.SplashActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.PhysicManager;
-import ru.nemodev.runhero.manager.ResourceManager;
+import ru.nemodev.runhero.manager.resource.FontManager;
+import ru.nemodev.runhero.manager.resource.PhysicManager;
+import ru.nemodev.runhero.manager.resource.ResourceLoader;
 import ru.nemodev.runhero.scene.common.BaseScene;
 import ru.nemodev.runhero.screen.common.BaseLoaderScreen;
 import ru.nemodev.runhero.screen.main.MainScreen;
@@ -41,20 +40,35 @@ public class SplashScreen extends BaseLoaderScreen
     @Override
     protected void loadResources()
     {
-        ResourceManager.getInstance().loadAtlas(BackgroundTextureConstant.ATLAS_FOR_LOAD);
-        ResourceManager.getInstance().loadAtlas(BorderTextureConstant.ATLAS_FOR_LOAD);
-        ResourceManager.getInstance().loadAtlas(HeroTextureConstant.ATLAS_FOR_LOAD);
-        ResourceManager.getInstance().loadAtlas(ScoreItemTextureConstant.ATLAS_FOR_LOAD);
+        loadTexture();
+        loadSound();
+        loadPhysic();
 
-        ResourceManager.getInstance().loadAtlas(MobsStaticTextureConstant.ATLAS_FOR_LOAD);
-        ResourceManager.getInstance().loadAtlas(MobsAnimationTextureConstant.ATLAS_FOR_LOAD);
+        FontManager.getInstance();
+    }
 
+    private void loadTexture()
+    {
+        ResourceLoader.getInstance().loadAtlas(AtlasLoaderConstant.ATLAS_BODY_FOR_LOADING);
+    }
+
+    public void loadSound()
+    {
+        ResourceLoader.getInstance().loadMusic(SoundConstant.MUSIC_FOR_LOADING);
+        ResourceLoader.getInstance().loadSound(SoundConstant.SOUND_FOR_LOADING);
+    }
+
+    public void loadPhysic()
+    {
         PhysicManager.getInstance();
+        ResourceLoader.getInstance().loadBodyEditorLoader(PhysicLoaderConstant.PHYSIC_BODY_FOR_LOADING);
     }
 
     @Override
     protected void doAfterLoadResource()
     {
+        PhysicManager.getInstance().preparePhysicBodies();
+
         GameManager.getInstance().getScreenManager().popScreen();
         GameManager.getInstance().getScreenManager().pushScreen(new MainScreen());
     }

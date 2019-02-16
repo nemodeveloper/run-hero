@@ -13,7 +13,7 @@ import ru.nemodev.runhero.entity.game.background.MoonActor;
 import ru.nemodev.runhero.entity.game.background.StarManagerActor;
 import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.PoolManager;
+import ru.nemodev.runhero.manager.pool.PoolManager;
 import ru.nemodev.runhero.scene.common.BaseScene;
 import ru.nemodev.runhero.util.SpriteUtils;
 

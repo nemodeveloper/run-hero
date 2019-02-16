@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.manager;
+package ru.nemodev.runhero.manager.resource;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2D;
@@ -9,9 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ru.nemodev.runhero.constant.physic.MobPhysicConstant;
-import ru.nemodev.runhero.constant.physic.PhysicLoaderConstant;
 import ru.nemodev.runhero.physic.BodyEditorLoader;
-import ru.nemodev.runhero.util.FileUtils;
 
 /**
  * created by NemoDev on 08.05.2018 - 20:45
@@ -24,8 +22,7 @@ public final class PhysicManager implements Disposable
 
     private PhysicManager()
     {
-        initPhysic();
-        loadPhysic();
+        Box2D.init();
     }
 
     public static PhysicManager getInstance()
@@ -33,15 +30,10 @@ public final class PhysicManager implements Disposable
         return instance;
     }
 
-    private void initPhysic()
-    {
-        Box2D.init();
-    }
-
-    private void loadPhysic()
+    public void preparePhysicBodies()
     {
         bodyEditorLoaderMap = new HashMap<String, BodyEditorLoader>();
-        bodyEditorLoaderMap.put(PhysicLoaderConstant.STONE_MOBS, new BodyEditorLoader(FileUtils.getInternalFile(MobPhysicConstant.MOB_STONE_PATH)));
+        bodyEditorLoaderMap.put(MobPhysicConstant.LOADER_STONE_MOB_NAMES, ResourceLoader.getInstance().getBodyEditorLoader(MobPhysicConstant.PHYSIC_MOB_STONE));
     }
 
     public void loadPhysicBody(String loaderName, String bodyName, Body body, FixtureDef fixtureDef, float scale)

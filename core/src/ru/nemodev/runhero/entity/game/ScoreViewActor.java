@@ -6,8 +6,8 @@ import com.badlogic.gdx.utils.Pool;
 
 import ru.nemodev.runhero.entity.common.BaseActor;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
-import ru.nemodev.runhero.manager.ConfigManager;
 import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.manager.system.ConfigManager;
 import ru.nemodev.runhero.util.ScreenUtils;
 
 public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.Poolable, ScoreChangeListener

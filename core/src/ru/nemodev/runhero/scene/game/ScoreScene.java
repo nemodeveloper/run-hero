@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.entity.game.ScoreViewActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.PoolManager;
+import ru.nemodev.runhero.manager.pool.PoolManager;
 import ru.nemodev.runhero.scene.common.BaseScene;
 
 public class ScoreScene extends BaseScene

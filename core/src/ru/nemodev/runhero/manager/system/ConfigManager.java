@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.manager;
+package ru.nemodev.runhero.manager.system;
 
 
 import com.badlogic.gdx.Gdx;

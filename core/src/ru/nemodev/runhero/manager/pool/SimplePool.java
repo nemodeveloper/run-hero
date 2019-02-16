@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.manager;
+package ru.nemodev.runhero.manager.pool;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -12,6 +12,7 @@ import ru.nemodev.runhero.entity.game.background.BackgroundActor;
 import ru.nemodev.runhero.entity.game.background.GrassActor;
 import ru.nemodev.runhero.entity.game.background.StarManagerActor;
 import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
+import ru.nemodev.runhero.manager.resource.FontManager;
 import ru.nemodev.runhero.util.SpriteUtils;
 
 
