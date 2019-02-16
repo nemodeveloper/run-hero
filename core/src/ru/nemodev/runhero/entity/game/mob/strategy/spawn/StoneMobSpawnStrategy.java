@@ -11,7 +11,7 @@ import ru.nemodev.runhero.entity.game.mob.BaseMobActor;
 import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
 
-public class EasyMobSpawnStrategy extends BaseMobSpawnStrategy
+public class StoneMobSpawnStrategy extends BaseMobSpawnStrategy
 {
     private static final String[] STONE_MOB_ATLAS = {
             MobsStaticTextureConstant.STONE_SMALL_MOB_ATLAS,
@@ -20,7 +20,7 @@ public class EasyMobSpawnStrategy extends BaseMobSpawnStrategy
 //            MobsStaticTextureConstant.STONE_COMPOSITE_MOB_ATLAS
     };
 
-    public EasyMobSpawnStrategy(World world, int maxScore, float minMobSize, float maxMobSize, float destinationX, Vector2 startSpawnPos, boolean enableDynamicMob)
+    public StoneMobSpawnStrategy(World world, int maxScore, float minMobSize, float maxMobSize, float destinationX, Vector2 startSpawnPos, boolean enableDynamicMob)
     {
         super(world, maxScore, minMobSize, maxMobSize, destinationX, startSpawnPos, enableDynamicMob);
     }

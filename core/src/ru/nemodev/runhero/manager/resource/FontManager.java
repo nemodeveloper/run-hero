@@ -30,7 +30,7 @@ public final class FontManager implements Disposable
     private void init()
     {
         FreeTypeFontGenerator freeTypeFontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Corbel.ttf"));
-        commonFont = generateFont(freeTypeFontGenerator, 32);
+        commonFont = generateFont(freeTypeFontGenerator, 52);
 
         freeTypeFontGenerator.dispose();
     }

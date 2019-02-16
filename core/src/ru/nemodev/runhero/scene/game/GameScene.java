@@ -33,7 +33,6 @@ import ru.nemodev.runhero.util.SpriteUtils;
 
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;
-import static ru.nemodev.runhero.constant.GameConstant.WORLD_UNIT;
 
 
 /**
@@ -41,8 +40,8 @@ import static ru.nemodev.runhero.constant.GameConstant.WORLD_UNIT;
  */
 public class GameScene extends Box2dScene
 {
-    private static final float HERO_WIDTH = WORLD_UNIT;
-    private static final float HERO_HEIGHT = WORLD_UNIT;
+    private static final float HERO_WIDTH = 1.f;
+    private static final float HERO_HEIGHT = HERO_WIDTH;
 
     private static final float CAMERA_SHIFT = GameConstant.METERS_X / 2.5f;
 

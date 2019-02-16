@@ -38,7 +38,7 @@ public class SimpleScoreItemSpawnStrategy extends BaseScoreItemSpawnStrategy
 
             Vector2 itemPosition = new Vector2(
                     playerPosition.x + deltaX,
-                    MathUtils.random(2.f, GameConstant.METERS_Y - 2.f));
+                    MathUtils.random(2.f, GameConstant.METERS_Y - 1.f));
 
             return new ScoreItemActor<Box2DSprite>(this.world,
                     SpriteUtils.createBox2d(ScoreItemTextureConstant.SCORE_ITEM_ATLAS, ScoreItemTextureConstant.STAR_ITEM)

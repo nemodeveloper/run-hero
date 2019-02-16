@@ -24,7 +24,6 @@ public final class GameManager
     private ScreenManager screenManager;
     private final Batch spriteBatch;
 
-    // TODO нужно вынести это в отдельный класс manager для конкретного экрана -> GameScreen
     private Array<ScoreChangeListener> scoreChangeListeners;
     private Array<MobEventListener> mobEventListeners;
     private boolean rightDirection;

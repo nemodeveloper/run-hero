@@ -26,7 +26,7 @@ public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.
     public void draw(Batch batch, float parentAlpha)
     {
         float posX = ScreenUtils.getWidth() / 2.f;
-        float posY = ScreenUtils.getHeight() / 2.f + ScreenUtils.getHeightStep(10) * 3.f;
+        float posY = ScreenUtils.getHeight() / 2.f + ScreenUtils.getHeightStep(10) * 4.f;
 
         if (GameManager.getInstance().isRunning() || GameManager.getInstance().isPause())
         {

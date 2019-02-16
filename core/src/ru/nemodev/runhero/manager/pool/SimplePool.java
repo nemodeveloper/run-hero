@@ -49,7 +49,7 @@ public final class SimplePool
         {
             return new GrassActor(
                     SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS_BACKGROUND
-                            , GameConstant.METERS_X, GameConstant.WORLD_UNIT * 2.5f, new Vector2(0.f, 0.f)));
+                            , GameConstant.METERS_X, 2.f, new Vector2(0.f, 0.f)));
         }
     };
 
@@ -61,16 +61,16 @@ public final class SimplePool
             Array<Sprite> enableTreeSprites = new Array<Sprite>(4);
 
             enableTreeSprites.add(buildTreeSprite(BackgroundTextureConstant.TREE_BACKGROUND_ATLAS, BackgroundTextureConstant.TREE_1
-                    , new Vector2(GameConstant.WORLD_UNIT * 3.5f, GameConstant.WORLD_UNIT * 5), new Vector2(0, 1.f)));
+                    , new Vector2(GameConstant.WORLD_UNIT * 3.5f, 5.f), new Vector2(0, 1.f)));
 
             enableTreeSprites.add(buildTreeSprite(BackgroundTextureConstant.TREE_BACKGROUND_ATLAS, BackgroundTextureConstant.TREE_2
-                    , new Vector2(GameConstant.WORLD_UNIT * 4.f, GameConstant.WORLD_UNIT * 4), new Vector2(0, 1.f)));
+                    , new Vector2(GameConstant.WORLD_UNIT * 4.f, 4.f), new Vector2(0, 1.f)));
 
             enableTreeSprites.add(buildTreeSprite(BackgroundTextureConstant.TREE_BACKGROUND_ATLAS, BackgroundTextureConstant.TREE_3
-                    , new Vector2(GameConstant.WORLD_UNIT * 3.5f, GameConstant.WORLD_UNIT * 6), new Vector2(0, 1.f)));
+                    , new Vector2(GameConstant.WORLD_UNIT * 3.5f, 6.f), new Vector2(0, 1.f)));
 
             enableTreeSprites.add(buildTreeSprite(BackgroundTextureConstant.TREE_BACKGROUND_ATLAS, BackgroundTextureConstant.TREE_4
-                    , new Vector2(GameConstant.WORLD_UNIT * 4.f, GameConstant.WORLD_UNIT * 4.5f), new Vector2(0, 1.f)));
+                    , new Vector2(GameConstant.WORLD_UNIT * 4.f, 4.5f), new Vector2(0, 1.f)));
 
             return new TreeManagerActor(enableTreeSprites);
         }
