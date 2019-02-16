@@ -30,6 +30,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         signingConfig signingConfigs.def_config
     }
     buildTypes {
@@ -149,4 +150,5 @@ idea {
     }
 }
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
 }

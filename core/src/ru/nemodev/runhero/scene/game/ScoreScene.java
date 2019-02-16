@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.entity.game.ScoreViewActor;
 import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.manager.pool.PoolManager;
 import ru.nemodev.runhero.scene.common.BaseScene;
 
@@ -35,5 +36,11 @@ public class ScoreScene extends BaseScene
         super.dispose();
 
         PoolManager.getInstance().free(scoreViewActor);
+    }
+
+    @Override
+    protected boolean isNeedUpdate()
+    {
+        return GameManager.getInstance().getGameStatus() == GameStatus.RUNNING;
     }
 }

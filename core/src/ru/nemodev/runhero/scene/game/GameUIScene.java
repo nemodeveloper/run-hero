@@ -18,4 +18,10 @@ public class GameUIScene extends BaseScene
     {
 
     }
+
+    @Override
+    public boolean isInputController()
+    {
+        return true;
+    }
 }

@@ -28,7 +28,7 @@ public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.
         float posX = ScreenUtils.getWidth() / 2.f;
         float posY = ScreenUtils.getHeight() / 2.f + ScreenUtils.getHeightStep(10) * 3.f;
 
-        if (GameManager.getInstance().isRunning())
+        if (GameManager.getInstance().isRunning() || GameManager.getInstance().isPause())
         {
             font.draw(batch, String.valueOf(gameScore), posX, posY);
         }

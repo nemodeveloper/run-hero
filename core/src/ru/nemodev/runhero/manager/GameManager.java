@@ -77,6 +77,11 @@ public final class GameManager
         return gameStatus == GameStatus.RUNNING;
     }
 
+    public boolean isPause()
+    {
+        return gameStatus == GameStatus.PAUSE;
+    }
+
     public GameStatus getGameStatus()
     {
         return gameStatus;

@@ -254,4 +254,10 @@ public class GameScene extends Box2dScene
         getCamera().position.y = cameraPosition.y;
         getCamera().update();
     }
+
+    @Override
+    protected boolean isNeedUpdate()
+    {
+        return GameManager.getInstance().isRunning();
+    }
 }

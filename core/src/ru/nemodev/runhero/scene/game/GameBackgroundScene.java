@@ -61,6 +61,12 @@ public class GameBackgroundScene extends BaseScene
         PoolManager.getInstance().free(grassActor);
     }
 
+    @Override
+    protected boolean isNeedUpdate()
+    {
+        return GameManager.getInstance().isRunning();
+    }
+
     private MoonActor getMoonActor()
     {
         float moonSize = GameConstant.WORLD_UNIT * 3.f;
