@@ -18,12 +18,12 @@ import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
 import ru.nemodev.runhero.entity.collision.Contactable;
 import ru.nemodev.runhero.entity.game.ConstantBox2dBodyType;
 import ru.nemodev.runhero.entity.game.ContactType;
+import ru.nemodev.runhero.entity.game.border.GroundInfinityActor;
+import ru.nemodev.runhero.entity.game.border.SkyInfinityActor;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
 import ru.nemodev.runhero.entity.game.mob.MobManagerActor;
 import ru.nemodev.runhero.entity.game.player.HeroActor;
 import ru.nemodev.runhero.entity.game.score_item.ScoreItemManagerActor;
-import ru.nemodev.runhero.entity.game.world.GroundInfinityActor;
-import ru.nemodev.runhero.entity.game.world.SkyInfinityActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.manager.resource.SoundManager;
@@ -257,6 +257,6 @@ public class GameScene extends Box2dScene
     @Override
     protected boolean isNeedUpdate()
     {
-        return GameManager.getInstance().isRunning();
+        return !GameManager.getInstance().isPause();
     }
 }

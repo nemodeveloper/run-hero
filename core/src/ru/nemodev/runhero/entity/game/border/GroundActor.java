@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.entity.game.world;
+package ru.nemodev.runhero.entity.game.border;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;

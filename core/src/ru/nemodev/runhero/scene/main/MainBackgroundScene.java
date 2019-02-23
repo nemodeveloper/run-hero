@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -17,12 +15,9 @@ import ru.nemodev.runhero.entity.game.background.GrassActor;
 import ru.nemodev.runhero.entity.game.background.MoonActor;
 import ru.nemodev.runhero.entity.game.background.StarManagerActor;
 import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
-import ru.nemodev.runhero.entity.game.world.GroundActor;
-import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.entity.game.border.GroundActor;
 import ru.nemodev.runhero.manager.pool.PoolManager;
 import ru.nemodev.runhero.scene.common.BaseScene;
-import ru.nemodev.runhero.screen.game.GameScreen;
-import ru.nemodev.runhero.util.InputUtils;
 import ru.nemodev.runhero.util.SpriteUtils;
 
 
@@ -66,18 +61,6 @@ public class MainBackgroundScene extends BaseScene
 
         mockWorld = new World(new Vector2(0.f, -9.81f), false);
         initWordObjects();
-
-        addListener(new InputListener()
-        {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-                InputUtils.vibrate(250);
-                GameManager.getInstance().getScreenManager().popScreen();
-                GameManager.getInstance().getScreenManager().pushScreen(new GameScreen());
-                return true;
-            }
-        });
     }
 
     @Override
@@ -91,12 +74,6 @@ public class MainBackgroundScene extends BaseScene
         PoolManager.getInstance().free(grassActor);
 
         mockWorld.dispose();
-    }
-
-    @Override
-    public boolean isInputController()
-    {
-        return true;
     }
 
     private MoonActor getMoonActor()

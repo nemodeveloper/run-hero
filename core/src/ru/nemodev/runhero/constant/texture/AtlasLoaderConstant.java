@@ -21,6 +21,8 @@ public final class AtlasLoaderConstant
         atlasForLoading.addAll(MobsStaticTextureConstant.ATLAS_FOR_LOAD);
         atlasForLoading.addAll(MobsAnimationTextureConstant.ATLAS_FOR_LOAD);
 
+        atlasForLoading.addAll(UITextureConstant.ATLAS_FOR_LOAD);
+
         return atlasForLoading;
     }
 

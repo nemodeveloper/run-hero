@@ -43,7 +43,7 @@ public abstract class BaseScreen implements Screen
 
         if (scene.isInputController())
         {
-            screenInput.addProcessor(scene);
+            screenInput.addProcessor(0, scene);
         }
     }
 

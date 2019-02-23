@@ -49,10 +49,14 @@ public final class SpriteUtils
         return sprite;
     }
 
+    public static Sprite create(String atlasName, String textureName, float width, float height)
+    {
+        return create(atlasName, textureName, width, height, new Vector2(0.f, 0.f));
+    }
+
     private static void setBounds(Sprite sprite, float width, float height, Vector2 position)
     {
-        sprite.setBounds(0.f, 0.f, width, height);
-        sprite.setPosition(position.x, position.y);
+        sprite.setBounds(position.x, position.y, width, height);
         sprite.setOriginCenter();
     }
 
