@@ -8,7 +8,7 @@ public final class ScoreItemTextureConstant
 {
     private ScoreItemTextureConstant() { }
 
-    public static final String SCORE_ITEM_ATLAS = "atlas/score_items/score_items.atlas";
+    public static final String SCORE_ITEM_ATLAS = "atlas/score_item/score_items.atlas";
     public static final String STAR_ITEM = "star_item";
 
     public static final Set<String> ATLAS_FOR_LOAD = new HashSet<String>(Arrays.asList(

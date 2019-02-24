@@ -6,7 +6,7 @@ import java.util.Set;
 
 public final class MobsStaticTextureConstant
 {
-    public static final String BASE_MOB_PATH = "atlas/mobs/static/";
+    public static final String BASE_MOB_PATH = "atlas/mob/static/";
 
     public static final String STONE_SMALL_MOB_ATLAS = BASE_MOB_PATH + "stone/stone_small.atlas";
     public static final String STONE_MEDIUM_MOB_ATLAS = BASE_MOB_PATH + "stone/stone_medium.atlas";
