@@ -23,8 +23,6 @@ public class AndroidLauncher extends AndroidApplication
 
 		setContentView(R.layout.main);
 
-		androidPlayService = new AndroidPlayService(this);
-
 		initGameView();
 		initAdb();
 	}
@@ -56,8 +54,11 @@ public class AndroidLauncher extends AndroidApplication
 		config.useAccelerometer = false;
 		config.useCompass = false;
 		config.hideStatusBar = true;
+		config.useImmersiveMode = true;
 
 		GdxGame gdxGame = findViewById(R.id.gdxGame);
+
+		androidPlayService = new AndroidPlayService(this);
 		gdxGame.setGameView(initializeForView(new GameApp(androidPlayService), config));
 	}
 
@@ -70,13 +71,12 @@ public class AndroidLauncher extends AndroidApplication
 
 	private void hideSystemUI()
 	{
-		View decorView = getWindow().getDecorView();
-		decorView.setSystemUiVisibility(
+		getWindow().getDecorView().setSystemUiVisibility(
 				View.SYSTEM_UI_FLAG_IMMERSIVE
 				| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 				| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 				| View.SYSTEM_UI_FLAG_FULLSCREEN);
 	}
 
