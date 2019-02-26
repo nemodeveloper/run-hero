@@ -82,7 +82,12 @@ public class GameScene extends Box2dScene
 
         // TODO камера дергается потому что тело героя дергается сука!!!
         Camera camera = getCamera();
-        camera.position.x = heroActor.getHeroPosition().x + CAMERA_SHIFT * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
+        float newPosX = heroActor.getHeroPosition().x + CAMERA_SHIFT * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
+
+        if (Math.abs(newPosX) > Math.abs(camera.position.x))
+        {
+            camera.position.x = newPosX;
+        }
     }
 
     private void initBorder()
@@ -170,6 +175,7 @@ public class GameScene extends Box2dScene
         heroBody.setFixedRotation(true);
         heroBody.setGravityScale(2.f);
         heroBody.setLinearVelocity(START_VELOCITY);
+        heroBody.setLinearDamping(0.f);
 
         heroActor = new HeroActor(world, heroFixture,
                 SpriteUtils.getHeroAnimations(), START_VELOCITY,

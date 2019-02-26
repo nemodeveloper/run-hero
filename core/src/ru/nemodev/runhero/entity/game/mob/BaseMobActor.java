@@ -20,6 +20,20 @@ import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 
 public abstract class BaseMobActor<T extends Box2DSprite> extends Box2dActor implements Contactable
 {
+//    private static ShaderProgram shaderOutline = buildOutLineShader();
+//    private static ShaderProgram buildOutLineShader()
+//    {
+//        String vertexShader = Gdx.files.internal("shader/df_vertex.glsl").readString();
+//        String fragmentShader = Gdx.files.internal("shader/outline_border.glsl").readString();
+//
+//        ShaderProgram shaderOutline = new ShaderProgram(vertexShader, fragmentShader);
+//
+//        if (!shaderOutline.isCompiled())
+//            throw new GdxRuntimeException("Couldn't compile shader: " + shaderOutline.getLog());
+//
+//        return shaderOutline;
+//    }
+
     protected final Fixture fixture;
     protected final Body body;
     protected final T drawable;
@@ -38,6 +52,20 @@ public abstract class BaseMobActor<T extends Box2DSprite> extends Box2dActor imp
     @Override
     public void draw(Batch batch, float parentAlpha)
     {
+//        shaderOutline.begin();
+//        shaderOutline.setUniformf("u_viewportInverse", new Vector2(1f / drawable.getWidth(), 1f / drawable.getHeight()));
+//        shaderOutline.setUniformf("u_offset", 3.f);
+//        shaderOutline.setUniformf("u_step", Math.min(1f, drawable.getWidth() / 70f));
+//        shaderOutline.setUniformf("u_color", new Vector3(Color.YELLOW.r, Color.YELLOW.g, Color.YELLOW.b));
+//        shaderOutline.end();
+//
+//        batch.setShader(shaderOutline);
+//        drawSprite(batch, drawable, body);
+//        batch.setShader(null);
+//        drawSprite(batch, drawable, body);
+//        batch.end();
+//        batch.begin();
+
         drawSprite(batch, drawable, body);
     }
 
