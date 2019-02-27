@@ -54,7 +54,7 @@ public final class SpriteUtils
         return create(atlasName, textureName, width, height, new Vector2(0.f, 0.f));
     }
 
-    private static void setBounds(Sprite sprite, float width, float height, Vector2 position)
+    public static void setBounds(Sprite sprite, float width, float height, Vector2 position)
     {
         sprite.setBounds(position.x, position.y, width, height);
         sprite.setOriginCenter();

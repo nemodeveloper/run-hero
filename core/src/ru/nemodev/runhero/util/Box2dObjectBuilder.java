@@ -78,8 +78,11 @@ public final class Box2dObjectBuilder
     public static Body createBody(World world, BodyDef.BodyType bodyType, Vector2 position)
     {
         BodyDef bodyDef = getBodyDef(bodyType, position);
+        Body body = world.createBody(bodyDef);
+        body.resetMassData();
+        body.setSleepingAllowed(false);
 
-        return world.createBody(bodyDef);
+        return body;
     }
 
     public static PolygonShape createBoxShape(float width, float height)
