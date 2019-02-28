@@ -3,6 +3,8 @@ package ru.nemodev.runhero.manager.resource;
 
 import com.badlogic.gdx.audio.Music;
 
+import ru.nemodev.runhero.manager.system.ConfigManager;
+
 public final class SoundManager
 {
     private static final SoundManager instance = new SoundManager();
@@ -14,17 +16,19 @@ public final class SoundManager
         return instance;
     }
 
-    public Music playMusic(String musicName, boolean loop)
+    public Music getMusic(String musicName, boolean loop)
     {
         Music music = ResourceLoader.getInstance().getMusic(musicName);
         music.setLooping(loop);
-        music.play();
 
         return music;
     }
 
     public void playSound(String soundName)
     {
-        ResourceLoader.getInstance().getSound(soundName).play();
+        if (ConfigManager.getInstance().isEnableSound())
+        {
+            ResourceLoader.getInstance().getSound(soundName).play();
+        }
     }
 }

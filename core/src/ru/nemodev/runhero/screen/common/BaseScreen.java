@@ -83,6 +83,7 @@ public abstract class BaseScreen implements Screen
     @Override
     public void pause()
     {
+        // TODO убрать когда будет экран с паузой
         gameStatus = GameManager.getInstance().getGameStatus();
         GameManager.getInstance().setGameStatus(GameStatus.PAUSE);
 
@@ -95,6 +96,7 @@ public abstract class BaseScreen implements Screen
     @Override
     public void resume()
     {
+        // TODO убрать когда будет экран с паузой
         GameManager.getInstance().setGameStatus(gameStatus);
         for (Scene scene : scenes)
         {

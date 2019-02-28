@@ -4,6 +4,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -27,6 +28,7 @@ import ru.nemodev.runhero.entity.game.score_item.ScoreItemManagerActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
 import ru.nemodev.runhero.manager.resource.SoundManager;
+import ru.nemodev.runhero.manager.system.ConfigManager;
 import ru.nemodev.runhero.scene.common.Box2dScene;
 import ru.nemodev.runhero.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.util.SpriteUtils;
@@ -72,7 +74,11 @@ public class GameScene extends Box2dScene
         initMob();
         initBorder();
 
-        musicBackground = SoundManager.getInstance().playMusic(SoundConstant.MAIN_THEME_MUSIC, true);
+        musicBackground = SoundManager.getInstance().getMusic(SoundConstant.MAIN_THEME_MUSIC, true);
+        if (ConfigManager.getInstance().isEnableSound())
+        {
+            musicBackground.play();
+        }
     }
 
     @Override
@@ -85,7 +91,7 @@ public class GameScene extends Box2dScene
 
         if (Math.abs(newPosX) > Math.abs(camera.position.x))
         {
-            camera.position.x = newPosX;
+            camera.position.x = MathUtils.lerp(camera.position.x, newPosX, 1.f - delta);
         }
     }
 

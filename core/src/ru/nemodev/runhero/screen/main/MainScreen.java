@@ -1,15 +1,12 @@
 package ru.nemodev.runhero.screen.main;
 
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
-import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.GameStatus;
-import ru.nemodev.runhero.manager.resource.SoundManager;
 import ru.nemodev.runhero.scene.common.Scene;
 import ru.nemodev.runhero.scene.main.MainBackgroundScene;
 import ru.nemodev.runhero.scene.main.MainMenuScene;
@@ -23,8 +20,6 @@ import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;
  */
 public class MainScreen extends BaseScreen
 {
-    private Music mainMenuMusic;
-
     public MainScreen()
     {
         super(new Array<Scene>());
@@ -33,8 +28,6 @@ public class MainScreen extends BaseScreen
 
         initBackgroundScene(batch);
         initMenuScene(batch);
-
-        mainMenuMusic = SoundManager.getInstance().playMusic(SoundConstant.MAIN_THEME_MUSIC, true);
     }
 
     @Override
@@ -69,7 +62,5 @@ public class MainScreen extends BaseScreen
     public void dispose()
     {
         super.dispose();
-
-        mainMenuMusic.stop();
     }
 }

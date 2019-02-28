@@ -12,6 +12,8 @@ public final class ConfigManager
     private static final String GAME_PREFERENCES_KEY = "RUN_HERO_PREFERENCES";
     private static final String BEST_SCORE_KEY = "BEST_SCORE";
 
+    private static final String SOUND_ENABLE_KEY = "SOUND_ENABLE";
+
     private static volatile ConfigManager instance = new ConfigManager();
 
     private final Preferences gamePreferences;
@@ -38,6 +40,17 @@ public final class ConfigManager
             gamePreferences.putInteger(BEST_SCORE_KEY, score);
             gamePreferences.flush();
         }
+    }
+
+    public void setEnableSound(boolean soundEnable)
+    {
+        gamePreferences.putBoolean(SOUND_ENABLE_KEY, soundEnable);
+        gamePreferences.flush();
+    }
+
+    public boolean isEnableSound()
+    {
+        return gamePreferences.getBoolean(SOUND_ENABLE_KEY, true);
     }
 
 }
