@@ -16,8 +16,8 @@ public class StoneMobSpawnStrategy extends BaseMobSpawnStrategy
     private static final String[] STONE_MOB_ATLAS = {
             MobsStaticTextureConstant.STONE_SMALL_MOB_ATLAS,
             MobsStaticTextureConstant.STONE_MEDIUM_MOB_ATLAS,
-            MobsStaticTextureConstant.STONE_BIG_MOB_ATLAS
-//            MobsStaticTextureConstant.STONE_COMPOSITE_MOB_ATLAS
+            MobsStaticTextureConstant.STONE_BIG_MOB_ATLAS,
+            MobsStaticTextureConstant.STONE_CRISTAL_MOB_ATLAS
     };
 
     public StoneMobSpawnStrategy(World world, int maxScore, float minMobSize, float maxMobSize, float destinationX, Vector2 startSpawnPos, boolean enableDynamicMob)
@@ -28,10 +28,11 @@ public class StoneMobSpawnStrategy extends BaseMobSpawnStrategy
     @Override
     protected BaseMobActor doSpawn()
     {
-        int stoneTypeIndex = random.nextInt(MobPhysicConstant.STONE_MOB_NAMES.length - 1);
+        int stoneTypeIndex = MathUtils.random(MobPhysicConstant.STONE_MOB_NAMES.length - 1);
 
         String bodyName = MobPhysicConstant.STONE_MOB_NAMES[stoneTypeIndex];
-        String spriteName = MobsStaticTextureConstant.STONE_MOB_NAMES[random.nextInt(MobsStaticTextureConstant.STONE_MOB_NAMES.length)];
+        String stoneSpriteName = MobsStaticTextureConstant.STONE_MOB_NAMES[
+                MathUtils.random(MobsStaticTextureConstant.STONE_MOB_NAMES.length - 1)];
 
         return getStaticMob(
                 Box2dObjectBuilder.createFixture(
@@ -39,6 +40,6 @@ public class StoneMobSpawnStrategy extends BaseMobSpawnStrategy
                         Box2dObjectBuilder.getFixtureDef(10.f, 10.f, 0.f),
                         MathUtils.random(1.5f, 3.5f),
                         MobPhysicConstant.LOADER_STONE_MOB_NAMES, bodyName),
-                STONE_MOB_ATLAS[stoneTypeIndex], spriteName);
+                STONE_MOB_ATLAS[stoneTypeIndex], stoneSpriteName);
     }
 }

@@ -1,13 +1,13 @@
 
-stone_composite.png
-size: 512,727
+stone_cristal.png
+size: 309,458
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
 repeat: none
 1
   rotate: false
   xy: 0, 0
-  size: 512, 727
-  orig: 512, 727
+  size: 309, 458
+  orig: 309, 458
   offset: 0, 0
   index: -1

@@ -64,12 +64,12 @@ public class GameBackgroundScene extends BaseScene
     @Override
     protected boolean isNeedUpdate()
     {
-        return GameManager.getInstance().isRunning();
+        return !GameManager.getInstance().isPause();
     }
 
     private MoonActor getMoonActor()
     {
-        float moonSize = GameConstant.WORLD_UNIT * 3.f;
+        float moonSize = GameConstant.WORLD_UNIT * 4.f;
         float borderShift = 0.5f;
 
         float positionX = GameManager.getInstance().isRightDirection()
@@ -77,7 +77,7 @@ public class GameBackgroundScene extends BaseScene
                 : borderShift;
 
         Sprite moonSprite = SpriteUtils.create(BackgroundTextureConstant.MOON_BACKGROUND_ATLAS, BackgroundTextureConstant.MOON
-                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize - borderShift));
+                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize));
 
         return new MoonActor(moonSprite);
     }

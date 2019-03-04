@@ -19,8 +19,8 @@ public final class SpriteUtils
     private static Array<AnimatedBox2DSprite> createHeroAnimation()
     {
         Array<AnimatedBox2DSprite> heroAnimation = new Array<AnimatedBox2DSprite>();
-        heroAnimation.add(createAnimationBox2d(HeroTextureConstant.JELE_GREEN_ATLAS, 0.1f, Animation.PlayMode.LOOP));
-        heroAnimation.add(createAnimationBox2d(HeroTextureConstant.JELE_YELLOW_ATLAS, 0.1f, Animation.PlayMode.LOOP));
+        heroAnimation.add(createAnimationBox2d(HeroTextureConstant.HERO_RUN_ATLAS, 0.1f, Animation.PlayMode.LOOP));
+        heroAnimation.add(createAnimationBox2d(HeroTextureConstant.HERO_JUMP_ATLAS, 0.1f, Animation.PlayMode.LOOP));
 
         return heroAnimation;
     }

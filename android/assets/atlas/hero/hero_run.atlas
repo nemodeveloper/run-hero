@@ -1,34 +1,34 @@
 
-jele2.png
-size: 2048,512
+hero_run.png
+size: 1866,498
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
 repeat: xy
 1
   rotate: false
   xy: 0, 0
-  size: 512, 512
-  orig: 512, 512
+  size: 465, 498
+  orig: 465, 498
   offset: 0, 0
   index: -1
 2
   rotate: false
-  xy: 512, 0
-  size: 512, 512
-  orig: 512, 512
+  xy: 467, 0
+  size: 465, 492
+  orig: 465, 492
   offset: 0, 0
   index: -1
 3
   rotate: false
-  xy: 1024, 0
-  size: 512, 512
-  orig: 512, 512
+  xy: 934, 0
+  size: 465, 483
+  orig: 465, 483
   offset: 0, 0
   index: -1
 4
   rotate: false
-  xy: 1536, 0
-  size: 512, 512
-  orig: 512, 512
+  xy: 1401, 0
+  size: 464, 456
+  orig: 464, 456
   offset: 0, 0
   index: -1

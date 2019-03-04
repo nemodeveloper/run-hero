@@ -16,27 +16,27 @@ import ru.nemodev.runhero.manager.GameManager;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 
 
-public class ScoreItemActor<T extends Box2DSprite> extends Box2dActor
+public class ScoreItemActor extends Box2dActor
 {
-    private final T itemSprite;
-    private final Fixture scoreItemFixture;
-    private final Body itemBody;
-    private boolean needRemove;
+    private final Box2DSprite scoreSprite;
+    protected final Fixture scoreFixture;
+    protected final Body scoreBody;
+    protected boolean needRemove;
 
-    public ScoreItemActor(World world, T itemSprite, Fixture scoreItemFixture)
+    public ScoreItemActor(World world, Box2DSprite scoreSprite, Fixture scoreFixture)
     {
         super(world);
-        this.itemSprite = itemSprite;
-        this.scoreItemFixture = scoreItemFixture;
-        this.scoreItemFixture.setUserData(this);
-        this.itemBody = scoreItemFixture.getBody();
+        this.scoreSprite = scoreSprite;
+        this.scoreFixture = scoreFixture;
+        this.scoreFixture.setUserData(this);
+        this.scoreBody = scoreFixture.getBody();
         this.needRemove = false;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha)
     {
-        drawSprite(batch, itemSprite, itemBody);
+        drawSprite(batch, scoreSprite, scoreBody);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class ScoreItemActor<T extends Box2DSprite> extends Box2dActor
         Vector3 cameraPos = getStage().getCamera().position;
 
         boolean bodyVisible = GameManager.getInstance().isRightDirection()
-                ? itemBody.getPosition().x > cameraPos.x - METERS_X
-                : itemBody.getPosition().x < cameraPos.x + METERS_X;
+                ? scoreBody.getPosition().x > cameraPos.x - METERS_X
+                : scoreBody.getPosition().x < cameraPos.x + METERS_X;
 
         if (!bodyVisible || needRemove)
         {
@@ -54,14 +54,14 @@ public class ScoreItemActor<T extends Box2DSprite> extends Box2dActor
         }
         else
         {
-            itemSprite.rotate(1.f);
+            scoreSprite.rotate(1.f);
         }
     }
 
     @Override
     public boolean remove()
     {
-        world.destroyBody(itemBody);
+        world.destroyBody(scoreBody);
         return super.remove();
     }
 
@@ -71,7 +71,7 @@ public class ScoreItemActor<T extends Box2DSprite> extends Box2dActor
         if (contactable.getContactType() == ContactType.PLAYER && GameManager.getInstance().isRunning())
         {
             needRemove = true;
-            scoreItemFixture.setUserData(null);
+            scoreFixture.setUserData(null);
         }
     }
 

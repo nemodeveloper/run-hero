@@ -49,7 +49,7 @@ public final class SimplePool
         {
             return new GrassActor(
                     SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS_BACKGROUND
-                            , GameConstant.METERS_X, 2.f, new Vector2(0.f, 0.f)));
+                            , GameConstant.METERS_X, 3.f, new Vector2(0.f, 0.f)));
         }
     };
 

@@ -4,28 +4,28 @@ size: 3998,1134
 format: RGBA8888
 filter: MipMapLinearLinear,MipMapLinearLinear
 repeat: none
-tree_1
+1
   rotate: false
   xy: 0, 0
   size: 860, 1011
   orig: 860, 1011
   offset: 0, 0
   index: -1
-tree_2
+2
   rotate: false
   xy: 1000, 0
   size: 704, 718
   orig: 704, 718
   offset: 0, 0
   index: -1
-tree_3
+3
   rotate: false
   xy: 2000, 0
   size: 741, 1134
   orig: 741, 1134
   offset: 0, 0
   index: -1
-tree_4
+4
   rotate: false
   xy: 3000, 0
   size: 998, 1008

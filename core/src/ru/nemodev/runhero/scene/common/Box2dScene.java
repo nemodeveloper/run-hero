@@ -53,9 +53,9 @@ public abstract class Box2dScene extends BaseScene
             {
                 world.step(TIME_STEP, VELOCITY_ITERATION, POSITION_ITERATION);
                 accumulator -= TIME_STEP;
-            }
 
-            act(delta);
+                act(TIME_STEP);
+            }
         }
     }
 

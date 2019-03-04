@@ -9,8 +9,8 @@ import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
 public abstract class BaseScoreItemSpawnStrategy implements ScoreItemSpawnStrategy
 {
-    protected final World world;
     private final int maxScoreItems;
+    protected final World world;
 
     protected BaseScoreItemSpawnStrategy(World world, int maxScoreItems)
     {

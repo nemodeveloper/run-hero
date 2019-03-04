@@ -8,8 +8,6 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.FloatArray;
 
-import java.util.Random;
-
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.entity.game.Box2dBodyType;
 import ru.nemodev.runhero.entity.game.mob.BaseMobActor;
@@ -29,7 +27,6 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
     protected Vector2 spawnPos;
     protected final boolean enableDynamicMob;
 
-    protected final Random random;
     protected final FloatArray mobSizes;
 
     private BaseMobActor lastMob;
@@ -50,8 +47,6 @@ public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy
         this.destinationX = destinationX;
         this.spawnPos = new Vector2(startSpawnPos);
         this.enableDynamicMob = enableDynamicMob;
-
-        this.random = new Random();
     }
 
     public Vector2 getSpawnPos()

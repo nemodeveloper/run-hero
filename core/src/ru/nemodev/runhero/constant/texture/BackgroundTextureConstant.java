@@ -19,10 +19,10 @@ public final class BackgroundTextureConstant
     public static final String STARS = "stars";
 
     public static final String TREE_BACKGROUND_ATLAS = BASE_BACKGROUND_PATH + "tree_background.atlas";
-    public static final String TREE_1 = "tree_1";
-    public static final String TREE_2 = "tree_2";
-    public static final String TREE_3 = "tree_3";
-    public static final String TREE_4 = "tree_4";
+    public static final String TREE_1 = "1";
+    public static final String TREE_2 = "2";
+    public static final String TREE_3 = "3";
+    public static final String TREE_4 = "4";
 
     public static final String MOON_BACKGROUND_ATLAS = BASE_BACKGROUND_PATH + "moon_background.atlas";
     public static final String MOON = "moon";
