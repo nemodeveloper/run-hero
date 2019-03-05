@@ -3,7 +3,7 @@ android {
         def_config {
             keyAlias 'runhero'
             keyPassword 'dsytujnjds1'
-            storeFile file('C:/Users/Nemodev/Desktop/nemodev-runhero.jks')
+            storeFile file('D:/work/android-keystore/nemodev-runhero.jks')
             storePassword 'dsytujnjds1'
         }
     }
@@ -28,8 +28,8 @@ android {
         applicationId "ru.nemodev.runhero"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.1.1"
         multiDexEnabled true
         signingConfig signingConfigs.def_config
     }

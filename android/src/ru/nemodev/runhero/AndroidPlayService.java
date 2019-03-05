@@ -3,12 +3,16 @@ package ru.nemodev.runhero;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
 
 import ru.nemodev.runhero.service.PlayService;
+import ru.nemodev.runhero.util.LogUtils;
 
 public class AndroidPlayService implements PlayService
 {
+    private static final String LOG_TAG = AndroidPlayService.class.getName();
+
     private final static int requestCode = 1;
 
     private final Activity activity;
@@ -61,7 +65,7 @@ public class AndroidPlayService implements PlayService
         }
         catch (Exception e)
         {
-
+            LogUtils.error(LOG_TAG, "Ошибка подключения к Google play services!", e);
         }
     }
 
@@ -81,7 +85,7 @@ public class AndroidPlayService implements PlayService
         }
         catch (Exception e)
         {
-
+            LogUtils.error(LOG_TAG, "Ошибка отключения от Google play services!", e);
         }
     }
 
@@ -100,7 +104,11 @@ public class AndroidPlayService implements PlayService
     @Override
     public void submitScore(int highScore)
     {
-
+        if (isSignedIn())
+        {
+            Games.Leaderboards.submitScore(gameHelper.getApiClient(),
+                    activity.getString(R.string.leaderboard_highest), highScore);
+        }
     }
 
     @Override
@@ -112,7 +120,14 @@ public class AndroidPlayService implements PlayService
     @Override
     public void showScore()
     {
-
+        if (isSignedIn())
+        {
+            activity.startActivityForResult(
+                    Games.Leaderboards.getLeaderboardIntent(
+                            gameHelper.getApiClient(),
+                            activity.getString(R.string.leaderboard_highest)),
+                    requestCode);
+        }
     }
 
     @Override

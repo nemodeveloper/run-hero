@@ -11,4 +11,8 @@ public final class LogUtils
         Gdx.app.log(tag, message);
     }
 
+    public static void error(String tag, String message, Throwable exception)
+    {
+        Gdx.app.error(tag, message, exception);
+    }
 }

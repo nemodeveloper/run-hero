@@ -39,6 +39,7 @@ public final class ConfigManager
         {
             gamePreferences.putInteger(BEST_SCORE_KEY, score);
             gamePreferences.flush();
+            PlayServiceManager.getInstance().getPlayService().submitScore(score);
         }
     }
 

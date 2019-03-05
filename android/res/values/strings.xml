@@ -7,9 +7,6 @@
     <string name="ads_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="ads_banner_id">ca-app-pub-3940256099942544/6300978111</string>
 
-    <!-- play_service -->
-    <string name="app_id">162560968394</string>
-
     <!-- fabric.io key -->
     <string name="fabric_io_key">b084a5fe6f1774820fee9a78dd1fdef5101fff2d</string>
 
