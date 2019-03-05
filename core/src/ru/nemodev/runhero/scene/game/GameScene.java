@@ -4,6 +4,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -87,11 +88,7 @@ public class GameScene extends Box2dScene
 
         Camera camera = getCamera();
         float newPosX = heroActor.getHeroPosition().x + CAMERA_SHIFT * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
-
-        if (Math.abs(newPosX) > Math.abs(camera.position.x))
-        {
-            camera.position.x = newPosX;//MathUtils.lerp(camera.position.x, newPosX, 1.f - delta);
-        }
+        camera.position.x = MathUtils.lerp(camera.position.x, newPosX, 1.f - delta);
     }
 
     private void initBorder()
@@ -178,8 +175,8 @@ public class GameScene extends Box2dScene
         Body heroBody = heroFixture.getBody();
         heroBody.setFixedRotation(true);
         heroBody.setGravityScale(2.f);
-        heroBody.setLinearVelocity(START_VELOCITY);
         heroBody.setLinearDamping(0.f);
+        heroBody.setLinearVelocity(START_VELOCITY);
 
         heroActor = new HeroActor(world, heroFixture,
                 SpriteUtils.getHeroAnimations(), START_VELOCITY,

@@ -25,7 +25,7 @@ import ru.nemodev.runhero.util.Box2dObjectBuilder;
 /**
  * created by NemoDev on 06.05.2018 - 20:14
  */
-public class HeroActor extends Box2dActor implements Contactable, MobEventListener
+public class HeroActor extends Box2dActor implements MobEventListener
 {
     private final Fixture heroFixture;
     private final Array<AnimatedBox2DSprite> heroAnimations;
