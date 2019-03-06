@@ -22,7 +22,7 @@ public class BackgroundActor extends BaseStaticActor implements Pool.Poolable
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         float posX = 0;
 

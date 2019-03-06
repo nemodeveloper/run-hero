@@ -21,7 +21,7 @@ public class MoonActor extends BaseActor
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         moonSprite.draw(batch);
     }

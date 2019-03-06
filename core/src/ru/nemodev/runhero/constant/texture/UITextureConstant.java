@@ -12,10 +12,14 @@ public final class UITextureConstant
 
     public static final String BUTTONS_UI_ATLAS = BASE_UI_PATH + "buttons.atlas";
 
-    public static final String MENU_START_BUTTON = "menu_play_button";
-    public static final String MENU_EXIT_BUTTON = "menu_exit_button";
+    public static final String MENU_BUTTON_START = "button_play";
+    public static final String MENU_BUTTON_EXIT = "button_close";
+    public static final String MENU_BUTTON_SOUND_ON = "button_sound_on";
+    public static final String MENU_BUTTON_SOUND_OFF = "button_sound_off";
+    public static final String MENU_BUTTON_RATING = "button_star";
 
-    public static final String GAME_PAUSE_BUTTON = "game_pause_button";
+    public static final String GAME_PAUSE_BUTTON = "button_pause";
+    public static final String GAME_PAUSE_POP_UP_BACKGROUND = "pop_up_frame";
 
 
     public static final Set<String> ATLAS_FOR_LOAD = new HashSet<String>(Arrays.asList(

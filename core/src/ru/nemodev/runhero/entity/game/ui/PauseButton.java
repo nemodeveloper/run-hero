@@ -11,13 +11,11 @@ import ru.nemodev.runhero.manager.GameStatus;
 
 public class PauseButton extends ImageButton
 {
-    public PauseButton(Drawable pauseButton, float posX, float posY, float size)
+    public PauseButton(Drawable pauseButton, final GamePauseListener gamePauseListener, float posX, float posY, float size)
     {
         super(pauseButton);
         setBounds(posX, posY, size, size);
         getImage().setOrigin(Align.center);
-
-        setDebug(true);
 
         addListener(new InputListener()
         {
@@ -27,10 +25,12 @@ public class PauseButton extends ImageButton
                 if (GameManager.getInstance().isRunning())
                 {
                     GameManager.getInstance().setGameStatus(GameStatus.PAUSE);
+                    gamePauseListener.pauseStart();
                 }
                 else if (GameManager.getInstance().isPause())
                 {
                     GameManager.getInstance().setGameStatus(GameStatus.RUNNING);
+                    gamePauseListener.pauseEnd();
                 }
 
                 return true;

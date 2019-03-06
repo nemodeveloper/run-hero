@@ -136,7 +136,7 @@ public class HeroActor extends Box2dActor implements MobEventListener
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         drawSprite(batch, getCurrentAnimation(), heroFixture);
     }

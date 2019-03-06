@@ -56,8 +56,9 @@ public final class SpriteUtils
 
     public static void setBounds(Sprite sprite, float width, float height, Vector2 position)
     {
-        sprite.setBounds(position.x, position.y, width, height);
+        sprite.setSize(width, height);
         sprite.setOriginCenter();
+        sprite.setOriginBasedPosition(position.x, position.y);
     }
 
     public static Array<Sprite> createList(String atlasName, float width, float height, Vector2 position)

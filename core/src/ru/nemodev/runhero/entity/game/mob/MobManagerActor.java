@@ -33,10 +33,10 @@ public class MobManagerActor extends Box2dActor implements ScoreChangeListener
     @Override
     public void doAct(float delta)
     {
-        BaseMobActor MobActor = mobFactory.getMob(getStage().getCamera().position);
-        if (MobActor != null)
+        BaseMobActor mobActor = mobFactory.getMob(getStage().getCamera().position);
+        if (mobActor != null)
         {
-            addActor(MobActor);
+            addActor(mobActor);
         }
 
         super.doAct(delta);

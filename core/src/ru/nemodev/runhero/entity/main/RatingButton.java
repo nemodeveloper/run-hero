@@ -7,13 +7,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 
-import ru.nemodev.runhero.manager.GameManager;
+import ru.nemodev.runhero.manager.system.PlayServiceManager;
 
-public class ExitGameButton extends ImageButton
+public class RatingButton extends ImageButton
 {
-    public ExitGameButton(Drawable pauseButton, float posX, float posY, float sizeX, float sizeY)
+    public RatingButton(Drawable raitingButton, float posX, float posY, float sizeX, float sizeY)
     {
-        super(pauseButton);
+        super(raitingButton);
         setBounds(posX - (sizeX / 2.f), posY, sizeX, sizeY);
         getImage().setScaling(Scaling.stretch);
         getImage().setOrigin(Align.center);
@@ -23,7 +23,12 @@ public class ExitGameButton extends ImageButton
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
             {
-                GameManager.getInstance().exit();
+                if (!PlayServiceManager.getInstance().getPlayService().isSignedIn())
+                {
+                    PlayServiceManager.getInstance().getPlayService().signIn();
+                }
+
+                PlayServiceManager.getInstance().getPlayService().showScore();
 
                 return true;
             }

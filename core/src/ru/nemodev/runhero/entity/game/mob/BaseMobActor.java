@@ -50,7 +50,7 @@ public abstract class BaseMobActor<T extends Box2DSprite> extends Box2dActor imp
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
 //        shaderOutline.begin();
 //        shaderOutline.setUniformf("u_viewportInverse", new Vector2(1f / drawable.getWidth(), 1f / drawable.getHeight()));

@@ -19,7 +19,7 @@ public class SplashActor extends BaseStaticActor
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         background.draw(batch);
     }

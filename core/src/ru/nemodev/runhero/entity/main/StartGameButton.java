@@ -18,11 +18,9 @@ public class StartGameButton extends ImageButton
     {
         super(pauseButton);
         // TODO разобраться почему кнопка рисуется не по центру
-        setBounds(posX - sizeX / 2.f, posY, sizeX, sizeY);
+        setBounds(posX - (sizeX / 2.f), posY, sizeX, sizeY);
         getImage().setScaling(Scaling.stretch);
         getImage().setOrigin(Align.center);
-
-        setDebug(true);
 
         addListener(new InputListener()
         {

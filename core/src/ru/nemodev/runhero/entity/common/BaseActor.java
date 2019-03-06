@@ -30,6 +30,24 @@ public abstract class BaseActor extends Group
 
     }
 
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+        if (isVisible())
+        {
+            doDraw(batch, parentAlpha);
+            if (hasChildren())
+            {
+                super.draw(batch, parentAlpha);
+            }
+        }
+    }
+
+    protected void doDraw(Batch batch, float parentAlpha)
+    {
+
+    }
+
     protected void drawSprite(Batch batch, Sprite sprite, float posX, float posY)
     {
         sprite.setPosition(posX, posY);

@@ -15,6 +15,7 @@ import ru.nemodev.runhero.util.SpriteUtils;
 
 public class GrassActor extends BaseActor implements Pool.Poolable
 {
+    // TODO нужно хранить только изменения по X и рисовать один и тот же спрайт
     private final Array<Sprite> grassSprites;
     private final Sprite grassSprite;
 
@@ -29,11 +30,11 @@ public class GrassActor extends BaseActor implements Pool.Poolable
     private void init()
     {
         grassSprites.clear();
-        SpriteUtils.setBounds(this.grassSprite, GameConstant.METERS_X, grassSprite.getHeight(), new Vector2(0, 0));
+        SpriteUtils.setBounds(this.grassSprite, GameConstant.METERS_X, grassSprite.getHeight(),
+                new Vector2(grassSprite.getWidth() / 2.f, grassSprite.getHeight() / 2.f));
 
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         Sprite firstGrass = new Sprite(grassSprite);
-        firstGrass.setX(0.f);
 
         grassSprites.add(firstGrass);
         for (int i = 1; i < 3; ++i)
@@ -68,8 +69,8 @@ public class GrassActor extends BaseActor implements Pool.Poolable
 
             grassSprite.setX(grassSprite.getX() + shift);
 
-            if (GameManager.getInstance().isRightDirection() && grassSprite.getX() + grassSprite.getWidth() < 0.f
-                    || !GameManager.getInstance().isRightDirection() && grassSprite.getX() - grassSprite.getWidth() > GameConstant.METERS_X)
+            if (GameManager.getInstance().isRightDirection() && grassSprite.getX() + grassSprite.getWidth() <= 0.f
+                    || !GameManager.getInstance().isRightDirection() && grassSprite.getX() - grassSprite.getWidth() >= GameConstant.METERS_X)
             {
                 updateSprite = grassSprite;
                 grassIterator.remove();

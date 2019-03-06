@@ -74,7 +74,7 @@ public class TreeManagerActor extends BaseActor implements Pool.Poolable
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         for (Sprite treeSprite : currentTrees)
         {

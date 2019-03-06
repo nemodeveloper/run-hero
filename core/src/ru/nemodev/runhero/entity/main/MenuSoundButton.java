@@ -17,11 +17,9 @@ public class MenuSoundButton extends ImageButton
                            float posX, float posY, float sizeX, float sizeY)
     {
         super(ConfigManager.getInstance().isEnableSound() ? enableSoundBut : disableSoundBut);
-        setBounds(posX - sizeX / 2.f, posY, sizeX, sizeY);
+        setBounds(posX - (sizeX / 2.f), posY, sizeX, sizeY);
         getImage().setScaling(Scaling.stretch);
         getImage().setOrigin(Align.center);
-
-        setDebug(true);
 
         addListener(new InputListener()
         {

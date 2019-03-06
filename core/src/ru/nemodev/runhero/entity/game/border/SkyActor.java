@@ -107,7 +107,7 @@ public class SkyActor extends Box2dActor
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         if (!isVisibleForPlayer())
             return;

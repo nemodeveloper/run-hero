@@ -34,7 +34,7 @@ public class ScoreItemActor extends Box2dActor
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         drawSprite(batch, scoreSprite, scoreBody);
     }

@@ -40,8 +40,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "0.1.2"
     }
 
     // Set defaults so that BaseGameUtils can be used outside of BasicSamples

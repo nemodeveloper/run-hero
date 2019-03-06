@@ -110,7 +110,7 @@ public class GroundActor extends Box2dActor implements MobEventListener
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         if (!isVisibleForPlayer())
             return;

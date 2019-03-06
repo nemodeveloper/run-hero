@@ -23,7 +23,7 @@ public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.
     }
 
     @Override
-    public void draw(Batch batch, float parentAlpha)
+    protected void doDraw(Batch batch, float parentAlpha)
     {
         float posX = ScreenUtils.getWidth() / 2.f;
         float posY = ScreenUtils.getHeight() / 2.f + ScreenUtils.getHeightStep(10) * 4.f;
