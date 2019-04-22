@@ -7,8 +7,8 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import ru.nemodev.runhero.constant.physic.MobPhysicConstant;
 import ru.nemodev.runhero.constant.texture.MobsStaticTextureConstant;
+import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.entity.game.mob.BaseMobActor;
-import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
 
 public class StoneMobSpawnStrategy extends BaseMobSpawnStrategy

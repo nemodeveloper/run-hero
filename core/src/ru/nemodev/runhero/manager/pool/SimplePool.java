@@ -7,13 +7,13 @@ import com.badlogic.gdx.utils.Pool;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
+import ru.nemodev.runhero.core.manager.resource.FontManager;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.ScoreViewActor;
 import ru.nemodev.runhero.entity.game.background.BackgroundActor;
 import ru.nemodev.runhero.entity.game.background.GrassActor;
 import ru.nemodev.runhero.entity.game.background.StarManagerActor;
 import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
-import ru.nemodev.runhero.manager.resource.FontManager;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 
 public final class SimplePool
@@ -26,7 +26,7 @@ public final class SimplePool
             return new BackgroundActor(
                     SpriteUtils.create(BackgroundTextureConstant.BACKGROUND_ATLAS, BackgroundTextureConstant.BACKGROUND,
                             1.f, GameConstant.METERS_Y,
-                            new Vector2(GameConstant.METERS_X / 2.f, GameConstant.METERS_Y / 2.f)));
+                            GameConstant.METERS_X / 2.f, GameConstant.METERS_Y / 2.f));
         }
     };
 
@@ -38,7 +38,7 @@ public final class SimplePool
             return new StarManagerActor(
                     SpriteUtils.create(BackgroundTextureConstant.STARS_BACKGROUND_ATLAS, BackgroundTextureConstant.STARS,
                             GameConstant.METERS_X, 6.f,
-                            new Vector2(GameConstant.METERS_X / 2.f, GameConstant.METERS_Y / 2.f)));
+                            GameConstant.METERS_X / 2.f, GameConstant.METERS_Y / 2.f));
         }
     };
 
@@ -48,9 +48,9 @@ public final class SimplePool
         protected GrassActor newObject()
         {
             return new GrassActor(
-                    SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS_BACKGROUND
-                            , GameConstant.METERS_X, 3.f,
-                            new Vector2(0.f, 0.f)));
+                    SpriteUtils.create(BackgroundTextureConstant.GRASS_BACKGROUND_ATLAS, BackgroundTextureConstant.GRASS_BACKGROUND,
+                            GameConstant.METERS_X, 3.f,
+                            0.f, 0.f));
         }
     };
 
@@ -79,7 +79,7 @@ public final class SimplePool
 
     private static Sprite buildTreeSprite(String atlasName, String textureName, Vector2 size, Vector2 position)
     {
-        return SpriteUtils.create(atlasName, textureName, size.x, size.y, position);
+        return SpriteUtils.create(atlasName, textureName, size.x, size.y, position.x, position.y);
     }
 
 

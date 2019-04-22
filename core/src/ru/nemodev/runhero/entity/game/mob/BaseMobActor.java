@@ -5,15 +5,14 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import net.dermetfan.gdx.graphics.g2d.Box2DSprite;
 
-import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.manager.GameStatus;
+import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.GameStatus;
 
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 
@@ -72,7 +71,7 @@ public abstract class BaseMobActor<T extends Box2DSprite> extends Box2dActor imp
     @Override
     protected void doAct(float delta)
     {
-        Vector3 cameraPos = getStage().getCamera().position;
+        Vector3 cameraPos = getScene().getCamera().position;
 
         boolean bodyVisible = GameManager.getInstance().isRightDirection()
                 ? body.getPosition().x < cameraPos.x - METERS_X
@@ -96,12 +95,6 @@ public abstract class BaseMobActor<T extends Box2DSprite> extends Box2dActor imp
     protected boolean isNeedUpdate()
     {
         return isNeedUpdate;
-    }
-
-    @Override
-    public Actor hit(float x, float y, boolean touchable)
-    {
-        return null;
     }
 
     @Override

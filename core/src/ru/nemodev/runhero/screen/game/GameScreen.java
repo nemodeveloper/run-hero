@@ -8,14 +8,14 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import ru.nemodev.runhero.core.manager.GameStatus;
+import ru.nemodev.runhero.core.scene.Scene;
+import ru.nemodev.runhero.core.screen.BaseScreen;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.GameStatus;
-import ru.nemodev.runhero.scene.common.Scene;
 import ru.nemodev.runhero.scene.game.GameBackgroundScene;
 import ru.nemodev.runhero.scene.game.GameScene;
 import ru.nemodev.runhero.scene.game.GameUIScene;
 import ru.nemodev.runhero.scene.game.ScoreScene;
-import ru.nemodev.runhero.screen.common.BaseScreen;
 
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;

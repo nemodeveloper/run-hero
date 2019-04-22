@@ -10,10 +10,10 @@ import net.dermetfan.gdx.graphics.g2d.Box2DSprite;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.ScoreItemTextureConstant;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.score_item.DynamicScoreItemActor;
 import ru.nemodev.runhero.entity.game.score_item.ScoreItemActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 public class SimpleScoreItemSpawnStrategy extends BaseScoreItemSpawnStrategy
 {

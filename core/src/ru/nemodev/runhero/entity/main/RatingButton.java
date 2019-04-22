@@ -1,37 +1,27 @@
 package ru.nemodev.runhero.entity.main;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
-import ru.nemodev.runhero.manager.system.PlayServiceManager;
+import ru.nemodev.runhero.core.manager.system.AppServiceManager;
+import ru.nemodev.runhero.core.model.ButtonActor;
 
-public class RatingButton extends ImageButton
+public class RatingButton extends ButtonActor
 {
-    public RatingButton(Drawable raitingButton, float posX, float posY, float sizeX, float sizeY)
+    public RatingButton(Sprite neutralState, Sprite pressState)
     {
-        super(raitingButton);
-        setBounds(posX - (sizeX / 2.f), posY, sizeX, sizeY);
-        getImage().setScaling(Scaling.stretch);
-        getImage().setOrigin(Align.center);
+        super(neutralState, pressState);
+    }
 
-        addListener(new InputListener()
+    @Override
+    public boolean touchDown(float x, float y)
+    {
+        if (!AppServiceManager.getInstance().getPlayService().isSignedIn())
         {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-                if (!PlayServiceManager.getInstance().getPlayService().isSignedIn())
-                {
-                    PlayServiceManager.getInstance().getPlayService().signIn();
-                }
+            AppServiceManager.getInstance().getPlayService().signIn();
+        }
 
-                PlayServiceManager.getInstance().getPlayService().showScore();
+        AppServiceManager.getInstance().getPlayService().showScore();
 
-                return true;
-            }
-        });
+        return true;
     }
 }

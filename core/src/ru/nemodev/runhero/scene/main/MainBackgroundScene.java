@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
 import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
+import ru.nemodev.runhero.core.scene.BaseScene;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.background.BackgroundActor;
 import ru.nemodev.runhero.entity.game.background.GrassActor;
 import ru.nemodev.runhero.entity.game.background.MoonActor;
@@ -17,8 +19,6 @@ import ru.nemodev.runhero.entity.game.background.StarManagerActor;
 import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
 import ru.nemodev.runhero.entity.game.border.GroundActor;
 import ru.nemodev.runhero.manager.pool.PoolManager;
-import ru.nemodev.runhero.scene.common.BaseScene;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 
 /**
@@ -45,19 +45,19 @@ public class MainBackgroundScene extends BaseScene
     public void init()
     {
         backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
-        addActor(backgroundActor);
+        addGameObject(backgroundActor);
 
         starManagerActor = PoolManager.getInstance().get(StarManagerActor.class);
-        addActor(starManagerActor);
+        addGameObject(starManagerActor);
 
         moonActor = getMoonActor();
-        addActor(moonActor);
+        addGameObject(moonActor);
 
         treeActor = PoolManager.getInstance().get(TreeManagerActor.class);
-        addActor(treeActor);
+        addGameObject(treeActor);
 
         grassActor = PoolManager.getInstance().get(GrassActor.class);
-        addActor(grassActor);
+        addGameObject(grassActor);
 
         mockWorld = new World(new Vector2(0.f, -9.81f), false);
         initWordObjects();
@@ -84,7 +84,7 @@ public class MainBackgroundScene extends BaseScene
         float positionX = GameConstant.METERS_X - moonSize / 2.f - borderShift;
 
         Sprite moonSprite = SpriteUtils.create(BackgroundTextureConstant.MOON_BACKGROUND_ATLAS, BackgroundTextureConstant.MOON
-                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize / 2.f));
+                , moonSize, moonSize, positionX, GameConstant.METERS_Y - moonSize / 2.f);
 
         return new MoonActor(moonSprite);
     }
@@ -96,9 +96,9 @@ public class MainBackgroundScene extends BaseScene
                 2.f, 1.f, new Vector2(0.f, 0.f));
 
         Sprite undoBorderSprite = SpriteUtils.create(BorderTextureConstant.GRASS_ATLAS, BorderTextureConstant.GRASS_GROUND,
-                2.f, 0.35f, new Vector2(0.f, 0.f));
+                2.f, 0.35f);
 
-        addActor(GroundActor.buildGroundActor(mockWorld,
+        addGameObject(GroundActor.buildGroundActor(mockWorld,
                 new Vector2(GameConstant.METERS_X / 2.f, 0.f),
                 new Vector2(GameConstant.METERS_X, 0.001f), borderSprites, undoBorderSprite, 2.f));
     }

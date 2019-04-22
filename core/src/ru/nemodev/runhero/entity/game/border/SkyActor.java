@@ -6,15 +6,14 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 
 import ru.nemodev.runhero.constant.GameConstant;
-import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
+import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.entity.game.ConstantBox2dBodyType;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
 
 /**
@@ -73,7 +72,7 @@ public class SkyActor extends Box2dActor
     public boolean isVisibleForPlayer()
     {
         Vector2 groundPlatformPos = platform.getBody().getPosition();
-        float cameraPosX = getStage().getCamera().position.x;
+        float cameraPosX = getScene().getCamera().position.x;
         return GameManager.getInstance().isRightDirection()
                 ? groundPlatformPos.x + bodySize.x > cameraPosX
                 : groundPlatformPos.x - bodySize.x < cameraPosX;
@@ -116,18 +115,6 @@ public class SkyActor extends Box2dActor
         {
             drawSprite(batch, skySprites.get(i), spritePosX[i], spritePosY);
         }
-    }
-
-    @Override
-    public boolean isTouchable()
-    {
-        return false;
-    }
-
-    @Override
-    public Actor hit(float x, float y, boolean touchable)
-    {
-        return null;
     }
 
 }

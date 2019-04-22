@@ -7,16 +7,16 @@ import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.physic.PhysicLoaderConstant;
 import ru.nemodev.runhero.constant.texture.AtlasLoaderConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
+import ru.nemodev.runhero.core.manager.resource.FontManager;
+import ru.nemodev.runhero.core.manager.resource.PhysicManager;
+import ru.nemodev.runhero.core.manager.resource.ResourceLoader;
+import ru.nemodev.runhero.core.scene.BaseScene;
+import ru.nemodev.runhero.core.screen.BaseLoaderScreen;
+import ru.nemodev.runhero.core.util.ScreenUtils;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.load.SplashActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.resource.FontManager;
-import ru.nemodev.runhero.manager.resource.PhysicManager;
-import ru.nemodev.runhero.manager.resource.ResourceLoader;
-import ru.nemodev.runhero.scene.common.BaseScene;
-import ru.nemodev.runhero.screen.common.BaseLoaderScreen;
 import ru.nemodev.runhero.screen.main.MainScreen;
-import ru.nemodev.runhero.util.ScreenUtils;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 public class SplashScreen extends BaseLoaderScreen
 {
@@ -32,7 +32,7 @@ public class SplashScreen extends BaseLoaderScreen
         splashActor.setSize(ScreenUtils.getWidth(), ScreenUtils.getHeight());
         splashActor.setPosition(0, 0);
 
-        baseScene.addActor(new SplashActor(splashActor));
+        baseScene.addGameObject(new SplashActor(splashActor));
 
         addScene(baseScene);
     }

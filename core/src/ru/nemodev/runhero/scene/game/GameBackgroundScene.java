@@ -2,11 +2,12 @@ package ru.nemodev.runhero.scene.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
+import ru.nemodev.runhero.core.scene.BaseScene;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.background.BackgroundActor;
 import ru.nemodev.runhero.entity.game.background.GrassActor;
 import ru.nemodev.runhero.entity.game.background.MoonActor;
@@ -14,8 +15,6 @@ import ru.nemodev.runhero.entity.game.background.StarManagerActor;
 import ru.nemodev.runhero.entity.game.background.TreeManagerActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.manager.pool.PoolManager;
-import ru.nemodev.runhero.scene.common.BaseScene;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 public class GameBackgroundScene extends BaseScene
 {
@@ -34,20 +33,20 @@ public class GameBackgroundScene extends BaseScene
 
     private void init()
     {
-        this.backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
-        addActor(backgroundActor);
+        backgroundActor = PoolManager.getInstance().get(BackgroundActor.class);
+        addGameObject(backgroundActor);
 
-        this.starManagerActor = PoolManager.getInstance().get(StarManagerActor.class);
-        addActor(starManagerActor);
+        starManagerActor = PoolManager.getInstance().get(StarManagerActor.class);
+        addGameObject(starManagerActor);
 
         moonActor = getMoonActor();
-        addActor(moonActor);
+        addGameObject(moonActor);
 
         treeActor = PoolManager.getInstance().get(TreeManagerActor.class);
-        addActor(treeActor);
+        addGameObject(treeActor);
 
         grassActor = PoolManager.getInstance().get(GrassActor.class);
-        addActor(grassActor);
+        addGameObject(grassActor);
     }
 
     @Override
@@ -77,7 +76,7 @@ public class GameBackgroundScene extends BaseScene
                 : moonSize / 2.f + borderShift;
 
         Sprite moonSprite = SpriteUtils.create(BackgroundTextureConstant.MOON_BACKGROUND_ATLAS, BackgroundTextureConstant.MOON
-                , moonSize, moonSize, new Vector2(positionX, GameConstant.METERS_Y - moonSize / 2.f));
+                , moonSize, moonSize, positionX, GameConstant.METERS_Y - moonSize / 2.f);
 
         return new MoonActor(moonSprite);
     }

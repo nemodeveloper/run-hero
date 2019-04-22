@@ -2,9 +2,8 @@ package ru.nemodev.runhero.entity.game.mob;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.model.Box2dActor;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
 import ru.nemodev.runhero.manager.GameManager;
@@ -33,19 +32,13 @@ public class MobManagerActor extends Box2dActor implements ScoreChangeListener
     @Override
     public void doAct(float delta)
     {
-        BaseMobActor mobActor = mobFactory.getMob(getStage().getCamera().position);
+        BaseMobActor mobActor = mobFactory.getMob(getScene().getCamera().position);
         if (mobActor != null)
         {
-            addActor(mobActor);
+            addGameObject(mobActor);
         }
 
         super.doAct(delta);
-    }
-
-    @Override
-    public Actor hit(float x, float y, boolean touchable)
-    {
-        return null;
     }
 
     @Override

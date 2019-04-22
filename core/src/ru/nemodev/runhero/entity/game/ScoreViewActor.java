@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.Pool;
 
-import ru.nemodev.runhero.entity.common.BaseActor;
+import ru.nemodev.runhero.core.manager.system.ConfigManager;
+import ru.nemodev.runhero.core.model.BaseActor;
+import ru.nemodev.runhero.core.util.ScreenUtils;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.system.ConfigManager;
-import ru.nemodev.runhero.util.ScreenUtils;
 
 public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.Poolable, ScoreChangeListener
 {
@@ -59,6 +59,7 @@ public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.
     public void reset()
     {
         gameScore = 0;
+        setScene(null);
     }
 
     @Override

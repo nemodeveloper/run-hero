@@ -8,8 +8,8 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import net.dermetfan.gdx.graphics.g2d.Box2DSprite;
 
-import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.manager.GameManager;
 
@@ -42,7 +42,7 @@ public class ScoreItemActor extends Box2dActor
     @Override
     protected void doAct(float delta)
     {
-        Vector3 cameraPos = getStage().getCamera().position;
+        Vector3 cameraPos = getScene().getCamera().position;
 
         boolean bodyVisible = GameManager.getInstance().isRightDirection()
                 ? scoreBody.getPosition().x > cameraPos.x - METERS_X
@@ -59,10 +59,10 @@ public class ScoreItemActor extends Box2dActor
     }
 
     @Override
-    public boolean remove()
+    public void remove()
     {
+        super.remove();
         world.destroyBody(scoreBody);
-        return super.remove();
     }
 
     @Override

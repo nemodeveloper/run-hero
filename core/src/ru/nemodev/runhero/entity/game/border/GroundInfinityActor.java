@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
-import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
@@ -43,7 +43,7 @@ public class GroundInfinityActor extends Box2dActor implements MobEventListener
     private void addGroundActor(GroundActor groundActor)
     {
         platforms.add(groundActor);
-        addActor(groundActor);
+        addGameObject(groundActor);
     }
 
     @Override

@@ -2,16 +2,15 @@ package ru.nemodev.runhero.entity.game.background;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 
 import java.util.Iterator;
 
 import ru.nemodev.runhero.constant.GameConstant;
-import ru.nemodev.runhero.entity.common.BaseActor;
+import ru.nemodev.runhero.core.model.BaseActor;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 public class GrassActor extends BaseActor implements Pool.Poolable
 {
@@ -31,7 +30,7 @@ public class GrassActor extends BaseActor implements Pool.Poolable
     {
         grassSprites.clear();
         SpriteUtils.setBounds(this.grassSprite, GameConstant.METERS_X, grassSprite.getHeight(),
-                new Vector2(grassSprite.getWidth() / 2.f, grassSprite.getHeight() / 2.f));
+                grassSprite.getWidth() / 2.f, grassSprite.getHeight() / 2.f);
 
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
         Sprite firstGrass = new Sprite(grassSprite);
@@ -102,5 +101,6 @@ public class GrassActor extends BaseActor implements Pool.Poolable
     public void reset()
     {
         init();
+        setScene(null);
     }
 }

@@ -3,7 +3,7 @@ package ru.nemodev.runhero.entity.load;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-import ru.nemodev.runhero.entity.common.BaseStaticActor;
+import ru.nemodev.runhero.core.model.BaseStaticActor;
 
 
 /**

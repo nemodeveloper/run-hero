@@ -3,21 +3,20 @@ package ru.nemodev.runhero.scene.main;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.texture.UITextureConstant;
-import ru.nemodev.runhero.entity.common.SoundEventListener;
+import ru.nemodev.runhero.core.listener.SoundEventListener;
+import ru.nemodev.runhero.core.manager.resource.SoundManager;
+import ru.nemodev.runhero.core.manager.system.ConfigManager;
+import ru.nemodev.runhero.core.scene.BaseScene;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.main.ExitGameButton;
 import ru.nemodev.runhero.entity.main.MenuSoundButton;
 import ru.nemodev.runhero.entity.main.RatingButton;
 import ru.nemodev.runhero.entity.main.StartGameButton;
-import ru.nemodev.runhero.manager.resource.SoundManager;
-import ru.nemodev.runhero.manager.system.ConfigManager;
-import ru.nemodev.runhero.scene.common.BaseScene;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 public class MainMenuScene extends BaseScene
 {
@@ -52,16 +51,15 @@ public class MainMenuScene extends BaseScene
         float sizeY = 2.f;
 
         float positionX = GameConstant.METERS_X / 2.f;
-        float positionY = GameConstant.METERS_Y / 2.f;
+        float positionY = GameConstant.METERS_Y / 2.f + 1.f;
 
         Sprite startSprite = SpriteUtils.create(
                 UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_START,
-                sizeX, sizeY);
+                sizeX, sizeY, positionX, positionY);
 
-        startGameButton = new StartGameButton(new SpriteDrawable(startSprite),
-                positionX, positionY, sizeX, sizeY);
+        startGameButton = new StartGameButton(startSprite, startSprite);
 
-        addActor(startGameButton);
+        addGameObject(startGameButton);
     }
 
     private void initExitButton()
@@ -70,16 +68,15 @@ public class MainMenuScene extends BaseScene
         float sizeY = 2.f;
 
         float positionX = GameConstant.METERS_X / 2.f;
-        float positionY = GameConstant.METERS_Y / 2.f - 2.5f;
+        float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite exitSprite = SpriteUtils.create(
                 UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_EXIT,
-                sizeX, sizeY);
+                sizeX, sizeY, positionX, positionY);
 
-        exitGameButton = new ExitGameButton(new SpriteDrawable(exitSprite),
-                positionX, positionY, sizeX, sizeY);
+        exitGameButton = new ExitGameButton(exitSprite, exitSprite);
 
-        addActor(exitGameButton);
+        addGameObject(exitGameButton);
     }
 
     private void initMenuMusic()
@@ -93,16 +90,16 @@ public class MainMenuScene extends BaseScene
         float size = 2.f;
 
         float positionX = GameConstant.METERS_X / 2.f - 3.5f;
-        float positionY = GameConstant.METERS_Y / 2.f - 2.5f;
+        float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite soundOnSprite = SpriteUtils.create(
                 UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_ON,
-                size, size);
+                size, size, positionX, positionY);
         Sprite soundOffSprite = SpriteUtils.create(
                 UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_OFF,
-                size, size);
+                size, size, positionX, positionY);
 
-        menuSoundButton = new MenuSoundButton(new SpriteDrawable(soundOnSprite), new SpriteDrawable(soundOffSprite),
+        menuSoundButton = new MenuSoundButton(soundOnSprite, soundOffSprite,
                 new SoundEventListener()
                 {
                     @Override
@@ -116,10 +113,9 @@ public class MainMenuScene extends BaseScene
                     {
                         mainMenuMusic.stop();
                     }
-                },
-                positionX, positionY, size, size);
+                });
 
-        addActor(menuSoundButton);
+        addGameObject(menuSoundButton);
 
     }
 
@@ -128,15 +124,14 @@ public class MainMenuScene extends BaseScene
         float size = 2.f;
 
         float positionX = GameConstant.METERS_X / 2.f + 3.5f;
-        float positionY = GameConstant.METERS_Y / 2.f - 2.5f;
+        float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite ratingSprite = SpriteUtils.create(
                 UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_RATING,
-                size, size);
-        ratingButton = new RatingButton(new SpriteDrawable(ratingSprite),
-                positionX, positionY, size, size);
+                size, size, positionX, positionY);
+        ratingButton = new RatingButton(ratingSprite, ratingSprite);
 
-        addActor(ratingButton);
+        addGameObject(ratingButton);
     }
 
     @Override

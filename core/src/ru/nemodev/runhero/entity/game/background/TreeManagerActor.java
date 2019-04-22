@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Pool;
 import java.util.Iterator;
 
 import ru.nemodev.runhero.constant.GameConstant;
-import ru.nemodev.runhero.entity.common.BaseActor;
+import ru.nemodev.runhero.core.model.BaseActor;
 import ru.nemodev.runhero.manager.GameManager;
 
 public class TreeManagerActor extends BaseActor implements Pool.Poolable
@@ -133,5 +133,6 @@ public class TreeManagerActor extends BaseActor implements Pool.Poolable
     public void reset()
     {
         initTreePositions();
+        setScene(null);
     }
 }

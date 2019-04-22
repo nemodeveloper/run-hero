@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Pool;
 
 import ru.nemodev.runhero.constant.GameConstant;
-import ru.nemodev.runhero.entity.common.BaseStaticActor;
+import ru.nemodev.runhero.core.model.BaseStaticActor;
 
 
 /**
@@ -36,6 +36,6 @@ public class BackgroundActor extends BaseStaticActor implements Pool.Poolable
     @Override
     public void reset()
     {
-
+        setScene(null);
     }
 }

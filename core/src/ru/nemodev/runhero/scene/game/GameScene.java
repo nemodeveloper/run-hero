@@ -16,7 +16,13 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
-import ru.nemodev.runhero.entity.collision.Contactable;
+import ru.nemodev.runhero.core.manager.GameStatus;
+import ru.nemodev.runhero.core.manager.resource.SoundManager;
+import ru.nemodev.runhero.core.manager.system.ConfigManager;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
+import ru.nemodev.runhero.core.scene.Box2dScene;
+import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.ConstantBox2dBodyType;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.border.GroundInfinityActor;
@@ -26,12 +32,6 @@ import ru.nemodev.runhero.entity.game.mob.MobManagerActor;
 import ru.nemodev.runhero.entity.game.player.HeroActor;
 import ru.nemodev.runhero.entity.game.score_item.ScoreItemManagerActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.GameStatus;
-import ru.nemodev.runhero.manager.resource.SoundManager;
-import ru.nemodev.runhero.manager.system.ConfigManager;
-import ru.nemodev.runhero.scene.common.Box2dScene;
-import ru.nemodev.runhero.util.Box2dObjectBuilder;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;
@@ -82,9 +82,9 @@ public class GameScene extends Box2dScene
     }
 
     @Override
-    protected void doUpdate(float delta)
+    protected void update(float delta)
     {
-        super.doUpdate(delta);
+        super.update(delta);
 
         Camera camera = getCamera();
         float newPosX = heroActor.getHeroPosition().x + CAMERA_SHIFT * (GameManager.getInstance().isRightDirection() ? 1.f : -1.f);
@@ -101,7 +101,7 @@ public class GameScene extends Box2dScene
                 2.f, 1.f, new Vector2(0.f, 0.f));
 
         Sprite undoBorderSprite = SpriteUtils.create(BorderTextureConstant.GRASS_ATLAS, BorderTextureConstant.GRASS_GROUND,
-                2.f, 0.35f, new Vector2(0.f, 0.f));
+                2.f, 0.35f);
 
         groundInfinityActor = buildGroundPlatformActor(
                 platformCount,
@@ -126,7 +126,7 @@ public class GameScene extends Box2dScene
                         return ContactType.GROUND;
                     }
                 });
-        addActor(groundInfinityActor);
+        addGameObject(groundInfinityActor);
         GameManager.getInstance().addMobEventListener(groundInfinityActor);
 
         skyInfinityActor = buildSkyPlatformActor(
@@ -159,7 +159,7 @@ public class GameScene extends Box2dScene
                         return ContactType.SKY;
                     }
                 });
-        addActor(skyInfinityActor);
+        addGameObject(skyInfinityActor);
 
     }
 
@@ -181,7 +181,8 @@ public class GameScene extends Box2dScene
         heroActor = new HeroActor(world, heroFixture,
                 SpriteUtils.getHeroAnimations(), START_VELOCITY,
                 HERO_WIDTH, HERO_HEIGHT);
-        addActor(heroActor);
+
+        addGameObject(heroActor);
 
         GameManager.getInstance().addMobEventListener(heroActor);
     }
@@ -189,7 +190,7 @@ public class GameScene extends Box2dScene
     private void initMob()
     {
         mobManagerActor = new MobManagerActor(world);
-        addActor(mobManagerActor);
+        addGameObject(mobManagerActor);
 
         GameManager.getInstance().addScoreChangeListener(mobManagerActor);
     }
@@ -197,7 +198,7 @@ public class GameScene extends Box2dScene
     private void initScoreItem()
     {
         scoreItemManagerActor = new ScoreItemManagerActor(world);
-        addActor(scoreItemManagerActor);
+        addGameObject(scoreItemManagerActor);
 
         GameManager.getInstance().addScoreChangeListener(scoreItemManagerActor);
     }

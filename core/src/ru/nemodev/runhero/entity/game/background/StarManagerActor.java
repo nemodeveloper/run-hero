@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Pool;
 
-import ru.nemodev.runhero.entity.common.BaseActor;
+import ru.nemodev.runhero.core.model.BaseActor;
 import ru.nemodev.runhero.manager.GameManager;
 
 public class StarManagerActor extends BaseActor implements Pool.Poolable
@@ -31,6 +31,6 @@ public class StarManagerActor extends BaseActor implements Pool.Poolable
     @Override
     public void reset()
     {
-
+        setScene(null);
     }
 }

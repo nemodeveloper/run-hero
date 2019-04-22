@@ -3,7 +3,7 @@ package ru.nemodev.runhero.entity.game.ui;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-import ru.nemodev.runhero.entity.common.BaseActor;
+import ru.nemodev.runhero.core.model.BaseActor;
 
 public class PausePopUpActor extends BaseActor
 {

@@ -5,12 +5,12 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+import ru.nemodev.runhero.core.manager.GameStatus;
+import ru.nemodev.runhero.core.scene.Scene;
+import ru.nemodev.runhero.core.screen.BaseScreen;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.GameStatus;
-import ru.nemodev.runhero.scene.common.Scene;
 import ru.nemodev.runhero.scene.main.MainBackgroundScene;
 import ru.nemodev.runhero.scene.main.MainMenuScene;
-import ru.nemodev.runhero.screen.common.BaseScreen;
 
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;

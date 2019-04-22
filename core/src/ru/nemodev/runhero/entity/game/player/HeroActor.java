@@ -4,22 +4,19 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 
 import net.dermetfan.gdx.graphics.g2d.AnimatedBox2DSprite;
 
 import ru.nemodev.runhero.constant.SoundConstant;
-import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.manager.resource.SoundManager;
+import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
+import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.resource.SoundManager;
-import ru.nemodev.runhero.util.Box2dObjectBuilder;
 
 
 /**
@@ -55,40 +52,6 @@ public class HeroActor extends Box2dActor implements MobEventListener
         this.gameScore = 0;
 
         initWorld(height / 1.3f);
-
-        addListener(new InputListener()
-        {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-                if (isTouchDown)
-                    return true;
-
-                if (onGround)
-                {
-                    startPressY = y;
-                    isTouchDown = true;
-                }
-                return true;
-            }
-
-            @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button)
-            {
-                if (onGround && isTouchDown)
-                {
-                    if (y > startPressY)
-                    {
-                        float impulseY = (y - startPressY) * 450.f;
-                        heroFixture.getBody().applyForceToCenter(0.f, impulseY, true);
-                        SoundManager.getInstance().playSound(SoundConstant.HERO_JUMP_SOUND);
-                    }
-
-                    isTouchDown = false;
-                }
-            }
-
-        });
     }
 
     public Vector2 getHeroPosition()
@@ -179,9 +142,39 @@ public class HeroActor extends Box2dActor implements MobEventListener
     }
 
     @Override
-    public Actor hit(float x, float y, boolean touchable)
+    public boolean isTouch(float x, float y)
     {
-        return this;
+        return true;
+    }
+
+    @Override
+    public boolean touchDown(float x, float y)
+    {
+        if (isTouchDown)
+            return true;
+
+        if (onGround)
+        {
+            startPressY = y;
+            isTouchDown = true;
+        }
+        return true;
+    }
+
+    @Override
+    public void touchUp(float x, float y)
+    {
+        if (onGround && isTouchDown)
+        {
+            if (y > startPressY)
+            {
+                float impulseY = (y - startPressY) * 450.f;
+                heroFixture.getBody().applyForceToCenter(0.f, impulseY, true);
+                SoundManager.getInstance().playSound(SoundConstant.HERO_JUMP_SOUND);
+            }
+
+            isTouchDown = false;
+        }
     }
 
     @Override

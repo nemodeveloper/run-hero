@@ -6,11 +6,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
+import ru.nemodev.runhero.core.manager.GameStatus;
+import ru.nemodev.runhero.core.manager.ScreenManager;
+import ru.nemodev.runhero.core.manager.system.AppServiceManager;
+import ru.nemodev.runhero.core.util.InputUtils;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
 import ru.nemodev.runhero.entity.game.mob.MobEventListener;
-import ru.nemodev.runhero.manager.system.ScreenManager;
 import ru.nemodev.runhero.screen.game.GameScreen;
-import ru.nemodev.runhero.util.InputUtils;
 
 /**
  * created by NemoDev on 08.05.2018 - 20:45
@@ -27,6 +29,7 @@ public final class GameManager
     private Array<ScoreChangeListener> scoreChangeListeners;
     private Array<MobEventListener> mobEventListeners;
     private boolean rightDirection;
+    private int newGameCount = 0;
 
     private GameManager()
     {
@@ -108,9 +111,16 @@ public final class GameManager
                     if (!isStartNewGame)
                     {
                         isStartNewGame = true;
+                        ++newGameCount;
                         reloadForNewGame();
                         getScreenManager().popScreen();
                         getScreenManager().pushScreen(new GameScreen());
+
+                        if (newGameCount == 2)
+                        {
+                            newGameCount = 0;
+                            AppServiceManager.getInstance().getAdbService().showFullScreenBanner();
+                        }
                     }
                     return true;
                 }

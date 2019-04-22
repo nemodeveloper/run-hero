@@ -1,7 +1,7 @@
 package ru.nemodev.runhero.constant;
 
 
-import ru.nemodev.runhero.util.ScreenUtils;
+import ru.nemodev.runhero.core.util.ScreenUtils;
 
 public final class GameConstant
 {

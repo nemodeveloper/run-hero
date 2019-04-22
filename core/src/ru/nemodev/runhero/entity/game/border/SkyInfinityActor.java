@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
-import ru.nemodev.runhero.entity.collision.Contactable;
-import ru.nemodev.runhero.entity.common.Box2dActor;
+import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.manager.GameManager;
 
 
@@ -38,10 +38,10 @@ public class SkyInfinityActor extends Box2dActor
         }
     }
 
-    private void addSkyActor(SkyActor groundActor)
+    private void addSkyActor(SkyActor skyActor)
     {
-        platforms.add(groundActor);
-        addActor(groundActor);
+        platforms.add(skyActor);
+        addGameObject(skyActor);
     }
 
     @Override

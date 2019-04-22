@@ -9,11 +9,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.FloatArray;
 
 import ru.nemodev.runhero.constant.GameConstant;
+import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.Box2dBodyType;
 import ru.nemodev.runhero.entity.game.mob.BaseMobActor;
 import ru.nemodev.runhero.entity.game.mob.StaticMobActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.util.SpriteUtils;
 
 
 public abstract class BaseMobSpawnStrategy implements MobSpawnStrategy

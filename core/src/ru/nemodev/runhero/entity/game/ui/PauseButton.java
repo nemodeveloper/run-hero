@@ -1,40 +1,36 @@
 package ru.nemodev.runhero.entity.game.ui;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
+import ru.nemodev.runhero.core.manager.GameStatus;
+import ru.nemodev.runhero.core.model.ButtonActor;
 import ru.nemodev.runhero.manager.GameManager;
-import ru.nemodev.runhero.manager.GameStatus;
 
-public class PauseButton extends ImageButton
+public class PauseButton extends ButtonActor
 {
-    public PauseButton(Drawable pauseButton, final GamePauseListener gamePauseListener, float posX, float posY, float size)
+    private final GamePauseListener gamePauseListener;
+
+    public PauseButton(Sprite neutralState, Sprite pressState,
+                       GamePauseListener gamePauseListener)
     {
-        super(pauseButton);
-        setBounds(posX, posY, size, size);
-        getImage().setOrigin(Align.center);
-
-        addListener(new InputListener()
-        {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-            {
-                if (GameManager.getInstance().isRunning())
-                {
-                    GameManager.getInstance().setGameStatus(GameStatus.PAUSE);
-                    gamePauseListener.pauseStart();
-                }
-                else if (GameManager.getInstance().isPause())
-                {
-                    GameManager.getInstance().setGameStatus(GameStatus.RUNNING);
-                    gamePauseListener.pauseEnd();
-                }
-
-                return true;
-            }
-        });
+        super(neutralState, pressState);
+        this.gamePauseListener = gamePauseListener;
     }
+    @Override
+    public boolean touchDown(float x, float y)
+    {
+        if (GameManager.getInstance().isRunning())
+        {
+            GameManager.getInstance().setGameStatus(GameStatus.PAUSE);
+            gamePauseListener.pauseStart();
+        }
+        else if (GameManager.getInstance().isPause())
+        {
+            GameManager.getInstance().setGameStatus(GameStatus.RUNNING);
+            gamePauseListener.pauseEnd();
+        }
+
+        return true;
+    }
+
 }
