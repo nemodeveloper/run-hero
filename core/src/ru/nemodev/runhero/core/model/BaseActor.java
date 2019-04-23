@@ -88,9 +88,19 @@ public abstract class BaseActor implements GameObject
     }
 
     @Override
-    public boolean isTouch(float x, float y)
+    public GameObject isTouch(float x, float y)
     {
-        return false;
+        if (hasChildren())
+        {
+            for (GameObject children : childrenGameObjects)
+            {
+                GameObject candidate = children.isTouch(x, y);
+                if (candidate != null)
+                    return candidate;
+            }
+        }
+
+        return null;
     }
 
     @Override

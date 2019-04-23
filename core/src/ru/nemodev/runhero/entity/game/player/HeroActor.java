@@ -11,6 +11,7 @@ import net.dermetfan.gdx.graphics.g2d.AnimatedBox2DSprite;
 import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.core.manager.resource.SoundManager;
 import ru.nemodev.runhero.core.model.Box2dActor;
+import ru.nemodev.runhero.core.model.GameObject;
 import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.entity.game.ContactType;
@@ -142,14 +143,17 @@ public class HeroActor extends Box2dActor implements MobEventListener
     }
 
     @Override
-    public boolean isTouch(float x, float y)
+    public GameObject isTouch(float x, float y)
     {
-        return true;
+        return this;
     }
 
     @Override
     public boolean touchDown(float x, float y)
     {
+        if (!GameManager.getInstance().isRunning())
+            return false;
+
         if (isTouchDown)
             return true;
 

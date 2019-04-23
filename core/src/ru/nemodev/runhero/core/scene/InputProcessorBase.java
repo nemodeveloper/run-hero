@@ -71,10 +71,10 @@ public abstract class InputProcessorBase implements InputProcessor
 
         for (GameObject gameObject : gameObjects)
         {
-            if (gameObject.isTouch(lastScreenTouch.x, lastScreenTouch.y)
-                    && gameObject.touchDown(lastScreenTouch.x, lastScreenTouch.y))
+            GameObject candidate = gameObject.isTouch(lastScreenTouch.x, lastScreenTouch.y);
+            if (candidate != null && candidate.touchDown(lastScreenTouch.x, lastScreenTouch.y))
             {
-                currentTouchHandler = gameObject;
+                currentTouchHandler = candidate;
                 return true;
             }
         }

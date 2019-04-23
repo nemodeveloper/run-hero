@@ -75,7 +75,8 @@ public class GameScreen extends BaseScreen
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
         camera.setToOrtho(false, METERS_X, METERS_Y);
 
-        gameUIScene = new GameUIScene(new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch);
+        gameUIScene = new GameUIScene(new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch,
+                gameScene.getSoundEventListener());
         addScene(gameUIScene);
     }
 

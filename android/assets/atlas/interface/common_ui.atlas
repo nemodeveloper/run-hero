@@ -1,0 +1,62 @@
+
+common_ui.png
+size: 1308,1582
+format: RGBA8888
+filter: MipMapLinearLinear,MipMapLinearLinear
+repeat: none
+button_close
+  rotate: false
+  xy: 1203, 145
+  size: 105, 103
+  orig: 105, 103
+  offset: 0, 0
+  index: -1
+button_menu
+  rotate: false
+  xy: 276, 14
+  size: 259, 234
+  orig: 259, 234
+  offset: 0, 0
+  index: -1
+button_pause
+  rotate: false
+  xy: 1039, 87
+  size: 164, 161
+  orig: 164, 161
+  offset: 0, 0
+  index: -1
+button_rating
+  rotate: false
+  xy: 0, 0
+  size: 276, 248
+  orig: 276, 248
+  offset: 0, 0
+  index: -1
+button_sound_off
+  rotate: false
+  xy: 535, 15
+  size: 253, 233
+  orig: 253, 233
+  offset: 0, 0
+  index: -1
+button_sound_on
+  rotate: false
+  xy: 535, 15
+  size: 253, 233
+  orig: 253, 233
+  offset: 0, 0
+  index: -1
+button_start
+  rotate: false
+  xy: 788, 19
+  size: 251, 229
+  orig: 251, 229
+  offset: 0, 0
+  index: -1
+game_status_board
+  rotate: false
+  xy: 0, 248
+  size: 1306, 1334
+  orig: 1306, 1334
+  offset: 0, 0
+  index: -1

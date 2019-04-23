@@ -154,6 +154,15 @@ public final class GameManager
         mobEventListeners.clear();
         scoreChangeListeners.clear();
         rightDirection = !rightDirection;
+        gameStatus = GameStatus.RUNNING;
+    }
+
+    public void flushGame()
+    {
+        mobEventListeners.clear();
+        scoreChangeListeners.clear();
+        rightDirection = true;
+        gameStatus = GameStatus.UNKNOWN;
     }
 
 }

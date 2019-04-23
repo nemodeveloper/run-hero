@@ -54,7 +54,7 @@ public class MainMenuScene extends BaseScene
         float positionY = GameConstant.METERS_Y / 2.f + 1.f;
 
         Sprite startSprite = SpriteUtils.create(
-                UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_START,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_START,
                 sizeX, sizeY, positionX, positionY);
 
         startGameButton = new StartGameButton(startSprite, startSprite);
@@ -71,7 +71,7 @@ public class MainMenuScene extends BaseScene
         float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite exitSprite = SpriteUtils.create(
-                UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_EXIT,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_EXIT,
                 sizeX, sizeY, positionX, positionY);
 
         exitGameButton = new ExitGameButton(exitSprite, exitSprite);
@@ -89,14 +89,14 @@ public class MainMenuScene extends BaseScene
 
         float size = 2.f;
 
-        float positionX = GameConstant.METERS_X / 2.f - 3.5f;
+        float positionX = GameConstant.METERS_X / 2.f - size;
         float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite soundOnSprite = SpriteUtils.create(
-                UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_ON,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_ON,
                 size, size, positionX, positionY);
         Sprite soundOffSprite = SpriteUtils.create(
-                UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_OFF,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_OFF,
                 size, size, positionX, positionY);
 
         menuSoundButton = new MenuSoundButton(soundOnSprite, soundOffSprite,
@@ -123,11 +123,11 @@ public class MainMenuScene extends BaseScene
     {
         float size = 2.f;
 
-        float positionX = GameConstant.METERS_X / 2.f + 3.5f;
+        float positionX = GameConstant.METERS_X / 2.f + size;
         float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite ratingSprite = SpriteUtils.create(
-                UITextureConstant.BUTTONS_UI_ATLAS, UITextureConstant.MENU_BUTTON_RATING,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_RATING,
                 size, size, positionX, positionY);
         ratingButton = new RatingButton(ratingSprite, ratingSprite);
 

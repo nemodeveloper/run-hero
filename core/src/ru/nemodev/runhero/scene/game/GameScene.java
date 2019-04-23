@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.texture.BorderTextureConstant;
+import ru.nemodev.runhero.core.listener.SoundEventListener;
 import ru.nemodev.runhero.core.manager.GameStatus;
 import ru.nemodev.runhero.core.manager.resource.SoundManager;
 import ru.nemodev.runhero.core.manager.system.ConfigManager;
@@ -266,5 +267,23 @@ public class GameScene extends Box2dScene
     protected boolean isNeedUpdate()
     {
         return !GameManager.getInstance().isPause();
+    }
+
+    public SoundEventListener getSoundEventListener()
+    {
+        return new SoundEventListener()
+        {
+            @Override
+            public void soundEnable()
+            {
+                musicBackground.play();
+            }
+
+            @Override
+            public void soundDisable()
+            {
+                musicBackground.stop();
+            }
+        };
     }
 }

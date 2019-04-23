@@ -21,8 +21,10 @@ public abstract class ButtonActor extends BaseActor
     }
 
     @Override
-    public boolean isTouch(float x, float y)
+    public GameObject isTouch(float x, float y)
     {
-        return neutralState.getBoundingRectangle().contains(x, y);
+        return neutralState.getBoundingRectangle().contains(x, y)
+                ? this
+                : null;
     }
 }
