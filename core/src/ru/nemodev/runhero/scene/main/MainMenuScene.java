@@ -51,7 +51,7 @@ public class MainMenuScene extends BaseScene
         float sizeY = 2.f;
 
         float positionX = GameConstant.METERS_X / 2.f;
-        float positionY = GameConstant.METERS_Y / 2.f + 1.f;
+        float positionY = GameConstant.METERS_Y / 2.f + 0.5f;
 
         Sprite startSprite = SpriteUtils.create(
                 UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_START,
