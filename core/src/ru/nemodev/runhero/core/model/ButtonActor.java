@@ -50,10 +50,10 @@ public abstract class ButtonActor extends BaseActor
     @Override
     public void touchUp(float x, float y)
     {
-        currentState = getTouchUpState();
-
         if (isTouch(x, y) != null)
             doTouchUp(x, y);
+
+        currentState = getTouchUpState();
     }
 
     protected void doTouchUp(float x, float y) { }

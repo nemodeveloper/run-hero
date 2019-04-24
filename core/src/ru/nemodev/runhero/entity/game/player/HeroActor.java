@@ -16,7 +16,7 @@ import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
-import ru.nemodev.runhero.entity.game.mob.MobEventListener;
+import ru.nemodev.runhero.entity.game.mob.kind.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
 
 

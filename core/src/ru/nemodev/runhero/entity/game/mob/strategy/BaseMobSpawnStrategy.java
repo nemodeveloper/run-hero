@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.entity.game.mob.strategy.spawn;
+package ru.nemodev.runhero.entity.game.mob.strategy;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -11,8 +11,8 @@ import com.badlogic.gdx.utils.FloatArray;
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.game.Box2dBodyType;
-import ru.nemodev.runhero.entity.game.mob.BaseMobActor;
-import ru.nemodev.runhero.entity.game.mob.StaticMobActor;
+import ru.nemodev.runhero.entity.game.mob.kind.BaseMobActor;
+import ru.nemodev.runhero.entity.game.mob.kind.StaticMobActor;
 import ru.nemodev.runhero.manager.GameManager;
 
 

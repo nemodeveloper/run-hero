@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import ru.nemodev.runhero.core.model.Box2dActor;
 import ru.nemodev.runhero.entity.game.ContactType;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
+import ru.nemodev.runhero.entity.game.mob.kind.BaseMobActor;
 import ru.nemodev.runhero.manager.GameManager;
 
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
@@ -20,7 +21,7 @@ public class MobManagerActor extends Box2dActor implements ScoreChangeListener
     {
         super(world);
         this.mobFactory = new MobFactory(this.world, new Vector2(
-                GameManager.getInstance().isRightDirection() ? METERS_X : -METERS_X, WORLD_UNIT * 2));
+                GameManager.getInstance().isRightDirection() ? METERS_X : -METERS_X, WORLD_UNIT * 5));
     }
 
     @Override

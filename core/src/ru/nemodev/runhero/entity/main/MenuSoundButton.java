@@ -44,10 +44,10 @@ public class MenuSoundButton extends ButtonActor
     {
         if (ConfigManager.getInstance().isEnableSound())
         {
-            return soundOff;
+            return super.getTouchUpState();
         }
 
-        return super.getTouchUpState();
+        return soundOff;
     }
 
     @Override

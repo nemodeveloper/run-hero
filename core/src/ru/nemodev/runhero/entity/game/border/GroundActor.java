@@ -12,7 +12,7 @@ import ru.nemodev.runhero.core.model.Box2dActor;
 import ru.nemodev.runhero.core.physic.collision.Contactable;
 import ru.nemodev.runhero.core.util.Box2dObjectBuilder;
 import ru.nemodev.runhero.entity.game.ConstantBox2dBodyType;
-import ru.nemodev.runhero.entity.game.mob.MobEventListener;
+import ru.nemodev.runhero.entity.game.mob.kind.MobEventListener;
 import ru.nemodev.runhero.manager.GameManager;
 
 

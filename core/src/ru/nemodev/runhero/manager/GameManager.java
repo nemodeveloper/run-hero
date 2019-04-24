@@ -11,7 +11,7 @@ import ru.nemodev.runhero.core.manager.ScreenManager;
 import ru.nemodev.runhero.core.manager.system.AppServiceManager;
 import ru.nemodev.runhero.core.util.InputUtils;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
-import ru.nemodev.runhero.entity.game.mob.MobEventListener;
+import ru.nemodev.runhero.entity.game.mob.kind.MobEventListener;
 import ru.nemodev.runhero.screen.game.GameScreen;
 
 /**

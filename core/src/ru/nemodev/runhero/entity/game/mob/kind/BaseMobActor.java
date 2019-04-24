@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.entity.game.mob;
+package ru.nemodev.runhero.entity.game.mob.kind;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector3;

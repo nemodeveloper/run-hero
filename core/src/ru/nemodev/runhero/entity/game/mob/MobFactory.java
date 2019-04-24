@@ -6,8 +6,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import ru.nemodev.runhero.constant.GameConstant;
-import ru.nemodev.runhero.entity.game.mob.strategy.spawn.BaseMobSpawnStrategy;
-import ru.nemodev.runhero.entity.game.mob.strategy.spawn.StoneMobSpawnStrategy;
+import ru.nemodev.runhero.entity.game.mob.kind.BaseMobActor;
+import ru.nemodev.runhero.entity.game.mob.kind.MobEventListener;
+import ru.nemodev.runhero.entity.game.mob.strategy.BaseMobSpawnStrategy;
+import ru.nemodev.runhero.entity.game.mob.strategy.StoneMobSpawnStrategy;
 import ru.nemodev.runhero.manager.GameManager;
 
 
