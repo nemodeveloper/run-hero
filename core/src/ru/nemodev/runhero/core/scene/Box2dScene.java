@@ -48,18 +48,20 @@ public abstract class Box2dScene extends BaseScene
     {
         if (isNeedUpdate())
         {
-            accumulator += Math.min(delta, MAX_STEP);
-            while (accumulator >= TIME_STEP)
-            {
-                world.step(TIME_STEP, VELOCITY_ITERATION, POSITION_ITERATION);
-                super.update(TIME_STEP);
-
-                accumulator -= TIME_STEP;
-                if (accumulator < 0.f)
-                {
-                    accumulator = 0.f;
-                }
-            }
+//            accumulator += Math.min(delta, MAX_STEP);
+//            while (accumulator >= TIME_STEP)
+//            {
+//                world.step(TIME_STEP, VELOCITY_ITERATION, POSITION_ITERATION);
+//                super.update(TIME_STEP);
+//
+//                accumulator -= TIME_STEP;
+//                if (accumulator < 0.f)
+//                {
+//                    accumulator = 0.f;
+//                }
+//            }
+            world.step(delta, VELOCITY_ITERATION, POSITION_ITERATION);
+            super.update(delta);
         }
     }
 

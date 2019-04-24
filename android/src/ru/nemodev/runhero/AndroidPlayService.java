@@ -6,8 +6,8 @@ import android.content.Intent;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
 
+import ru.nemodev.runhero.core.service.PlayService;
 import ru.nemodev.runhero.core.util.LogUtils;
-import ru.nemodev.runhero.service.PlayService;
 
 public class AndroidPlayService implements PlayService
 {

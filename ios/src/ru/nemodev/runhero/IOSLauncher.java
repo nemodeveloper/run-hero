@@ -6,8 +6,8 @@ import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;
 
-import ru.nemodev.runhero.service.MockAdbService;
-import ru.nemodev.runhero.service.MockPlayService;
+import ru.nemodev.runhero.core.service.MockAdbService;
+import ru.nemodev.runhero.core.service.MockPlayService;
 
 public class IOSLauncher extends IOSApplication.Delegate
 {

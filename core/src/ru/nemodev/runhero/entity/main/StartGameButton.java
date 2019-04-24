@@ -15,13 +15,11 @@ public class StartGameButton extends ButtonActor
     }
 
     @Override
-    public boolean touchDown(float x, float y)
+    public void doTouchUp(float x, float y)
     {
         InputUtils.vibrate(250);
 
         GameManager.getInstance().getScreenManager().popScreen();
         GameManager.getInstance().getScreenManager().pushScreen(new GameScreen());
-
-        return true;
     }
 }

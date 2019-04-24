@@ -35,6 +35,11 @@ public final class SpriteUtils
     public static Sprite create(String atlasName, String spiteName)
     {
         Sprite sprite = ResourceLoader.getInstance().getSprite(atlasName, spiteName);
+        if (sprite == null)
+        {
+            throw new IllegalArgumentException(String.format("Не удалось загрузить Sprite Atlas = %s SpriteName = %s", atlasName, spiteName));
+        }
+
         sprite.setX(0.f);
         sprite.setY(0.f);
 

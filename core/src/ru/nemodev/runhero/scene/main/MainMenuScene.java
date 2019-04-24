@@ -54,10 +54,14 @@ public class MainMenuScene extends BaseScene
         float positionY = GameConstant.METERS_Y / 2.f + 1.f;
 
         Sprite startSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_START,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_START,
                 sizeX, sizeY, positionX, positionY);
 
-        startGameButton = new StartGameButton(startSprite, startSprite);
+        Sprite startSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_START_TOUCHED,
+                sizeX, sizeY, positionX, positionY);
+
+        startGameButton = new StartGameButton(startSprite, startSpriteTouched);
 
         addGameObject(startGameButton);
     }
@@ -71,10 +75,14 @@ public class MainMenuScene extends BaseScene
         float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite exitSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_EXIT,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_EXIT,
                 sizeX, sizeY, positionX, positionY);
 
-        exitGameButton = new ExitGameButton(exitSprite, exitSprite);
+        Sprite exitSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_EXIT_TOUCHED,
+                sizeX, sizeY, positionX, positionY);
+
+        exitGameButton = new ExitGameButton(exitSprite, exitSpriteTouched);
 
         addGameObject(exitGameButton);
     }
@@ -93,13 +101,21 @@ public class MainMenuScene extends BaseScene
         float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite soundOnSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_ON,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_ON,
                 size, size, positionX, positionY);
-        Sprite soundOffSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_OFF,
+        Sprite soundOnSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_ON_TOUCHED,
                 size, size, positionX, positionY);
 
-        menuSoundButton = new MenuSoundButton(soundOnSprite, soundOffSprite,
+        Sprite soundOffSprite = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_OFF,
+                size, size, positionX, positionY);
+        Sprite soundOffSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_OFF_TOUCHED,
+                size, size, positionX, positionY);
+
+        menuSoundButton = new MenuSoundButton(soundOnSprite, soundOnSpriteTouched,
+                soundOffSprite, soundOffSpriteTouched,
                 new SoundEventListener()
                 {
                     @Override
@@ -127,9 +143,14 @@ public class MainMenuScene extends BaseScene
         float positionY = GameConstant.METERS_Y / 2.f - 1.5f;
 
         Sprite ratingSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_RATING,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_RATING,
                 size, size, positionX, positionY);
-        ratingButton = new RatingButton(ratingSprite, ratingSprite);
+
+        Sprite ratingSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_RATING_TOUCHED,
+                size, size, positionX, positionY);
+
+        ratingButton = new RatingButton(ratingSprite, ratingSpriteTouched);
 
         addGameObject(ratingButton);
     }

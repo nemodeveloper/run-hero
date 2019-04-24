@@ -1,8 +1,8 @@
 package ru.nemodev.runhero.core.manager.system;
 
-import ru.nemodev.runhero.service.AdbService;
-import ru.nemodev.runhero.service.MockPlayService;
-import ru.nemodev.runhero.service.PlayService;
+import ru.nemodev.runhero.core.service.AdbService;
+import ru.nemodev.runhero.core.service.MockPlayService;
+import ru.nemodev.runhero.core.service.PlayService;
 
 public final class AppServiceManager
 {

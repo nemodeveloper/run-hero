@@ -41,16 +41,19 @@ public class GameUIScene extends BaseScene
     private void initPauseButton()
     {
         float pauseSize = 1.f;
-        float shiftX = 0.5f;
-
-        float positionX = shiftX;
+        float shift = pauseSize * 0.75f;
 
         Sprite pauseSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.GAME_PAUSE_BUTTON,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_PAUSE,
                 pauseSize, pauseSize,
-                positionX, GameConstant.METERS_Y - pauseSize / 2.f);
+                shift, GameConstant.METERS_Y - shift);
 
-        pauseButton = new PauseButton(pauseSprite, pauseSprite,
+        Sprite pauseSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_PAUSE_TOUCHED,
+                pauseSize, pauseSize,
+                shift, GameConstant.METERS_Y - shift);
+
+        pauseButton = new PauseButton(pauseSprite, pauseSpriteTouched,
                 new GamePauseListener()
                 {
                     @Override
@@ -83,10 +86,14 @@ public class GameUIScene extends BaseScene
         final float buttonSize = 1.6f;
 
         Sprite startGameSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_START,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_START,
                 buttonSize, buttonSize, basePosX, basePosY);
 
-        ButtonActor startGameButton = new PauseButton(startGameSprite, startGameSprite,
+        Sprite startGameSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_START_TOUCHED,
+                buttonSize, buttonSize, basePosX, basePosY);
+
+        ButtonActor startGameButton = new PauseButton(startGameSprite, startGameSpriteTouched,
                 new GamePauseListener()
                 {
                     @Override
@@ -103,32 +110,52 @@ public class GameUIScene extends BaseScene
                 });
 
         Sprite menuGameSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_MENU,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_MENU,
                 buttonSize, buttonSize, basePosX, basePosY - buttonSize);
 
-        ButtonActor menuButton = new ButtonActor(menuGameSprite, menuGameSprite)
+        Sprite menuGameSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_MENU_TOUCHED,
+                buttonSize, buttonSize, basePosX, basePosY - buttonSize);
+
+        ButtonActor menuButton = new ButtonActor(menuGameSprite, menuGameSpriteTouched)
         {
             @Override
-            public boolean touchDown(float x, float y)
+            public void doTouchUp(float x, float y)
             {
                 GameManager.getInstance().flushGame();
                 GameManager.getInstance().getScreenManager().popScreen();
                 GameManager.getInstance().getScreenManager().pushScreen(new MainScreen());
-
-                return true;
             }
         };
 
         Sprite soundOnSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_SOUND_ON,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_ON,
                 buttonSize, buttonSize, basePosX - buttonSize, basePosY - buttonSize);
 
-        MenuSoundButton menuSoundButton = new MenuSoundButton(soundOnSprite, soundOnSprite, soundEventListener);
+        Sprite soundOnSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_ON_TOUCHED,
+                buttonSize, buttonSize, basePosX - buttonSize, basePosY - buttonSize);
+
+        Sprite soundOffSprite = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_OFF,
+                buttonSize, buttonSize, basePosX - buttonSize, basePosY - buttonSize);
+
+        Sprite soundOffSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_SOUND_OFF_TOUCHED,
+                buttonSize, buttonSize, basePosX - buttonSize, basePosY - buttonSize);
+
+        MenuSoundButton menuSoundButton = new MenuSoundButton(soundOnSprite, soundOnSpriteTouched,
+                soundOffSprite, soundOffSpriteTouched, soundEventListener);
 
         Sprite ratingSprite = SpriteUtils.create(
-                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.MENU_BUTTON_RATING,
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_RATING,
                 buttonSize, buttonSize, basePosX + buttonSize, basePosY - buttonSize);
-        RatingButton ratingButton = new RatingButton(ratingSprite, ratingSprite);
+
+        Sprite ratingSpriteTouched = SpriteUtils.create(
+                UITextureConstant.COMMON_UI_ATLAS, UITextureConstant.BUTTON_RATING_TOUCHED,
+                buttonSize, buttonSize, basePosX + buttonSize, basePosY - buttonSize);
+
+        RatingButton ratingButton = new RatingButton(ratingSprite, ratingSpriteTouched);
 
         pausePopUpActor.addGameObject(startGameButton);
         pausePopUpActor.addGameObject(menuButton);

@@ -4,8 +4,8 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import ru.nemodev.runhero.GameApp;
-import ru.nemodev.runhero.service.MockAdbService;
-import ru.nemodev.runhero.service.MockPlayService;
+import ru.nemodev.runhero.core.service.MockAdbService;
+import ru.nemodev.runhero.core.service.MockPlayService;
 
 public class DesktopLauncher
 {

@@ -16,8 +16,9 @@ public class PauseButton extends ButtonActor
         super(neutralState, pressState);
         this.gamePauseListener = gamePauseListener;
     }
+
     @Override
-    public boolean touchDown(float x, float y)
+    public void doTouchUp(float x, float y)
     {
         if (GameManager.getInstance().isRunning())
         {
@@ -29,8 +30,6 @@ public class PauseButton extends ButtonActor
             GameManager.getInstance().setGameStatus(GameStatus.RUNNING);
             gamePauseListener.pauseEnd();
         }
-
-        return true;
     }
 
 }

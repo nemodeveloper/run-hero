@@ -13,10 +13,8 @@ public class ExitGameButton extends ButtonActor
     }
 
     @Override
-    public boolean touchDown(float x, float y)
+    public void doTouchUp(float x, float y)
     {
         GameManager.getInstance().exit();
-
-        return true;
     }
 }

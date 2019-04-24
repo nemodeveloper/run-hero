@@ -1,4 +1,4 @@
-package ru.nemodev.runhero.service;
+package ru.nemodev.runhero.core.service;
 
 public interface PlayService
 {

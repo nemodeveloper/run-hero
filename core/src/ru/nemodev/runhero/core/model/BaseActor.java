@@ -90,7 +90,7 @@ public abstract class BaseActor implements GameObject
     @Override
     public GameObject isTouch(float x, float y)
     {
-        if (hasChildren())
+        if (isVisible() && hasChildren())
         {
             for (GameObject children : childrenGameObjects)
             {

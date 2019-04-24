@@ -13,7 +13,7 @@ public class RatingButton extends ButtonActor
     }
 
     @Override
-    public boolean touchDown(float x, float y)
+    public void doTouchUp(float x, float y)
     {
         if (!AppServiceManager.getInstance().getPlayService().isSignedIn())
         {
@@ -21,7 +21,5 @@ public class RatingButton extends ButtonActor
         }
 
         AppServiceManager.getInstance().getPlayService().showScore();
-
-        return true;
     }
 }

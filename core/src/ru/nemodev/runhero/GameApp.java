@@ -7,9 +7,9 @@ import ru.nemodev.runhero.core.manager.resource.FontManager;
 import ru.nemodev.runhero.core.manager.resource.PhysicManager;
 import ru.nemodev.runhero.core.manager.resource.ResourceLoader;
 import ru.nemodev.runhero.core.manager.system.AppServiceManager;
+import ru.nemodev.runhero.core.service.AdbService;
+import ru.nemodev.runhero.core.service.PlayService;
 import ru.nemodev.runhero.screen.load.SplashScreen;
-import ru.nemodev.runhero.service.AdbService;
-import ru.nemodev.runhero.service.PlayService;
 
 
 public final class GameApp extends BaseGame
