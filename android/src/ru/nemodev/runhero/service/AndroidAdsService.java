@@ -38,6 +38,10 @@ public class AndroidAdsService implements AdsService
             initSimpleBanner();
             initFullScreenBanner();
         }
+        else
+        {
+            disable();
+        }
     }
 
     @Override
