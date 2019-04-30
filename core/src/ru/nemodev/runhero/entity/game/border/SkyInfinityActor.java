@@ -32,7 +32,7 @@ public class SkyInfinityActor extends Box2dActor
 
     public void setContactable(Contactable contactable)
     {
-        for (SkyActor skyActor: platforms)
+        for (SkyActor skyActor: new Array.ArrayIterator<SkyActor>(platforms))
         {
             skyActor.setContactable(contactable);
         }
@@ -53,7 +53,7 @@ public class SkyInfinityActor extends Box2dActor
     @Override
     protected void doAct(float delta)
     {
-        for (SkyActor skyActor: platforms)
+        for (SkyActor skyActor: new Array.ArrayIterator<SkyActor>(platforms))
         {
             if (!skyActor.isVisibleForPlayer())
             {

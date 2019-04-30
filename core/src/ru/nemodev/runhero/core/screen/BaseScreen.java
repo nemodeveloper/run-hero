@@ -52,7 +52,7 @@ public abstract class BaseScreen implements Screen
     @Override
     public void show()
     {
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.show();
         }
@@ -65,7 +65,7 @@ public abstract class BaseScreen implements Screen
     public void render(float delta)
     {
         ScreenUtils.clearScreen();
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.render(delta);
         }
@@ -74,7 +74,7 @@ public abstract class BaseScreen implements Screen
     @Override
     public void resize(int width, int height)
     {
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.resize(width, height);
         }
@@ -87,7 +87,7 @@ public abstract class BaseScreen implements Screen
         gameStatus = GameManager.getInstance().getGameStatus();
         GameManager.getInstance().setGameStatus(GameStatus.PAUSE);
 
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.pause();
         }
@@ -98,7 +98,7 @@ public abstract class BaseScreen implements Screen
     {
         // TODO убрать когда будет экран с паузой
         GameManager.getInstance().setGameStatus(gameStatus);
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.resume();
         }
@@ -107,7 +107,7 @@ public abstract class BaseScreen implements Screen
     @Override
     public void hide()
     {
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.hide();
         }
@@ -116,7 +116,7 @@ public abstract class BaseScreen implements Screen
     @Override
     public void dispose()
     {
-        for (Scene scene : scenes)
+        for (Scene scene : new Array.ArrayIterator<Scene>(scenes))
         {
             scene.dispose();
         }

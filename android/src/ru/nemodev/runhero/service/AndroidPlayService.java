@@ -1,4 +1,4 @@
-package ru.nemodev.runhero;
+package ru.nemodev.runhero.service;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
 
+import ru.nemodev.runhero.R;
 import ru.nemodev.runhero.core.service.PlayService;
 import ru.nemodev.runhero.core.util.LogUtils;
 

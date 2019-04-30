@@ -8,7 +8,7 @@ import ru.nemodev.runhero.core.scene.Scene;
 
 public abstract class BaseActor implements GameObject
 {
-    private final Array<GameObject> childrenGameObjects;
+    private final Array<GameObject> childrenList;
     private Scene scene;
 
     private boolean visible;
@@ -16,7 +16,7 @@ public abstract class BaseActor implements GameObject
 
     public BaseActor()
     {
-        this.childrenGameObjects = new Array<GameObject>();
+        this.childrenList = new Array<GameObject>();
         this.needRemove = false;
         this.visible = true;
     }
@@ -26,7 +26,7 @@ public abstract class BaseActor implements GameObject
         this.scene = scene;
         if (hasChildren())
         {
-            for (GameObject children : childrenGameObjects)
+            for (GameObject children : new Array.ArrayIterator<GameObject>(childrenList))
             {
                 children.setScene(getScene());
             }
@@ -36,7 +36,7 @@ public abstract class BaseActor implements GameObject
     public void addGameObject(GameObject gameObject)
     {
         gameObject.setScene(getScene());
-        childrenGameObjects.add(gameObject);
+        childrenList.add(gameObject);
     }
 
     @Override
@@ -47,17 +47,17 @@ public abstract class BaseActor implements GameObject
             doAct(delta);
         }
 
-        for (GameObject gameObject : childrenGameObjects)
+        for (GameObject gameObject : new Array.ArrayIterator<GameObject>(childrenList))
         {
             if (gameObject.isNeedRemove())
             {
-                childrenGameObjects.removeValue(gameObject, true);
+                childrenList.removeValue(gameObject, true);
             }
         }
 
         if (hasChildren())
         {
-            for (GameObject gameObject : childrenGameObjects)
+            for (GameObject gameObject : new Array.ArrayIterator<GameObject>(childrenList))
             {
                 gameObject.update(delta);
             }
@@ -79,7 +79,7 @@ public abstract class BaseActor implements GameObject
             doDraw(batch, parentAlpha);
             if (hasChildren())
             {
-                for (GameObject gameObject : childrenGameObjects)
+                for (GameObject gameObject : new Array.ArrayIterator<GameObject>(childrenList))
                 {
                     gameObject.draw(batch, parentAlpha);
                 }
@@ -92,7 +92,7 @@ public abstract class BaseActor implements GameObject
     {
         if (isVisible() && hasChildren())
         {
-            for (GameObject children : childrenGameObjects)
+            for (GameObject children : new Array.ArrayIterator<GameObject>(childrenList))
             {
                 GameObject candidate = children.isTouch(x, y);
                 if (candidate != null)
@@ -117,7 +117,7 @@ public abstract class BaseActor implements GameObject
 
     protected final boolean hasChildren()
     {
-        return childrenGameObjects.size > 0;
+        return childrenList.size > 0;
     }
 
     protected void doDraw(Batch batch, float parentAlpha) { }
@@ -144,10 +144,10 @@ public abstract class BaseActor implements GameObject
 
         if (hasChildren())
         {
-            for (GameObject children : childrenGameObjects)
+            for (GameObject children : new Array.ArrayIterator<GameObject>(childrenList))
             {
                 children.remove();
-                childrenGameObjects.removeValue(children, true);
+                childrenList.removeValue(children, true);
             }
         }
     }

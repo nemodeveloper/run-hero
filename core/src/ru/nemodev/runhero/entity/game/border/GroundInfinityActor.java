@@ -34,7 +34,7 @@ public class GroundInfinityActor extends Box2dActor implements MobEventListener
 
     public void setContactable(Contactable contactable)
     {
-        for (GroundActor groundActor : platforms)
+        for (GroundActor groundActor : new Array.ArrayIterator<GroundActor>(platforms))
         {
             groundActor.setContactable(contactable);
         }
@@ -55,7 +55,7 @@ public class GroundInfinityActor extends Box2dActor implements MobEventListener
     @Override
     protected void doAct(float delta)
     {
-        for (GroundActor groundActor : platforms)
+        for (GroundActor groundActor : new Array.ArrayIterator<GroundActor>(platforms))
         {
             if (!groundActor.isVisibleForPlayer())
             {
@@ -74,7 +74,7 @@ public class GroundInfinityActor extends Box2dActor implements MobEventListener
     @Override
     public void mobKillHero()
     {
-        for (GroundActor groundActor : platforms)
+        for (GroundActor groundActor : new Array.ArrayIterator<GroundActor>(platforms))
         {
             groundActor.mobKillHero();
         }

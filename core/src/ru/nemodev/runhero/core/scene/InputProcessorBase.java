@@ -69,7 +69,7 @@ public abstract class InputProcessorBase implements InputProcessor
         lastScreenTouch.set(screenX, screenY);
         screenToSceneCoordinates(lastScreenTouch);
 
-        for (GameObject gameObject : gameObjects)
+        for (GameObject gameObject : new Array.ArrayIterator<GameObject>(gameObjects))
         {
             GameObject candidate = gameObject.isTouch(lastScreenTouch.x, lastScreenTouch.y);
             if (candidate != null && candidate.touchDown(lastScreenTouch.x, lastScreenTouch.y))

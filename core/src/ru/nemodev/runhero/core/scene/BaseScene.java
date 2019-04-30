@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.Iterator;
+
 import ru.nemodev.runhero.core.model.GameObject;
 import ru.nemodev.runhero.core.util.InputUtils;
 
@@ -53,12 +55,19 @@ public class BaseScene extends InputProcessorBase implements Scene
     {
         if (isNeedUpdate())
         {
-            for (GameObject gameObject : gameObjects)
+            Iterator<GameObject> iterator = new Array.ArrayIterator<GameObject>(gameObjects);
+            while (iterator.hasNext())
             {
+                GameObject gameObject = iterator.next();
                 if (gameObject.isNeedRemove())
-                    gameObjects.removeValue(gameObject, true);
+                {
+                    gameObject.remove();
+                    iterator.remove();
+                }
                 else
+                {
                     gameObject.update(delta);
+                }
             }
         }
     }
@@ -78,7 +87,7 @@ public class BaseScene extends InputProcessorBase implements Scene
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        for (GameObject gameObject : gameObjects)
+        for (GameObject gameObject : new Array.ArrayIterator<GameObject>(gameObjects))
         {
             gameObject.draw(batch, 1);
         }
@@ -101,7 +110,7 @@ public class BaseScene extends InputProcessorBase implements Scene
     public void dispose()
     {
         InputUtils.setInputProcessor(null);
-        for (GameObject gameObject : gameObjects)
+        for (GameObject gameObject : new Array.ArrayIterator<GameObject>(gameObjects))
         {
             gameObject.dispose();
         }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Array;
 import ru.nemodev.runhero.core.manager.GameStatus;
 import ru.nemodev.runhero.core.manager.ScreenManager;
 import ru.nemodev.runhero.core.manager.system.AppServiceManager;
+import ru.nemodev.runhero.core.service.AdsService;
 import ru.nemodev.runhero.core.util.InputUtils;
 import ru.nemodev.runhero.entity.game.ScoreChangeListener;
 import ru.nemodev.runhero.entity.game.mob.kind.MobEventListener;
@@ -112,15 +113,23 @@ public final class GameManager
                     {
                         isStartNewGame = true;
                         ++newGameCount;
-                        reloadForNewGame();
-                        getScreenManager().popScreen();
-                        getScreenManager().pushScreen(new GameScreen());
 
                         if (newGameCount == 2)
                         {
                             newGameCount = 0;
-                            AppServiceManager.getInstance().getAdbService().showFullScreenBanner();
+                            AppServiceManager.getInstance().getAdsService().showFullScreenBanner(new AdsService.AdsListener()
+                            {
+                                @Override
+                                public void adsShowed(boolean showed)
+                                {
+
+                                }
+                            });
                         }
+
+                        reloadForNewGame();
+                        getScreenManager().popScreen();
+                        getScreenManager().pushScreen(new GameScreen());
                     }
                     return true;
                 }
