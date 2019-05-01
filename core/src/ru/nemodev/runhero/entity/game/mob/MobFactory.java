@@ -37,12 +37,28 @@ public class MobFactory
         float direction = GameManager.getInstance().isRightDirection() ? 1.f : -1.f;
 
         mobSpawnStrategies.add(new StoneMobSpawnStrategy(world, 15,
-                2.f, GameConstant.WORLD_UNIT * 4.f,
+                2.f, GameConstant.WORLD_UNIT * 2.5f,
                 GameConstant.WORLD_UNIT * 20 * direction, spawnPos, false));
 
         mobSpawnStrategies.add(new StoneMobSpawnStrategy(world, 30,
-                2.5f, GameConstant.WORLD_UNIT * 5.f,
+                2.5f, GameConstant.WORLD_UNIT * 3.f,
                 GameConstant.WORLD_UNIT * 18.f * direction, spawnPos, true));
+
+        mobSpawnStrategies.add(new StoneMobSpawnStrategy(world, 50,
+                3.0f, GameConstant.WORLD_UNIT * 3.5f,
+                GameConstant.WORLD_UNIT * 16.f * direction, spawnPos, true));
+
+        mobSpawnStrategies.add(new StoneMobSpawnStrategy(world, 70,
+                3.5f, GameConstant.WORLD_UNIT * 4.f,
+                GameConstant.WORLD_UNIT * 14.f * direction, spawnPos, true));
+
+        mobSpawnStrategies.add(new StoneMobSpawnStrategy(world, 90,
+                3.f, GameConstant.WORLD_UNIT * 4.5f,
+                GameConstant.WORLD_UNIT * 16.f * direction, spawnPos, true));
+
+        mobSpawnStrategies.add(new StoneMobSpawnStrategy(world, 120,
+                4.f, GameConstant.WORLD_UNIT * 5.0f,
+                GameConstant.WORLD_UNIT * 14.f * direction, spawnPos, true));
 
         curSpawnStrategy = mobSpawnStrategies.get(0);
     }
@@ -56,14 +72,14 @@ public class MobFactory
         else
             mobSpawnStrategies.removeValue(curSpawnStrategy, true);
 
-        for (BaseMobSpawnStrategy mobSpawnStrategy : mobSpawnStrategies)
+        for (BaseMobSpawnStrategy mobSpawnStrategy : new Array.ArrayIterator<BaseMobSpawnStrategy>(mobSpawnStrategies))
         {
             if (mobSpawnStrategy.isCanSpawn(score))
             {
                 Vector2 lastSpawnPos = curSpawnStrategy.getSpawnPos();
                 curSpawnStrategy = mobSpawnStrategy;
                 curSpawnStrategy.setSpawnPos(lastSpawnPos);
-                for (MobEventListener mobEventListener : GameManager.getInstance().getMobEventListeners())
+                for (MobEventListener mobEventListener : new Array.ArrayIterator<MobEventListener>(GameManager.getInstance().getMobEventListeners()))
                 {
                     mobEventListener.mobChange();
                 }

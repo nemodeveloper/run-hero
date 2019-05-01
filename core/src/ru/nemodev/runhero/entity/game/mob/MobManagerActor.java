@@ -21,7 +21,7 @@ public class MobManagerActor extends Box2dActor implements ScoreChangeListener
     {
         super(world);
         this.mobFactory = new MobFactory(this.world, new Vector2(
-                GameManager.getInstance().isRightDirection() ? METERS_X : -METERS_X, WORLD_UNIT * 5));
+                GameManager.getInstance().isRightDirection() ? METERS_X : -METERS_X, WORLD_UNIT * 3));
     }
 
     @Override

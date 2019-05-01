@@ -2,6 +2,7 @@ package ru.nemodev.runhero.entity.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Pool;
 
 import ru.nemodev.runhero.core.manager.system.ConfigManager;
@@ -26,7 +27,10 @@ public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.
     protected void doDraw(Batch batch, float parentAlpha)
     {
         float posX = ScreenUtils.getWidth() / 2.f;
-        float posY = ScreenUtils.getHeight() / 2.f + ScreenUtils.getHeightStep(10) * 4.f;
+
+        final float stepY = ScreenUtils.getHeightStep(10);
+        final float shiftY = stepY * 4.f;
+        float posY = ScreenUtils.getHeight() / 2.f + shiftY;
 
         if (GameManager.getInstance().isRunning() || GameManager.getInstance().isPause())
         {
@@ -34,12 +38,21 @@ public class ScoreViewActor extends BaseActor implements MobEventListener, Pool.
         }
         else if (GameManager.getInstance().isGameOver())
         {
-            font.draw(batch, "Game over!",
-                    posX - ScreenUtils.getWidthStep(10), posY);
+            GlyphLayout glyphLayout = new GlyphLayout();
 
-            font.draw(batch,
-                    String.format("\n%s / %s", gameScore, ConfigManager.getInstance().getBestScore()),
-                    posX - ScreenUtils.getWidthStep(15), posY);
+            glyphLayout.setText(font, "Tap and Run!");
+            posX = (ScreenUtils.getWidth() - glyphLayout.width) / 2.f;
+            font.draw(batch, glyphLayout, posX, posY);
+
+            posY -= glyphLayout.height + stepY;
+            glyphLayout.setText(font, String.format("Best - %s", ConfigManager.getInstance().getBestScore()));
+            posX = (ScreenUtils.getWidth() - glyphLayout.width) / 2.f;
+            font.draw(batch, glyphLayout, posX, posY);
+
+            posY -= glyphLayout.height + stepY;
+            glyphLayout.setText(font, String.format("Now - %s", gameScore));
+            posX = (ScreenUtils.getWidth() - glyphLayout.width) / 2.f;
+            font.draw(batch, glyphLayout, posX, posY);
         }
     }
 
