@@ -27,9 +27,12 @@ public final class SpriteUtils
 
     private SpriteUtils() { }
 
-    public static Sprite create(String textureName)
+    public static Sprite create(String textureName, float width, float height, float x, float y)
     {
-        return ResourceLoader.getInstance().getSpriteWithoutWait(textureName);
+        final Sprite sprite = ResourceLoader.getInstance().getSpriteWithoutWait(textureName);
+        setBounds(sprite, width, height, x, y);
+
+        return sprite;
     }
 
     public static Sprite create(String atlasName, String spiteName)

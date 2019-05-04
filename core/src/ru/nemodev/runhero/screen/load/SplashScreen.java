@@ -1,8 +1,11 @@
 package ru.nemodev.runhero.screen.load;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
+import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.physic.PhysicLoaderConstant;
 import ru.nemodev.runhero.constant.texture.AtlasLoaderConstant;
@@ -12,11 +15,15 @@ import ru.nemodev.runhero.core.manager.resource.PhysicManager;
 import ru.nemodev.runhero.core.manager.resource.ResourceLoader;
 import ru.nemodev.runhero.core.scene.BaseScene;
 import ru.nemodev.runhero.core.screen.BaseLoaderScreen;
-import ru.nemodev.runhero.core.util.ScreenUtils;
 import ru.nemodev.runhero.core.util.SpriteUtils;
 import ru.nemodev.runhero.entity.load.SplashActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.screen.main.MainScreen;
+
+import static ru.nemodev.runhero.constant.GameConstant.CENTRE_X;
+import static ru.nemodev.runhero.constant.GameConstant.CENTRE_Y;
+import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
+import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;
 
 public class SplashScreen extends BaseLoaderScreen
 {
@@ -26,11 +33,15 @@ public class SplashScreen extends BaseLoaderScreen
     {
         super();
 
-        BaseScene baseScene = new BaseScene(new ScreenViewport(), GameManager.getInstance().getSpriteBatch());
+        OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
+        camera.setToOrtho(false, METERS_X, METERS_Y);
 
-        splashActor = SpriteUtils.create(BackgroundTextureConstant.SPLASH);
-        splashActor.setSize(ScreenUtils.getWidth(), ScreenUtils.getHeight());
-        splashActor.setPosition(0, 0);
+        Viewport viewport = new StretchViewport(
+                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
+
+        BaseScene baseScene = new BaseScene(viewport, GameManager.getInstance().getSpriteBatch());
+
+        splashActor = SpriteUtils.create(BackgroundTextureConstant.SPLASH, METERS_X, METERS_Y, CENTRE_X, CENTRE_Y);
 
         baseScene.addGameObject(new SplashActor(splashActor));
 

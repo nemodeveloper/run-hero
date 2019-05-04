@@ -3,8 +3,10 @@ package ru.nemodev.runhero.screen.main;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
+import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.core.manager.GameStatus;
 import ru.nemodev.runhero.core.scene.Scene;
 import ru.nemodev.runhero.core.screen.BaseScreen;
@@ -41,8 +43,10 @@ public class MainScreen extends BaseScreen
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
         camera.setToOrtho(false, METERS_X, METERS_Y);
 
-        MainBackgroundScene mainBackgroundScene = new MainBackgroundScene(
-                new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch);
+        Viewport viewport = new StretchViewport(
+                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
+
+        MainBackgroundScene mainBackgroundScene = new MainBackgroundScene(viewport, batch);
 
         addScene(mainBackgroundScene);
     }
@@ -52,8 +56,10 @@ public class MainScreen extends BaseScreen
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
         camera.setToOrtho(false, METERS_X, METERS_Y);
 
-        MainMenuScene mainMenuScene = new MainMenuScene(
-                new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch);
+        Viewport viewport = new StretchViewport(
+                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
+
+        MainMenuScene mainMenuScene = new MainMenuScene(viewport, batch);
 
         addScene(mainMenuScene);
     }

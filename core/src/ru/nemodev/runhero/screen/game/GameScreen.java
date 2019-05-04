@@ -5,9 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
+import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.core.manager.GameStatus;
 import ru.nemodev.runhero.core.scene.Scene;
 import ru.nemodev.runhero.core.screen.BaseScreen;
@@ -47,7 +49,10 @@ public class GameScreen extends BaseScreen
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
         camera.setToOrtho(false, METERS_X, METERS_Y);
 
-        gameBackgroundScene = new GameBackgroundScene(new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch);
+        Viewport viewport = new StretchViewport(
+                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
+
+        gameBackgroundScene = new GameBackgroundScene(viewport, batch);
         addScene(gameBackgroundScene);
     }
 
@@ -56,10 +61,12 @@ public class GameScreen extends BaseScreen
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
         camera.setToOrtho(false, METERS_X, METERS_Y);
 
+        Viewport viewport = new StretchViewport(
+                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
+
         gameScene = new GameScene(
                 new World(new Vector2(0.f, -9.81f), false),
-                new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera),
-                batch);
+                viewport, batch);
 
         addScene(gameScene);
     }
@@ -75,8 +82,10 @@ public class GameScreen extends BaseScreen
         OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
         camera.setToOrtho(false, METERS_X, METERS_Y);
 
-        gameUIScene = new GameUIScene(new ExtendViewport(METERS_X, METERS_Y, METERS_X, METERS_Y, camera), batch,
-                gameScene.getSoundEventListener());
+        Viewport viewport = new StretchViewport(
+                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
+
+        gameUIScene = new GameUIScene(viewport, batch, gameScene.getSoundEventListener());
         addScene(gameUIScene);
     }
 
