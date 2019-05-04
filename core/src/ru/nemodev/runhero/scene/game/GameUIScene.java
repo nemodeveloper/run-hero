@@ -2,7 +2,6 @@ package ru.nemodev.runhero.scene.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.UITextureConstant;
@@ -24,9 +23,9 @@ public class GameUIScene extends BaseScene
     private PausePopUpActor pausePopUpActor;
     private final SoundEventListener soundEventListener;
 
-    public GameUIScene(Viewport viewport, Batch batch, SoundEventListener soundEventListener)
+    public GameUIScene(Batch batch, SoundEventListener soundEventListener)
     {
-        super(viewport, batch);
+        super(batch);
         this.soundEventListener = soundEventListener;
 
         init();

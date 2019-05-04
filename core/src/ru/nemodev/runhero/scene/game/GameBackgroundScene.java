@@ -2,7 +2,6 @@ package ru.nemodev.runhero.scene.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
@@ -24,9 +23,9 @@ public class GameBackgroundScene extends BaseScene
     private TreeManagerActor treeActor;
     private StarManagerActor starManagerActor;
 
-    public GameBackgroundScene(Viewport viewport, Batch batch)
+    public GameBackgroundScene(Batch batch)
     {
-        super(viewport, batch);
+        super(batch);
 
         init();
     }

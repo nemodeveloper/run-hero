@@ -3,7 +3,6 @@ package ru.nemodev.runhero.scene.main;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.SoundConstant;
@@ -28,9 +27,9 @@ public class MainMenuScene extends BaseScene
 
     private RatingButton ratingButton;
 
-    public MainMenuScene(Viewport viewport, Batch batch)
+    public MainMenuScene(Batch batch)
     {
-        super(viewport, batch);
+        super(batch);
 
         init();
     }

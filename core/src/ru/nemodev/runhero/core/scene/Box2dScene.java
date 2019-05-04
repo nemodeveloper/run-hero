@@ -22,6 +22,15 @@ public abstract class Box2dScene extends BaseScene
     private Box2DDebugRenderer debugRenderer;
     private boolean drawDebug;
 
+    public Box2dScene(World world, Batch batch)
+    {
+        super(batch);
+        this.world = world;
+        this.accumulator = 0.f;
+
+        init();
+    }
+
     public Box2dScene(World world, Viewport viewport, Batch batch)
     {
         super(viewport, batch);

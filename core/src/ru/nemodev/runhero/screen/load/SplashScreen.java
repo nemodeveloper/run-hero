@@ -1,11 +1,7 @@
 package ru.nemodev.runhero.screen.load;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
-import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.SoundConstant;
 import ru.nemodev.runhero.constant.physic.PhysicLoaderConstant;
 import ru.nemodev.runhero.constant.texture.AtlasLoaderConstant;
@@ -33,13 +29,7 @@ public class SplashScreen extends BaseLoaderScreen
     {
         super();
 
-        OrthographicCamera camera = new OrthographicCamera(METERS_X, METERS_Y);
-        camera.setToOrtho(false, METERS_X, METERS_Y);
-
-        Viewport viewport = new StretchViewport(
-                GameConstant.METERS_X, GameConstant.METERS_Y, camera);
-
-        BaseScene baseScene = new BaseScene(viewport, GameManager.getInstance().getSpriteBatch());
+        BaseScene baseScene = new BaseScene(GameManager.getInstance().getSpriteBatch());
 
         splashActor = SpriteUtils.create(BackgroundTextureConstant.SPLASH, METERS_X, METERS_Y, CENTRE_X, CENTRE_Y);
 

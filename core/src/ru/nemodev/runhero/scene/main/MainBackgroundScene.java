@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.constant.texture.BackgroundTextureConstant;
@@ -35,9 +34,9 @@ public class MainBackgroundScene extends BaseScene
 
     private World mockWorld;
 
-    public MainBackgroundScene(Viewport viewport, Batch batch)
+    public MainBackgroundScene(Batch batch)
     {
-        super(viewport, batch);
+        super(batch);
 
         init();
     }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Iterator;
@@ -12,14 +13,24 @@ import ru.nemodev.runhero.constant.GameConstant;
 import ru.nemodev.runhero.core.model.GameObject;
 import ru.nemodev.runhero.core.util.InputUtils;
 
+import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
+import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;
+
 public class BaseScene extends InputProcessorBase implements Scene
 {
     private final Batch batch;
+
+    public BaseScene(Batch batch)
+    {
+        this(new FitViewport(GameConstant.METERS_X, GameConstant.METERS_Y,
+                new OrthographicCamera(GameConstant.METERS_X, GameConstant.METERS_Y)), batch);
+    }
 
     public BaseScene(Viewport viewport, Batch batch)
     {
         super(viewport,  new Array<GameObject>(10));
         this.batch = batch;
+        getCamera().setToOrtho(false, METERS_X, METERS_Y);
     }
 
     public void addGameObject(GameObject gameObject)
@@ -106,24 +117,6 @@ public class BaseScene extends InputProcessorBase implements Scene
     public void resize(int width, int height)
     {
         viewport.update(width, height, true);
-        updateCameraAfterResize(width, height);
-    }
-
-    protected void updateCameraAfterResize(int width, int height)
-    {
-        OrthographicCamera camera = getCamera();
-        if (GameConstant.ORIENTATION_PORTRAIT)
-        {
-            camera.viewportWidth = GameConstant.METERS_X;
-            camera.viewportHeight = GameConstant.METERS_Y * width / height;
-        }
-        else
-        {
-            camera.viewportWidth = GameConstant.METERS_X * height / width;
-            camera.viewportHeight = GameConstant.METERS_Y;
-        }
-        camera.position.set(GameConstant.CENTRE_X, GameConstant.CENTRE_Y, 0);
-        camera.update();
     }
 
     @Override

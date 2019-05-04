@@ -31,12 +31,6 @@ public class ScoreScene extends BaseScene
     }
 
     @Override
-    protected void updateCameraAfterResize(int width, int height)
-    {
-
-    }
-
-    @Override
     public void dispose()
     {
         super.dispose();
