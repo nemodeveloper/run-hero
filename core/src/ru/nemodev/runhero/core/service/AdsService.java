@@ -7,6 +7,7 @@ public interface AdsService
         void adsShowed(boolean showed);
     }
 
+    void showSimpleBanner();
     void showFullScreenBanner(AdsListener adsListener);
     void disable();
 }
