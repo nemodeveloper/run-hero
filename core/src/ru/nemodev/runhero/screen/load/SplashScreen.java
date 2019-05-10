@@ -16,8 +16,8 @@ import ru.nemodev.runhero.entity.load.SplashActor;
 import ru.nemodev.runhero.manager.GameManager;
 import ru.nemodev.runhero.screen.main.MainScreen;
 
-import static ru.nemodev.runhero.constant.GameConstant.CENTRE_X;
-import static ru.nemodev.runhero.constant.GameConstant.CENTRE_Y;
+import static ru.nemodev.runhero.constant.GameConstant.HALF_X;
+import static ru.nemodev.runhero.constant.GameConstant.HALF_Y;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_X;
 import static ru.nemodev.runhero.constant.GameConstant.METERS_Y;
 
@@ -31,7 +31,7 @@ public class SplashScreen extends BaseLoaderScreen
 
         BaseScene baseScene = new BaseScene(GameManager.getInstance().getSpriteBatch());
 
-        splashActor = SpriteUtils.create(BackgroundTextureConstant.SPLASH, METERS_X, METERS_Y, CENTRE_X, CENTRE_Y);
+        splashActor = SpriteUtils.create(BackgroundTextureConstant.SPLASH, METERS_X, METERS_Y, HALF_X, HALF_Y);
 
         baseScene.addGameObject(new SplashActor(splashActor));
 

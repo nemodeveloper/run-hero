@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Iterator;
@@ -22,7 +22,7 @@ public class BaseScene extends InputProcessorBase implements Scene
 
     public BaseScene(Batch batch)
     {
-        this(new FitViewport(GameConstant.METERS_X, GameConstant.METERS_Y,
+        this(new ExtendViewport(GameConstant.METERS_X, GameConstant.METERS_Y, GameConstant.METERS_X, GameConstant.METERS_Y,
                 new OrthographicCamera(GameConstant.METERS_X, GameConstant.METERS_Y)), batch);
     }
 
